@@ -20,7 +20,7 @@ const jsonHeaders = {
 };
 
 const STOP_WORDS = new Set(["i", "you", "he", "she", "it", "we", "they", "me", "my", "your", "his", "her", "our", "their", "do", "does", "did", "not", "the", "a", "an", "to", "in", "with", "into", "about", "of", "for", "and", "or", "but", "also", "where", "though", "through", "this", "that", "is", "are", "am", "was", "were", "be", "been", "being"]);
-const VERBISH = new Set(["know", "knows", "knew", "known", "understand", "write", "writes", "wrote", "sign", "signed", "wait", "waits", "dream", "dreams", "sleep", "sleeps", "offer", "offers", "offered", "give", "gives", "gave", "transform", "transforms", "change", "changes", "see", "sees", "saw", "remember", "remembers", "use", "uses", "used", "make", "makes", "made", "serve", "serves", "served", "contribute", "contributes", "contributed", "have", "has", "had", "lead", "leads", "led", "explore", "explores", "exploring", "share", "sharing", "enjoy", "enjoys"]);
+const VERBISH = new Set(["know", "knows", "knew", "known", "understand", "understands", "understood", "study", "studies", "studied", "learn", "learns", "learned", "write", "writes", "wrote", "written", "sign", "signed", "mark", "marked", "wait", "waits", "waited", "dream", "dreams", "dreamed", "sleep", "sleeps", "slept", "offer", "offers", "offered", "give", "gives", "gave", "given", "transform", "transforms", "transformed", "change", "changes", "changed", "see", "sees", "saw", "seen", "reveal", "reveals", "revealed", "remember", "remembers", "remembered", "record", "records", "recorded", "use", "uses", "used", "make", "makes", "made", "making", "serve", "serves", "served", "contribute", "contributes", "contributed", "have", "has", "had", "lead", "leads", "led", "explore", "explores", "explored", "exploring", "share", "shares", "shared", "sharing", "enjoy", "enjoys", "enjoyed"]);
 
 export default async function handler(request) {
   try {
@@ -202,8 +202,9 @@ function extractSealedSources(result) {
       value.forEach(visit);
       return;
     }
-    if ((value.strategy === "sealed_token" || value.rc?.startsWith?.("zha'")) && isAssistCandidate(value.source, {})) {
-      found.push(normalizeEnglish(value.source));
+    const source = value.source || value.concept;
+    if ((value.strategy === "sealed_token" || value.rc?.startsWith?.("zha'")) && isAssistCandidate(source, {})) {
+      found.push(normalizeEnglish(source));
     }
     Object.values(value).forEach(visit);
   };
@@ -410,7 +411,10 @@ function deterministicCoinedSurface(term) {
   const syllables = ["n'gh", "cth", "ulh", "fht", "mgl", "kh", "sh", "vra", "ll", "rha", "ghu", "th", "zhr", "agl", "nyth", "kha"];
   const digest = sha256(`RC-1.0:${normalizeEnglish(term)}`);
   const indexes = [0, 2, 4].map((offset) => Number.parseInt(digest.slice(offset, offset + 2), 16) % syllables.length);
-  return indexes.map((index) => syllables[index]).join("");
+  const pieces = indexes.map((index) => syllables[index]);
+  const surface = pieces.join("");
+  if (/[']/u.test(surface) || /(cth|fht|mgl|ngl|th|gh|kh|sh|ll|rr)/u.test(surface)) return surface;
+  return `${pieces[0]}'${pieces.slice(1).join("")}`;
 }
 
 async function llmAllowed(request) {

@@ -39,6 +39,43 @@ test("LLM-assisted EN to RC coins ordinary unknowns but leaves acronyms sealed",
   }
 });
 
+test("LLM-assisted EN to RC replaces sealed ordinary object terms", async () => {
+  const previous = {
+    LLM_ENABLED: process.env.LLM_ENABLED,
+    PUBLIC_LLM_ENABLED: process.env.PUBLIC_LLM_ENABLED,
+    LLM_DAILY_LIMIT_PER_IP: process.env.LLM_DAILY_LIMIT_PER_IP,
+    LLM_API_KEY: process.env.LLM_API_KEY,
+    LLM_MODEL: process.env.LLM_MODEL,
+    LLM_ALLOW_COINED_TERMS: process.env.LLM_ALLOW_COINED_TERMS,
+    LLM_TERM_DECOMPOSITION_ENABLED: process.env.LLM_TERM_DECOMPOSITION_ENABLED
+  };
+  process.env.LLM_ENABLED = "true";
+  process.env.PUBLIC_LLM_ENABLED = "true";
+  process.env.LLM_DAILY_LIMIT_PER_IP = "0";
+  process.env.LLM_API_KEY = "";
+  process.env.LLM_MODEL = "";
+  process.env.LLM_ALLOW_COINED_TERMS = "true";
+  process.env.LLM_TERM_DECOMPOSITION_ENABLED = "false";
+
+  try {
+    const response = await handler(new Request("https://local/.netlify/functions/translate", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ text: "I studied segmentation.", direction: "en-to-rc", useLlm: true })
+    }));
+    const payload = await response.json();
+    assert.equal(response.status, 200);
+    assert.equal(payload.llm.used, true);
+    assert.deepEqual(payload.llm.accepted_terms.map((term) => term.source), ["segmentation"]);
+    assert.doesNotMatch(payload.low, /zha'/);
+  } finally {
+    for (const [key, value] of Object.entries(previous)) {
+      if (value === undefined) delete process.env[key];
+      else process.env[key] = value;
+    }
+  }
+});
+
 test("reverse LLM provider failure still returns deterministic gloss JSON", async () => {
   const previous = {
     LLM_ENABLED: process.env.LLM_ENABLED,
