@@ -1,0 +1,26 @@
+language_version: RC-1.0
+prefixes:
+  negative: { surface: "na", gloss: "not, no, non-" }
+  non_present: { surface: "nafl'", gloss: "non-present, past, irrealis" }
+  future: { surface: "ilyaa-", gloss: "future, expected" }
+  still: { surface: "mg-", gloss: "still, nevertheless" }
+  beyond: { surface: "ph-", bound_surface: "ph'", gloss: "beyond, across, outside" }
+  locative: { surface: "l-", bound_surface: "l'", gloss: "at, beside, concerning" }
+roles:
+  yr: "agent, experiencer, subject"
+  ef: "patient, theme, object"
+  ug: "recipient, goal, to, for"
+  agl: "location, at, in, on"
+  hup: "source, from, of"
+  vra: "with, among"
+  li: "instrument, cause, price"
+  ep: "result, into"
+derivations:
+  agl: "place of"
+  oth: "native of"
+  nyth: "practitioner, servant, executor"
+  hu: "skin, interface, medium"
+  eeh: "answer, knowable content"
+  na: "abstract state"
+  ri: "totality, all"
+  og: "intensifier"

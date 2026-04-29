@@ -1,0 +1,149 @@
+language_version: RC-1.0
+lexicon_version: "2026-04-29"
+pronouns:
+  i: { rc: "Ya", role: "yr" }
+  me: { rc: "Ya", role: "ef" }
+  you: { rc: "Tha", role: "yr" }
+  he: { rc: "Hya", role: "yr" }
+  she: { rc: "Hya", role: "yr" }
+  it: { rc: "Hya", role: "yr" }
+  we: { rc: "Cya", role: "yr" }
+  us: { rc: "Cya", role: "ef" }
+  they: { rc: "Fya", role: "yr" }
+  them: { rc: "Fya", role: "ef" }
+lexemes:
+  KNOW:
+    surface: "kadishtu"
+    english: ["know", "knows", "knew", "known", "understand", "understands", "understood"]
+    roles: { subject: "yr", object: "ef" }
+    gloss: "know, understand, knowledge"
+  WRITE_MARK:
+    surface: "athg"
+    english: ["write", "writes", "wrote", "written", "sign", "signed", "mark", "marked"]
+    roles: { subject: "yr", object: "ef" }
+    gloss: "write, sign, inscribe"
+  WAIT_DREAM_STASIS:
+    surface: "fhtagn"
+    english: ["wait", "waits", "waited", "dream", "dreams", "dreamed", "sleep", "sleeps", "slept"]
+    roles: { subject: "yr", location: "agl" }
+    gloss: "wait, dream, lie dormant"
+  OFFER:
+    surface: "fhayak"
+    english: ["offer", "offers", "offered", "give", "gives", "gave", "given"]
+    roles: { subject: "yr", object: "ef", indirect_object: "ug" }
+    gloss: "offer, set before, give ritually"
+  TRANSFORM:
+    surface: "wk'hmr"
+    english: ["transform", "transforms", "transformed", "change", "changes", "changed"]
+    roles: { subject: "yr", object: "ef", result: "ep" }
+    gloss: "transform, attach new form"
+  SEE:
+    surface: "yll"
+    english: ["see", "sees", "saw", "seen", "reveal", "reveals", "revealed"]
+    roles: { subject: "yr", object: "ef" }
+    gloss: "see, light, reveal"
+  REMEMBER:
+    surface: "mnahn"
+    english: ["remember", "remembers", "remembered", "record", "records", "recorded"]
+    roles: { subject: "yr", object: "ef" }
+    gloss: "remember, record, history"
+  USE:
+    surface: "ah"
+    english: ["use", "uses", "used", "do", "does", "did"]
+    roles: { subject: "yr", object: "ef", instrument: "li" }
+    gloss: "do, act, use"
+terms:
+  everything:
+    rc: "nilgh'ri"
+    kind: "quantifier"
+    gloss: "all things, everything"
+  nothing:
+    rc: "nilgh'ri"
+    kind: "quantifier"
+    polarity: "negative"
+    gloss: "nothing, no things"
+  all things:
+    rc: "nilgh'ri"
+    kind: "quantifier"
+    gloss: "all things"
+  secret:
+    rc: "r'luh"
+    kind: "modifier"
+    gloss: "hidden, secret"
+  hidden:
+    rc: "r'luh"
+    kind: "modifier"
+    gloss: "hidden, secret"
+  city:
+    rc: "wgah'nagl-ri"
+    kind: "noun"
+    gloss: "dwelling-place totality, city"
+  hidden city:
+    rc: "r'luh wgah'nagl-ri"
+    kind: "noun"
+    gloss: "hidden city"
+  scholar:
+    rc: "kadishtu-nyth"
+    kind: "person"
+    gloss: "knowledge practitioner"
+  scientist:
+    rc: "zhrn-kadishtu-nyth"
+    kind: "person"
+    gloss: "measurement-knowledge practitioner"
+  book:
+    rc: "eeh-ftaghu"
+    kind: "object"
+    gloss: "knowledge skin, book"
+  prayer:
+    rc: "vulgtm"
+    kind: "object"
+    plural: "vulgtmm"
+    gloss: "prayer"
+  prayers:
+    rc: "vulgtmm"
+    kind: "object"
+    gloss: "prayers"
+  god:
+    rc: "llogr'yth"
+    kind: "entity"
+    gloss: "power-being, god"
+  dead god:
+    rc: "ph'nglui llogr'yth"
+    kind: "entity"
+    gloss: "threshold-dead power-being"
+  human:
+    rc: "shuggoth"
+    kind: "entity"
+    gloss: "earth-native, human"
+  machine:
+    rc: "fmagl"
+    kind: "object"
+    gloss: "tool, machine"
+  body:
+    rc: "bthnk"
+    kind: "object"
+    gloss: "body"
+  gate:
+    rc: "nglui"
+    kind: "place"
+    gloss: "gate, threshold"
+  sea:
+    rc: "ulh-ri'agl"
+    kind: "place"
+    gloss: "water-totality place, sea"
+  soul:
+    rc: "orr'e"
+    kind: "abstract"
+    gloss: "soul-substance"
+  microscope:
+    rc: "vren-yll-fmagl"
+    kind: "instrument"
+    components: ["VREN", "SEE", "FMAGL"]
+    gloss: "small-seeing tool"
+proper_names:
+  cthulhu: "Cthulhu"
+  r'lyeh: "R'lyeh"
+  rlyeh: "R'lyeh"
+  yog-sothoth: "Yog-Sothoth"
+  hastur: "Hastur"
+  shub-niggurath: "Shub-Niggurath"

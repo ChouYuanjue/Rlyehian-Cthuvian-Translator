@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RC-1 R'lyehian-Cthuvian Translator</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">RC-1 Translator</p>
+          <h1>R'lyehian-Cthuvian Workbench</h1>
+        </div>
+        <div class="status" id="status">Ready</div>
+      </header>
+
+      <section class="toolbar" aria-label="Translation controls">
+        <div class="segmented" role="tablist" aria-label="Translation direction">
+          <button class="segment is-active" data-direction="en-to-rc">English to RC-1</button>
+          <button class="segment" data-direction="rc-to-en">RC-1 to English</button>
+        </div>
+
+        <label class="toggle">
+          <input id="llmToggle" type="checkbox" />
+          <span>Request LLM assist</span>
+        </label>
+
+        <label class="gate">
+          <span>LLM gate token</span>
+          <input id="gateToken" type="password" autocomplete="off" spellcheck="false" />
+        </label>
+      </section>
+
+      <section class="workspace" aria-label="Translator workspace">
+        <article class="pane">
+          <div class="pane-head">
+            <h2 id="sourceTitle">English</h2>
+            <button id="sampleBtn" type="button">Sample</button>
+          </div>
+          <textarea id="sourceText" spellcheck="true">I do not know everything.</textarea>
+        </article>
+
+        <article class="pane">
+          <div class="pane-head">
+            <h2>Low Register</h2>
+            <button class="copy" type="button" data-copy="lowOutput">Copy</button>
+          </div>
+          <textarea id="lowOutput" readonly></textarea>
+        </article>
+
+        <article class="pane">
+          <div class="pane-head">
+            <h2>High Register</h2>
+            <button class="copy" type="button" data-copy="highOutput">Copy</button>
+          </div>
+          <textarea id="highOutput" readonly></textarea>
+        </article>
+
+        <article class="pane notes-pane">
+          <div class="pane-head">
+            <h2>Analysis</h2>
+            <button id="translateBtn" type="button">Translate</button>
+          </div>
+          <pre id="analysis">{}</pre>
+        </article>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

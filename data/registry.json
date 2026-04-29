@@ -1,0 +1,12 @@
+{
+  "language_version": "RC-1.0",
+  "entries": {
+    "microscope": {
+      "rc": "vren-yll-fmagl",
+      "strategy": "semantic_compound",
+      "components": ["VREN", "SEE", "FMAGL"],
+      "created_by": "core.seed",
+      "accepted": true
+    }
+  }
+}

@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cthuvian-translator"
+version = "0.1.0"
+description = "A deterministic RC-1 R'lyehian/Cthuvian translator toolkit with registry-backed terminology."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "R'lyehian-Cthuvian Project" }
+]
+keywords = ["conlang", "translator", "cthuvian", "rlyehian", "constructed-language"]
+dependencies = [
+  "PyYAML>=6.0.1"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0"
+]
+
+[project.scripts]
+cthuvian = "cthuvian_translator.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cthuvian_translator"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
