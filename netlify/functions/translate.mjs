@@ -363,8 +363,8 @@ function truncateForLlm(value, maxChars) {
 }
 
 function shouldSkipReverseLlm(text, analysis) {
-  const maxChars = Number.parseInt(process.env.LLM_REVERSE_DIRECT_MAX_SOURCE_CHARS || "600", 10);
-  const maxTokens = Number.parseInt(process.env.LLM_REVERSE_DIRECT_MAX_TOKENS || "40", 10);
+  const maxChars = Number.parseInt(process.env.LLM_REVERSE_DIRECT_MAX_SOURCE_CHARS || "400", 10);
+  const maxTokens = Number.parseInt(process.env.LLM_REVERSE_DIRECT_MAX_TOKENS || "30", 10);
   return String(text || "").length > maxChars || (analysis?.analyses || []).length > maxTokens;
 }
 
