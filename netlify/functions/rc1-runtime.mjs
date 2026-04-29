@@ -294,9 +294,15 @@ export function glossRc1(text, learnedTerms = {}) {
         note: `${base} → ${baseUnsealed} (sealed token)`
       };
     }
-    const key = normalizeEnglish(base);
-    const gloss = glosses[key] || deterministicCoinedReverseGloss(key) || decomposeCompoundGloss(base, glosses);
-    if (gloss) return { token, base, role, gloss, preserved: false, note: `${base} → ${gloss}` };
+    // Handle leading l' elision (e.g., l'r'luh -> r'luh)
+    let lookupBase = base;
+    if (String(lookupBase).startsWith("l'")) lookupBase = lookupBase.slice(2);
+    const key = normalizeEnglish(lookupBase);
+    const gloss = glosses[key] || deterministicCoinedReverseGloss(key) || decomposeCompoundGloss(lookupBase, glosses);
+    if (gloss) {
+      const via = lookupBase !== base ? ` (from ${lookupBase})` : "";
+      return { token, base, role, gloss, preserved: false, note: `${base} → ${gloss}${via}` };
+    }
     return { token, base, role, gloss: base, preserved: true, note: `${base} → ${base} (preserved)` };
   });
   const best = analyses.map((item) => item.gloss).join(" / ");
