@@ -14,7 +14,7 @@ pronouns:
 lexemes:
   KNOW:
     surface: "kadishtu"
-    english: ["know", "knows", "knew", "known", "understand", "understands", "understood"]
+    english: ["know", "knows", "knew", "known", "understand", "understands", "understood", "study", "studies", "studied", "learn", "learns", "learned"]
     roles: { subject: "yr", object: "ef" }
     gloss: "know, understand, knowledge"
   WRITE_MARK:

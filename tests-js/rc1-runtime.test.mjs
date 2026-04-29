@@ -52,3 +52,14 @@ test("frequency seed gives variants the same RC-1 form", () => {
   assert.ok(singular);
   assert.equal(plural.rc, singular.rc);
 });
+
+test("offline semantic generator builds compounds for analyzable words", () => {
+  assert.equal(generatedCommonTermFor("telephone").rc, "ghor-ai-fmagl");
+  assert.equal(generatedCommonTermFor("software").rc, "phlegeth-fmagl");
+  assert.equal(generatedCommonTermFor("biology").rc, "bthnk-kadishtu-na");
+});
+
+test("study forms map to KNOW predicate", () => {
+  const result = translateDeterministic("I studied biology.");
+  assert.equal(result.low, "Ya-yr nafl'kadishtu bthnk-kadishtu-na-ef");
+});

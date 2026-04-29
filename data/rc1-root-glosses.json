@@ -1,0 +1,122 @@
+{
+  "VREN": {
+    "surface": "vren",
+    "keywords": ["small", "little", "minor", "micro", "tiny", "few", "short"]
+  },
+  "GHRATH": {
+    "surface": "ghrath",
+    "keywords": ["big", "large", "great", "major", "many", "super", "mega", "high"]
+  },
+  "SEE": {
+    "surface": "yll",
+    "keywords": ["see", "sight", "view", "visual", "image", "photo", "light", "display", "look", "watch"]
+  },
+  "FMAGL": {
+    "surface": "fmagl",
+    "keywords": ["tool", "device", "machine", "instrument", "equipment", "apparatus", "appliance"]
+  },
+  "ATHG": {
+    "surface": "athg",
+    "keywords": ["write", "mark", "draw", "record", "sign", "text", "script", "graph"]
+  },
+  "KADISHTU": {
+    "surface": "kadishtu",
+    "keywords": ["know", "knowledge", "learn", "study", "science", "education", "school", "understand"]
+  },
+  "MNAHN": {
+    "surface": "mnahn",
+    "keywords": ["memory", "remember", "history", "record", "archive", "store", "save", "data"]
+  },
+  "ZHRN": {
+    "surface": "zhrn",
+    "keywords": ["number", "measure", "order", "system", "math", "metric", "meter", "standard", "rank"]
+  },
+  "BTHNK": {
+    "surface": "bthnk",
+    "keywords": ["body", "health", "medical", "flesh", "physical", "organ", "biology", "bio"]
+  },
+  "LLOIG": {
+    "surface": "lloig",
+    "keywords": ["mind", "mental", "think", "idea", "logic", "psych", "brain", "intelligence"]
+  },
+  "PHLEGETH": {
+    "surface": "phlegeth",
+    "keywords": ["information", "data", "digital", "web", "internet", "network", "computer", "software", "online"]
+  },
+  "ULH": {
+    "surface": "ulh",
+    "keywords": ["water", "liquid", "rain", "sea", "ocean", "hydro", "wet", "drink"]
+  },
+  "CTHUGH": {
+    "surface": "cthugh",
+    "keywords": ["fire", "heat", "energy", "power", "electric", "thermal", "hot", "fuel"]
+  },
+  "HRAL": {
+    "surface": "hral",
+    "keywords": ["air", "wind", "breath", "flight", "aero", "aviation", "sky"]
+  },
+  "RHYGG": {
+    "surface": "rhygg",
+    "keywords": ["plant", "tree", "green", "garden", "forest", "flower", "grass", "wood"]
+  },
+  "SHUGG": {
+    "surface": "shugg",
+    "keywords": ["earth", "ground", "land", "soil", "geo", "world", "country"]
+  },
+  "SHUGGOTH": {
+    "surface": "shuggoth",
+    "keywords": ["person", "people", "human", "man", "woman", "user", "member"]
+  },
+  "WGAGL": {
+    "surface": "wgah'nagl",
+    "keywords": ["place", "location", "site", "home", "house", "room", "building", "office"]
+  },
+  "NGLUI": {
+    "surface": "nglui",
+    "keywords": ["gate", "door", "access", "entry", "portal", "window", "open"]
+  },
+  "BUG": {
+    "surface": "bug",
+    "keywords": ["go", "travel", "move", "transport", "road", "car", "trip", "route"]
+  },
+  "GHOR": {
+    "surface": "ghor",
+    "keywords": ["sound", "voice", "audio", "music", "phone", "call", "speech", "noise"]
+  },
+  "AI": {
+    "surface": "ai",
+    "keywords": ["say", "speak", "call", "name", "language", "word", "message", "communication"]
+  },
+  "KYARNAK": {
+    "surface": "k'yarnak",
+    "keywords": ["exchange", "trade", "market", "buy", "sell", "money", "price", "commerce"]
+  },
+  "RHAN": {
+    "surface": "rhan",
+    "keywords": ["time", "date", "day", "year", "week", "clock", "period", "schedule"]
+  },
+  "RLUH": {
+    "surface": "r'luh",
+    "keywords": ["secret", "hidden", "private", "secure", "unknown", "mystery"]
+  },
+  "FTAGHU": {
+    "surface": "ftaghu",
+    "keywords": ["skin", "cover", "surface", "page", "sheet", "paper", "interface"]
+  },
+  "GOFNN": {
+    "surface": "gof'nn",
+    "keywords": ["child", "children", "offspring", "family", "son", "daughter", "descendant"]
+  },
+  "NYTH": {
+    "surface": "nyth",
+    "keywords": ["agent", "person", "worker", "professional", "practitioner", "specialist", "maker"]
+  },
+  "AGL": {
+    "surface": "agl",
+    "keywords": ["place", "site", "location", "field", "area", "zone"]
+  },
+  "NA": {
+    "surface": "na",
+    "keywords": ["state", "condition", "quality", "abstract", "ness", "ity", "tion", "ism"]
+  }
+}

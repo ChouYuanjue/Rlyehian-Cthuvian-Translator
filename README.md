@@ -129,7 +129,7 @@ The public toggle only asks the server to use LLM assistance. It does not grant 
 The Web UI also includes two common-vocabulary layers:
 
 - a hand-built RC-1 compound layer for everyday words such as `pencil`, `phone`, `computer`, `car`, `school`, and `money`
-- a generated 5000-word frequency seed from `google-10000-english-no-swears`, with simple word-family normalization so variants like `service/services` share one RC-1 form
+- an offline generated 5000-word frequency seed from `google-10000-english-no-swears`, with word-family normalization and semantic root matching so analyzable words like `telephone`, `software`, and `biology` become RC-1 compounds
 
 Unknown terms now follow this order:
 
@@ -138,6 +138,8 @@ core lexicon -> hand common terms -> generated frequency seed -> learned registr
 ```
 
 This keeps sealed `zha'...'zhro` output as a last resort instead of the default look for normal vocabulary.
+
+See [docs/OFFLINE_LEXICON.md](docs/OFFLINE_LEXICON.md) for the generation pipeline.
 
 ## Sources Used For RC-1 Constraints
 

@@ -10,7 +10,7 @@ from .registry import TermRegistry
 from .sealing import seal_text
 
 
-PAST_FORMS = {"wrote", "signed", "knew", "saw", "waited", "dreamed", "slept", "offered", "used", "transformed", "changed", "remembered"}
+PAST_FORMS = {"wrote", "signed", "knew", "saw", "waited", "dreamed", "slept", "offered", "used", "transformed", "changed", "remembered", "studied", "learned"}
 AUXILIARIES = {"do", "does", "did"}
 NEGATORS = {"not", "n't", "never", "no"}
 PREPOSITIONS = {

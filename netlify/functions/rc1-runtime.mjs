@@ -3,7 +3,7 @@ import { COMMON_TERMS } from "./common-terms.mjs";
 import { commonGeneratedTermFor, normalizeCommonBase } from "./common-generated.mjs";
 
 export const ROOTS = {
-  KNOW: { surface: "kadishtu", verbs: ["know", "knows", "knew", "known", "understand", "understands", "understood"] },
+  KNOW: { surface: "kadishtu", verbs: ["know", "knows", "knew", "known", "understand", "understands", "understood", "study", "studies", "studied", "learn", "learns", "learned"] },
   WRITE_MARK: { surface: "athg", verbs: ["write", "writes", "wrote", "written", "sign", "signed", "mark", "marked"] },
   WAIT_DREAM_STASIS: { surface: "fhtagn", verbs: ["wait", "waits", "waited", "dream", "dreams", "dreamed", "sleep", "sleeps", "slept"] },
   OFFER: { surface: "fhayak", verbs: ["offer", "offers", "offered", "give", "gives", "gave", "given"] },
@@ -96,7 +96,7 @@ const PRONOUNS = {
   them: { rc: "Fya", suffix: "ef" }
 };
 
-const PAST_FORMS = new Set(["wrote", "signed", "knew", "saw", "waited", "dreamed", "slept", "offered", "used", "transformed", "changed", "remembered"]);
+const PAST_FORMS = new Set(["wrote", "signed", "knew", "saw", "waited", "dreamed", "slept", "offered", "used", "transformed", "changed", "remembered", "studied", "learned"]);
 const NEGATORS = new Set(["not", "n't", "never", "no"]);
 const AUXILIARIES = new Set(["do", "does", "did"]);
 const PREPOSITIONS = {
