@@ -295,7 +295,7 @@ export function glossRc1(text, learnedTerms = {}) {
       };
     }
     const key = normalizeEnglish(base);
-    const gloss = glosses[key] || decomposeCompoundGloss(base, glosses);
+    const gloss = glosses[key] || deterministicCoinedReverseGloss(key) || decomposeCompoundGloss(base, glosses);
     if (gloss) return { token, base, role, gloss, preserved: false, note: `${base} → ${gloss}` };
     return { token, base, role, gloss: base, preserved: true, note: `${base} → ${base} (preserved)` };
   });
@@ -348,6 +348,14 @@ function deterministicCoinedSeedSurface(source) {
   const surface = pieces.join("");
   if (/[']/u.test(surface) || /(cth|fht|mgl|ngl|th|gh|kh|sh|ll|rr)/u.test(surface)) return surface;
   return `${pieces[0]}'${pieces.slice(1).join("")}`;
+}
+
+function deterministicCoinedReverseGloss(rcToken) {
+  const normalized = normalizeEnglish(rcToken);
+  for (const source of COINED_REVERSE_SOURCES) {
+    if (deterministicCoinedSeedSurface(source) === normalized) return source;
+  }
+  return null;
 }
 
 function reverseGeneratedGloss(source, term) {

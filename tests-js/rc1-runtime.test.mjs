@@ -83,6 +83,14 @@ test("reverse gloss has coined source seed entries", () => {
   assert.ok(Object.values(reverse).includes("structuring"));
 });
 
+test("reverse gloss deterministic coined fallback resolves known regression tokens", () => {
+  const result = glossRc1("nythcthkh nythn'ghll khaaglnyth cththsh");
+  assert.match(result.low, /unsupervised/);
+  assert.match(result.low, /structuring/);
+  assert.match(result.low, /implicit/);
+  assert.match(result.low, /frontier/);
+});
+
 test("reverse gloss hides generated provenance and prefers full tokens", () => {
   const result = glossRc1("fhtghudgh kadishtu-agl");
   assert.match(result.low, /undergraduate/);
