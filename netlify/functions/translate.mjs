@@ -19,7 +19,18 @@ const jsonHeaders = {
   "Cache-Control": "no-store"
 };
 
+const STOP_WORDS = new Set(["i", "you", "he", "she", "it", "we", "they", "me", "my", "your", "his", "her", "our", "their", "do", "does", "did", "not", "the", "a", "an", "to", "in", "with", "into", "about", "of", "for", "and", "or", "but", "also", "where", "though", "through", "this", "that", "is", "are", "am", "was", "were", "be", "been", "being"]);
+const VERBISH = new Set(["know", "knows", "knew", "known", "understand", "write", "writes", "wrote", "sign", "signed", "wait", "waits", "dream", "dreams", "sleep", "sleeps", "offer", "offers", "offered", "give", "gives", "gave", "transform", "transforms", "change", "changes", "see", "sees", "saw", "remember", "remembers", "use", "uses", "used", "make", "makes", "made", "serve", "serves", "served", "contribute", "contributes", "contributed", "have", "has", "had", "lead", "leads", "led", "explore", "explores", "exploring", "share", "sharing", "enjoy", "enjoys"]);
+
 export default async function handler(request) {
+  try {
+    return await handleTranslate(request);
+  } catch (error) {
+    return json({ error: "internal_error", detail: publicErrorMessage(error) }, 500);
+  }
+}
+
+async function handleTranslate(request) {
   if (request.method !== "POST") {
     return json({ error: "method_not_allowed" }, 405);
   }
@@ -68,7 +79,7 @@ export default async function handler(request) {
     if (!allowed.ok) {
       llm = { requested: true, used: false, reason: allowed.reason };
     } else {
-      const assisted = await maybeAssistUnknownTerms(text, learnedTerms);
+      const assisted = await maybeAssistUnknownTerms(text, learnedTerms, result);
       if (assisted.used) {
         result = translateDeterministic(text, { ...learnedTerms, ...assisted.learnedTerms });
         llm = { requested: true, used: true, accepted_terms: assisted.acceptedTerms };
@@ -101,12 +112,28 @@ async function readLearnedTermsForText(text) {
   return learned;
 }
 
-async function maybeAssistUnknownTerms(text, learnedTerms) {
-  const unknown = findLikelyUnknownTerm(text, learnedTerms);
-  if (!unknown) return { used: false, reason: "no_unknown_term" };
+async function maybeAssistUnknownTerms(text, learnedTerms, deterministicResult = null) {
+  const unknownTerms = findLikelyUnknownTerms(text, learnedTerms, deterministicResult);
+  if (!unknownTerms.length) return { used: false, reason: "no_unknown_term" };
+  const acceptedTerms = [];
+  const learned = {};
+
+  for (const unknown of unknownTerms) {
+    const entry = await assistOneUnknownTerm(unknown, text);
+    if (!entry) continue;
+    learned[normalizeEnglish(unknown)] = entry;
+    learned[normalizeTermBase(unknown)] = entry;
+    acceptedTerms.push(entry);
+  }
+
+  if (!acceptedTerms.length) return { used: false, reason: "no_accepted_terms" };
+  return { used: true, learnedTerms: learned, acceptedTerms };
+}
+
+async function assistOneUnknownTerm(unknown, context) {
   const generated = generatedCommonTermFor(unknown);
   if (generated) {
-    const entry = {
+    return {
       source: unknown,
       source_base: generated.source_base,
       rc: generated.rc,
@@ -116,11 +143,10 @@ async function maybeAssistUnknownTerms(text, learnedTerms) {
       language_version: "RC-1.0",
       accepted_at: new Date().toISOString()
     };
-    return { used: true, learnedTerms: { [normalizeEnglish(unknown)]: entry, [normalizeTermBase(unknown)]: entry }, acceptedTerms: [entry] };
   }
   const lightweight = onlineLightweightTermFor(unknown);
   if (lightweight) {
-    const entry = {
+    return {
       source: unknown,
       source_base: lightweight.source_base,
       rc: lightweight.rc,
@@ -130,11 +156,10 @@ async function maybeAssistUnknownTerms(text, learnedTerms) {
       language_version: "RC-1.0",
       accepted_at: new Date().toISOString()
     };
-    return { used: true, learnedTerms: { [normalizeEnglish(unknown)]: entry, [normalizeTermBase(unknown)]: entry }, acceptedTerms: [entry] };
   }
-  const proposal = await proposeTerm(unknown, text);
+  const proposal = await proposeTerm(unknown, context);
   const validated = validateTermProposal(proposal);
-  if (!validated.ok) return { used: false, reason: validated.reason };
+  if (!validated.ok) return null;
 
   const entry = {
     source: unknown,
@@ -152,26 +177,47 @@ async function maybeAssistUnknownTerms(text, learnedTerms) {
     await store.setJSON(key, entry, { onlyIfNew: true }).catch(() => {});
   }
 
-  return { used: true, learnedTerms: { [normalizeEnglish(unknown)]: entry }, acceptedTerms: [entry] };
+  return entry;
 }
 
-function findLikelyUnknownTerm(text, learnedTerms) {
-  const stop = new Set(["i", "you", "he", "she", "it", "we", "they", "do", "does", "did", "not", "the", "a", "an", "to", "in", "with", "into", "about", "of", "for", "and"]);
-  const verbish = new Set(["know", "knows", "knew", "understand", "write", "writes", "wrote", "sign", "signed", "wait", "waits", "dream", "dreams", "sleep", "sleeps", "offer", "offers", "offered", "give", "gives", "gave", "transform", "transforms", "change", "changes", "see", "sees", "saw", "remember", "remembers", "use", "uses", "used"]);
-  const words = normalizeEnglish(text)
-    .split(/\s+/)
-    .map((word) => word.replace(/^[^a-z]+|[^a-z'-]+$/g, ""))
-    .filter((word) => /^[a-z][a-z'-]*$/.test(word));
-  for (let length = 3; length >= 1; length -= 1) {
-    for (let index = 0; index + length <= words.length; index += 1) {
-      const phrase = words.slice(index, index + length).join(" ");
-      if (words.slice(index, index + length).some((word) => stop.has(word) || verbish.has(word))) continue;
-      if (phrase in TERMS || phrase in learnedTerms) continue;
-      if (Object.values(ROOT_SURFACES).includes(phrase)) continue;
-      return phrase;
-    }
+function findLikelyUnknownTerms(text, learnedTerms, deterministicResult = null) {
+  const candidates = new Set(extractSealedSources(deterministicResult));
+  const words = String(text || "")
+    .replace(/[’‘`]/g, "'")
+    .match(/[A-Za-z][A-Za-z'’-]*|\d+/gu) || [];
+  for (const word of words) {
+    const clean = word.replace(/'s$/i, "").replace(/^[^A-Za-z]+|[^A-Za-z'-]+$/g, "");
+    if (isAssistCandidate(clean, learnedTerms)) candidates.add(normalizeEnglish(clean));
   }
-  return null;
+  return [...candidates].slice(0, Number.parseInt(process.env.LLM_MAX_TERMS_PER_REQUEST || "24", 10));
+}
+
+function extractSealedSources(result) {
+  const found = [];
+  const visit = (value) => {
+    if (!value || typeof value !== "object") return;
+    if (Array.isArray(value)) {
+      value.forEach(visit);
+      return;
+    }
+    if ((value.strategy === "sealed_token" || value.rc?.startsWith?.("zha'")) && isAssistCandidate(value.source, {})) {
+      found.push(normalizeEnglish(value.source));
+    }
+    Object.values(value).forEach(visit);
+  };
+  visit(result?.analysis);
+  return found;
+}
+
+function isAssistCandidate(term, learnedTerms) {
+  const lower = normalizeEnglish(term).replace(/'s$/, "");
+  if (!/^[a-z][a-z'-]{2,}$/i.test(String(term || ""))) return false;
+  if (/^[A-Z0-9]{2,}$/.test(String(term || ""))) return false;
+  if (STOP_WORDS.has(lower) || VERBISH.has(lower)) return false;
+  if (TERMS[lower] || learnedTerms[lower]) return false;
+  if (generatedCommonTermFor(lower) || onlineLightweightTermFor(lower)) return true;
+  if (Object.values(ROOT_SURFACES).includes(lower)) return false;
+  return true;
 }
 
 async function proposeTerm(term, context) {
@@ -180,53 +226,58 @@ async function proposeTerm(term, context) {
   }
 
   const baseUrl = (process.env.LLM_API_BASE_URL || "https://api.openai.com/v1").replace(/\/$/, "");
-  const response = await fetch(`${baseUrl}/chat/completions`, {
+  let response;
+  try {
+    response = await fetch(`${baseUrl}/chat/completions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${process.env.LLM_API_KEY}`
     },
-    body: JSON.stringify({
-      model: process.env.LLM_MODEL,
-      temperature: 0,
-      top_p: 1,
-      max_tokens: 256,
-      response_format: { type: "json_object" },
-      messages: [
-        {
-          role: "system",
-          content: "You are a constrained RC-1 term decomposition module. Return only JSON. Do not invent surface Cthuvian. Choose only from root IDs provided."
-        },
-        {
-          role: "user",
-          content: JSON.stringify({
-            task: "TERM_DECOMPOSITION",
-            source_term: term,
-            context,
-            known_rc1_roots: ROOT_SURFACES,
-            policy: {
-              prefer_known_roots: true,
-              if_roots_are_insufficient: process.env.LLM_ALLOW_COINED_TERMS === "true"
-                ? "Return no selected_roots, set needs_new_root true, and provide a coined_surface that looks like RC-1, contains apostrophes or clusters such as cth/fht/mgl/ngl/th/gh/kh/sh, and does not preserve English spelling."
-                : "Use the nearest existing root paraphrase. Do not set needs_new_root true."
-            },
-            required_shape: {
-              source_term: "string",
-              concept_type: "object|person|place|instrument|abstract|event",
-              selected_roots: ["ROOT_ID"],
-              literal_gloss: "string",
-              needs_new_root: false,
-              coined_surface: "optional string, only when selected_roots is empty and needs_new_root is true"
-            }
-          })
-        }
-      ]
-    })
-  });
+      body: JSON.stringify({
+        model: process.env.LLM_MODEL,
+        temperature: 0,
+        top_p: 1,
+        max_tokens: 256,
+        response_format: { type: "json_object" },
+        messages: [
+          {
+            role: "system",
+            content: "You are a constrained RC-1 term decomposition module. Return only JSON. Do not invent surface Cthuvian. Choose only from root IDs provided."
+          },
+          {
+            role: "user",
+            content: JSON.stringify({
+              task: "TERM_DECOMPOSITION",
+              source_term: term,
+              context,
+              known_rc1_roots: ROOT_SURFACES,
+              policy: {
+                prefer_known_roots: true,
+                if_roots_are_insufficient: process.env.LLM_ALLOW_COINED_TERMS === "true"
+                  ? "Return no selected_roots, set needs_new_root true, and provide a coined_surface that looks like RC-1, contains apostrophes or clusters such as cth/fht/mgl/ngl/th/gh/kh/sh, and does not preserve English spelling."
+                  : "Use the nearest existing root paraphrase. Do not set needs_new_root true."
+              },
+              required_shape: {
+                source_term: "string",
+                concept_type: "object|person|place|instrument|abstract|event",
+                selected_roots: ["ROOT_ID"],
+                literal_gloss: "string",
+                needs_new_root: false,
+                coined_surface: "optional string, only when selected_roots is empty and needs_new_root is true"
+              }
+            })
+          }
+        ]
+      })
+    });
+  } catch {
+    return fallbackProposal(term);
+  }
 
   if (!response.ok) return fallbackProposal(term);
-  const payload = await response.json();
-  const content = payload.choices?.[0]?.message?.content;
+  const payload = await response.json().catch(() => null);
+  const content = payload?.choices?.[0]?.message?.content;
   if (!content) return fallbackProposal(term);
   try {
     return normalizeProposal(term, JSON.parse(content));
@@ -389,4 +440,11 @@ function registryStore() {
 
 function json(payload, status = 200) {
   return new Response(JSON.stringify(payload), { status, headers: jsonHeaders });
+}
+
+function publicErrorMessage(error) {
+  if (process.env.NODE_ENV === "development" || process.env.NETLIFY_DEV === "true") {
+    return error?.message || String(error);
+  }
+  return "The translation function failed before producing a normal response.";
 }

@@ -67,7 +67,7 @@ async function translate() {
         useLlm: llmToggle.checked,
       }),
     });
-    const payload = await response.json();
+    const payload = await readJsonResponse(response);
     if (!response.ok) {
       throw new Error(payload.error || "Translation failed");
     }
@@ -83,6 +83,20 @@ async function translate() {
   } catch (error) {
     setStatus("Error");
     analysis.textContent = JSON.stringify({ error: error.message }, null, 2);
+  }
+}
+
+async function readJsonResponse(response) {
+  const text = await response.text();
+  if (!text) return {};
+  try {
+    return JSON.parse(text);
+  } catch {
+    return {
+      error: response.ok
+        ? "Server returned a non-JSON response."
+        : `Server returned ${response.status} ${response.statusText || "error"} with non-JSON body.`
+    };
   }
 }
 
