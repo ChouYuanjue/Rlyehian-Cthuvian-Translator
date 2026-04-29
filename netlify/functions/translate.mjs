@@ -52,10 +52,9 @@ async function handleTranslate(request) {
 
   const direction = body.direction === "rc-to-en" ? "rc-to-en" : "en-to-rc";
   const wantsLlm = Boolean(body.useLlm);
-  const learnedTerms = await readLearnedTermsForText(text);
 
   if (direction === "rc-to-en") {
-    const result = glossRc1(text, learnedTerms);
+    const result = glossRc1(text, {});
     let llm = { requested: wantsLlm, used: false, reason: "not_requested" };
     if (wantsLlm) {
       const allowed = await safeLlmAllowed(request);
@@ -71,6 +70,7 @@ async function handleTranslate(request) {
     return json({ ...result, llm });
   }
 
+  const learnedTerms = await readLearnedTermsForText(text);
   let result = translateDeterministic(text, learnedTerms);
   let llm = { requested: wantsLlm, used: false, reason: "not_requested" };
 
