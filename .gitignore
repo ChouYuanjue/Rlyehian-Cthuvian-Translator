@@ -3,8 +3,10 @@
 !.env.example
 node_modules/
 .netlify/
+.netlify-local/
 dist/
 coverage/
+deno.lock
 __pycache__/
 *.py[cod]
 .pytest_cache/
