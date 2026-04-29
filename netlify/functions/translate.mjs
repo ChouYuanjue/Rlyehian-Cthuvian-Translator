@@ -298,7 +298,10 @@ async function smoothReverseGloss({ source, gloss, analysis }) {
   if (!process.env.LLM_API_KEY || !process.env.LLM_MODEL) return null;
   const baseUrl = (process.env.LLM_API_BASE_URL || "https://api.openai.com/v1").replace(/\/$/, "");
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), Number.parseInt(process.env.LLM_TIMEOUT_MS || "15000", 10));
+  const timeout = setTimeout(() => controller.abort(), Number.parseInt(process.env.LLM_REVERSE_TIMEOUT_MS || "6000", 10));
+  const maxAnalyses = Number.parseInt(process.env.LLM_REVERSE_MAX_ANALYSES || "80", 10);
+  const tokenAnalyses = (analysis?.analyses || []).slice(0, maxAnalyses);
+  const compactGloss = truncateForLlm(gloss, Number.parseInt(process.env.LLM_REVERSE_MAX_GLOSS_CHARS || "3000", 10));
   let response;
   try {
     response = await fetch(`${baseUrl}/chat/completions`, {
@@ -324,8 +327,9 @@ async function smoothReverseGloss({ source, gloss, analysis }) {
             content: JSON.stringify({
               task: "RC1_REVERSE_NATURAL_TRANSLATION",
               source_rc1: source,
-              literal_gloss: gloss,
-              token_analyses: analysis?.analyses || [],
+              literal_gloss: compactGloss,
+              token_analyses: tokenAnalyses,
+              truncated: tokenAnalyses.length < (analysis?.analyses || []).length || compactGloss.length < String(gloss || "").length,
               output_schema: { translation: "string" }
             })
           }
@@ -348,6 +352,12 @@ async function smoothReverseGloss({ source, gloss, analysis }) {
   } catch {
     return null;
   }
+}
+
+function truncateForLlm(value, maxChars) {
+  const text = String(value || "");
+  if (text.length <= maxChars) return text;
+  return `${text.slice(0, Math.max(0, maxChars - 24))} ... [gloss truncated]`;
 }
 
 function normalizeProposal(term, proposal) {

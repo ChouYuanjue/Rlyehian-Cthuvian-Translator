@@ -25,18 +25,19 @@ document.querySelectorAll(".segment").forEach((button) => {
     document.querySelectorAll(".segment").forEach((item) => item.classList.toggle("is-active", item === button));
     sourceText.value = samples[state.direction];
     syncWorkspaceMode();
-    translate();
+    clearOutputs();
+    setStatus("Ready");
   });
 });
 
 document.querySelector("#sampleBtn").addEventListener("click", () => {
   sourceText.value = samples[state.direction];
-  translate();
+  clearOutputs();
+  setStatus("Sample loaded");
 });
 
 document.querySelector("#translateBtn").addEventListener("click", translate);
-sourceText.addEventListener("input", debounce(translate, 450));
-llmToggle.addEventListener("change", translate);
+llmToggle.addEventListener("change", () => setStatus("Ready"));
 
 document.querySelectorAll(".copy").forEach((button) => {
   button.addEventListener("click", async () => {
@@ -86,6 +87,12 @@ async function translate() {
   }
 }
 
+function clearOutputs() {
+  lowOutput.value = "";
+  highOutput.value = "";
+  analysis.textContent = "{}";
+}
+
 async function readJsonResponse(response) {
   const text = await response.text();
   if (!text) return {};
@@ -113,13 +120,5 @@ function setStatus(text) {
   status.textContent = text;
 }
 
-function debounce(fn, delay) {
-  let timer = undefined;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => fn(...args), delay);
-  };
-}
-
 syncWorkspaceMode();
-translate();
+clearOutputs();
