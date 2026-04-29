@@ -2,7 +2,7 @@
 // Source word list: data/wordlists/google-5000-no-swears.txt
 // Review report: data/generated/common-generated-report.json
 
-const GENERATED_COMMON_TERMS = {
+export const GENERATED_COMMON_TERMS = {
   "all": {
     "rc": "vren-ghor-ai",
     "gloss": "offline_semantic_compound from all",
@@ -1252,7 +1252,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "because": {
-    "rc": "mglkhakh",
+    "rc": "mglkhakhcth",
     "gloss": "frequency_seed_coined from because",
     "source_base": "because",
     "strategy": "frequency_seed_coined",
@@ -2057,7 +2057,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "small": {
-    "rc": "nilshphl",
+    "rc": "nilshphlwg",
     "gloss": "frequency_seed_coined from small",
     "source_base": "small",
     "strategy": "frequency_seed_coined",
@@ -2375,7 +2375,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "content": {
-    "rc": "khnythdgh",
+    "rc": "khnythdghzhr",
     "gloss": "frequency_seed_coined from content",
     "source_base": "content",
     "strategy": "frequency_seed_coined",
@@ -3037,7 +3037,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "march": {
-    "rc": "fhtllygn",
+    "rc": "fhtllygnnyth",
     "gloss": "frequency_seed_coined from march",
     "source_base": "march",
     "strategy": "frequency_seed_coined",
@@ -3395,7 +3395,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "park": {
-    "rc": "orrdghorr",
+    "rc": "orrdghorragl",
     "gloss": "frequency_seed_coined from park",
     "source_base": "park",
     "strategy": "frequency_seed_coined",
@@ -3701,7 +3701,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "gift": {
-    "rc": "shn'ghcth",
+    "rc": "shn'ghcthvra",
     "gloss": "frequency_seed_coined from gift",
     "source_base": "gift",
     "strategy": "frequency_seed_coined",
@@ -3938,7 +3938,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "fax": {
-    "rc": "fhtulhth",
+    "rc": "fhtulhthnyth",
     "gloss": "frequency_seed_coined from fax",
     "source_base": "fax",
     "strategy": "frequency_seed_coined",
@@ -3987,7 +3987,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "yet": {
-    "rc": "wgvracth",
+    "rc": "wgvracthth",
     "gloss": "frequency_seed_coined from yet",
     "source_base": "yet",
     "strategy": "frequency_seed_coined",
@@ -4271,7 +4271,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "images": {
-    "rc": "wgfhtvra",
+    "rc": "wgfhtvrath",
     "gloss": "frequency_seed_coined from images",
     "source_base": "images",
     "strategy": "frequency_seed_coined",
@@ -4582,7 +4582,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "specific": {
-    "rc": "n'ghkhulh",
+    "rc": "n'ghkhulhkh",
     "gloss": "frequency_seed_coined from specific",
     "source_base": "specific",
     "strategy": "frequency_seed_coined",
@@ -4655,7 +4655,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ask": {
-    "rc": "rhakhzhr",
+    "rc": "rhakhzhrll",
     "gloss": "frequency_seed_coined from ask",
     "source_base": "ask",
     "strategy": "frequency_seed_coined",
@@ -4704,7 +4704,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "beach": {
-    "rc": "phlrhaagl",
+    "rc": "phlrhaaglsuhn",
     "gloss": "frequency_seed_coined from beach",
     "source_base": "beach",
     "strategy": "frequency_seed_coined",
@@ -5090,7 +5090,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "final": {
-    "rc": "n'ghkhulh",
+    "rc": "n'ghkhulhagl",
     "gloss": "frequency_seed_coined from final",
     "source_base": "final",
     "strategy": "frequency_seed_coined",
@@ -5111,7 +5111,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "centre": {
-    "rc": "fhtwgdgh",
+    "rc": "fhtwgdghsuhn",
     "gloss": "frequency_seed_coined from centre",
     "source_base": "centre",
     "strategy": "frequency_seed_coined",
@@ -5125,7 +5125,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "via": {
-    "rc": "n'ghllnil",
+    "rc": "n'ghllnilagl",
     "gloss": "frequency_seed_coined from via",
     "source_base": "via",
     "strategy": "frequency_seed_coined",
@@ -5497,7 +5497,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "town": {
-    "rc": "ygnctheeh",
+    "rc": "ygnctheehrha",
     "gloss": "frequency_seed_coined from town",
     "source_base": "town",
     "strategy": "frequency_seed_coined",
@@ -5770,7 +5770,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "simple": {
-    "rc": "wgvracth",
+    "rc": "wgvracthfht",
     "gloss": "frequency_seed_coined from simple",
     "source_base": "simple",
     "strategy": "frequency_seed_coined",
@@ -5833,14 +5833,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "annual": {
-    "rc": "vran'gheeh",
+    "rc": "vran'gheehghu",
     "gloss": "frequency_seed_coined from annual",
     "source_base": "annual",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "publish": {
-    "rc": "fhteehulh",
+    "rc": "fhteehulhsuhn",
     "gloss": "frequency_seed_coined from publish",
     "source_base": "publish",
     "strategy": "frequency_seed_coined",
@@ -5917,7 +5917,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "hardware": {
-    "rc": "llorrrha",
+    "rc": "llorrrhadgh",
     "gloss": "frequency_seed_coined from hardware",
     "source_base": "hardware",
     "strategy": "frequency_seed_coined",
@@ -6180,7 +6180,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "entry": {
-    "rc": "zhreehkha",
+    "rc": "zhreehkhacth",
     "gloss": "frequency_seed_coined from entry",
     "source_base": "entry",
     "strategy": "frequency_seed_coined",
@@ -6327,7 +6327,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "overall": {
-    "rc": "eehshghu",
+    "rc": "eehshghuorr",
     "gloss": "frequency_seed_coined from overall",
     "source_base": "overall",
     "strategy": "frequency_seed_coined",
@@ -6341,7 +6341,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "river": {
-    "rc": "ghuygnkh",
+    "rc": "ghuygnkhphl",
     "gloss": "frequency_seed_coined from river",
     "source_base": "river",
     "strategy": "frequency_seed_coined",
@@ -6362,7 +6362,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "engine": {
-    "rc": "wgwgvra",
+    "rc": "wgwgvrath",
     "gloss": "frequency_seed_coined from engine",
     "source_base": "engine",
     "strategy": "frequency_seed_coined",
@@ -6386,7 +6386,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "regional": {
-    "rc": "rhashsuhn",
+    "rc": "rhashsuhnorr",
     "gloss": "frequency_seed_coined from regional",
     "source_base": "regional",
     "strategy": "frequency_seed_coined",
@@ -6608,7 +6608,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "selection": {
-    "rc": "suhnphln'gh",
+    "rc": "suhnphln'ghnil",
     "gloss": "frequency_seed_coined from selection",
     "source_base": "selection",
     "strategy": "frequency_seed_coined",
@@ -6692,7 +6692,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "corporation": {
-    "rc": "nythnilagl",
+    "rc": "nythnilaglkha",
     "gloss": "frequency_seed_coined from corporation",
     "source_base": "corporation",
     "strategy": "frequency_seed_coined",
@@ -6720,7 +6720,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "role": {
-    "rc": "n'ghorrnyth",
+    "rc": "n'ghorrnythdgh",
     "gloss": "frequency_seed_coined from role",
     "source_base": "role",
     "strategy": "frequency_seed_coined",
@@ -7171,7 +7171,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "sent": {
-    "rc": "nythzhrsuhn",
+    "rc": "nythzhrsuhnkha",
     "gloss": "frequency_seed_coined from sent",
     "source_base": "sent",
     "strategy": "frequency_seed_coined",
@@ -7234,7 +7234,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "lead": {
-    "rc": "nythdghvra",
+    "rc": "nythdghvrakha",
     "gloss": "frequency_seed_coined from lead",
     "source_base": "lead",
     "strategy": "frequency_seed_coined",
@@ -7248,7 +7248,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "choice": {
-    "rc": "thygnzhr",
+    "rc": "thygnzhrsh",
     "gloss": "frequency_seed_coined from choice",
     "source_base": "choice",
     "strategy": "frequency_seed_coined",
@@ -7276,7 +7276,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "courses": {
-    "rc": "ghukhaulh",
+    "rc": "ghukhaulhfht",
     "gloss": "frequency_seed_coined from courses",
     "source_base": "courses",
     "strategy": "frequency_seed_coined",
@@ -7519,7 +7519,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "asian": {
-    "rc": "n'ghygnsh",
+    "rc": "n'ghygnshkh",
     "gloss": "frequency_seed_coined from asian",
     "source_base": "asian",
     "strategy": "frequency_seed_coined",
@@ -7617,7 +7617,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "featured": {
-    "rc": "shfhtth",
+    "rc": "shfhtthnil",
     "gloss": "frequency_seed_coined from featured",
     "source_base": "featured",
     "strategy": "frequency_seed_coined",
@@ -7823,7 +7823,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "physical": {
-    "rc": "aglthrha",
+    "rc": "aglthrhamgl",
     "gloss": "frequency_seed_coined from physical",
     "source_base": "physical",
     "strategy": "frequency_seed_coined",
@@ -7879,7 +7879,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "tue": {
-    "rc": "ghushkha",
+    "rc": "ghushkhafht",
     "gloss": "frequency_seed_coined from tue",
     "source_base": "tue",
     "strategy": "frequency_seed_coined",
@@ -7921,7 +7921,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "prior": {
-    "rc": "zhrwgfht",
+    "rc": "zhrwgfhtcth",
     "gloss": "frequency_seed_coined from prior",
     "source_base": "prior",
     "strategy": "frequency_seed_coined",
@@ -7946,7 +7946,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "feed": {
-    "rc": "zhrzhrulh",
+    "rc": "zhrzhrulheeh",
     "gloss": "frequency_seed_coined from feed",
     "source_base": "feed",
     "strategy": "frequency_seed_coined",
@@ -8012,7 +8012,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "therefore": {
-    "rc": "ygnnythagl",
+    "rc": "ygnnythaglcth",
     "gloss": "frequency_seed_coined from therefore",
     "source_base": "therefore",
     "strategy": "frequency_seed_coined",
@@ -8082,7 +8082,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "valley": {
-    "rc": "khaeehphl",
+    "rc": "khaeehphlghu",
     "gloss": "frequency_seed_coined from valley",
     "source_base": "valley",
     "strategy": "frequency_seed_coined",
@@ -8096,7 +8096,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "probably": {
-    "rc": "fhtshkh",
+    "rc": "fhtshkhnyth",
     "gloss": "frequency_seed_coined from probably",
     "source_base": "probably",
     "strategy": "frequency_seed_coined",
@@ -8138,14 +8138,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "cut": {
-    "rc": "n'ghn'ghsuhn",
+    "rc": "n'ghn'ghsuhndgh",
     "gloss": "frequency_seed_coined from cut",
     "source_base": "cut",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "worldwide": {
-    "rc": "phlphlygn",
+    "rc": "phlphlygnsh",
     "gloss": "frequency_seed_coined from worldwide",
     "source_base": "worldwide",
     "strategy": "frequency_seed_coined",
@@ -8236,7 +8236,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "kitchen": {
-    "rc": "llygnwg",
+    "rc": "llygnwgkh",
     "gloss": "frequency_seed_coined from kitchen",
     "source_base": "kitchen",
     "strategy": "frequency_seed_coined",
@@ -8362,7 +8362,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "basis": {
-    "rc": "shwgkha",
+    "rc": "shwgkhavra",
     "gloss": "frequency_seed_coined from basis",
     "source_base": "basis",
     "strategy": "frequency_seed_coined",
@@ -8450,7 +8450,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "involved": {
-    "rc": "thaglfht",
+    "rc": "thaglfhtnyth",
     "gloss": "frequency_seed_coined from involved",
     "source_base": "involved",
     "strategy": "frequency_seed_coined",
@@ -8565,14 +8565,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "amazon": {
-    "rc": "mgleehfht",
+    "rc": "mgleehfhtrha",
     "gloss": "frequency_seed_coined from amazon",
     "source_base": "amazon",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "patient": {
-    "rc": "eehaglcth",
+    "rc": "eehaglcthn'gh",
     "gloss": "frequency_seed_coined from patient",
     "source_base": "patient",
     "strategy": "frequency_seed_coined",
@@ -8698,14 +8698,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "rule": {
-    "rc": "nythygnulh",
+    "rc": "nythygnulhnil",
     "gloss": "frequency_seed_coined from rule",
     "source_base": "rule",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "mac": {
-    "rc": "fhtzhrvra",
+    "rc": "fhtzhrvrash",
     "gloss": "frequency_seed_coined from mac",
     "source_base": "mac",
     "strategy": "frequency_seed_coined",
@@ -8740,7 +8740,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "bring": {
-    "rc": "zhrzhrulh",
+    "rc": "zhrzhrulhrha",
     "gloss": "frequency_seed_coined from bring",
     "source_base": "bring",
     "strategy": "frequency_seed_coined",
@@ -8761,7 +8761,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "mother": {
-    "rc": "fhtulhvra",
+    "rc": "fhtulhvrasuhn",
     "gloss": "frequency_seed_coined from mother",
     "source_base": "mother",
     "strategy": "frequency_seed_coined",
@@ -8852,7 +8852,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "modern": {
-    "rc": "vranythdgh",
+    "rc": "vranythdghwg",
     "gloss": "frequency_seed_coined from modern",
     "source_base": "modern",
     "strategy": "frequency_seed_coined",
@@ -8866,7 +8866,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ireland": {
-    "rc": "fhtshphl",
+    "rc": "fhtshphlsuhn",
     "gloss": "frequency_seed_coined from ireland",
     "source_base": "ireland",
     "strategy": "frequency_seed_coined",
@@ -9045,7 +9045,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "output": {
-    "rc": "dghfhtagl",
+    "rc": "dghfhtaglmgl",
     "gloss": "frequency_seed_coined from output",
     "source_base": "output",
     "strategy": "frequency_seed_coined",
@@ -9171,7 +9171,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "multi": {
-    "rc": "aglkhzhr",
+    "rc": "aglkhzhrmgl",
     "gloss": "frequency_seed_coined from multi",
     "source_base": "multi",
     "strategy": "frequency_seed_coined",
@@ -9203,7 +9203,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "component": {
-    "rc": "nilkhaphl",
+    "rc": "nilkhaphlulh",
     "gloss": "frequency_seed_coined from component",
     "source_base": "component",
     "strategy": "frequency_seed_coined",
@@ -9305,7 +9305,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ring": {
-    "rc": "ghun'ghnil",
+    "rc": "ghun'ghnilth",
     "gloss": "frequency_seed_coined from ring",
     "source_base": "ring",
     "strategy": "frequency_seed_coined",
@@ -9494,7 +9494,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "plant": {
-    "rc": "dghygnghu",
+    "rc": "dghygnghuygn",
     "gloss": "frequency_seed_coined from plant",
     "source_base": "plant",
     "strategy": "frequency_seed_coined",
@@ -9536,7 +9536,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "mini": {
-    "rc": "khawgvra",
+    "rc": "khawgvraghu",
     "gloss": "frequency_seed_coined from mini",
     "source_base": "mini",
     "strategy": "frequency_seed_coined",
@@ -9564,7 +9564,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "fish": {
-    "rc": "wgkhth",
+    "rc": "wgkhthfht",
     "gloss": "frequency_seed_coined from fish",
     "source_base": "fish",
     "strategy": "frequency_seed_coined",
@@ -9595,7 +9595,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "string": {
-    "rc": "rhaghuorr",
+    "rc": "rhaghuorrn'gh",
     "gloss": "frequency_seed_coined from string",
     "source_base": "string",
     "strategy": "frequency_seed_coined",
@@ -9693,7 +9693,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "background": {
-    "rc": "ygnmgldgh",
+    "rc": "ygnmgldghrha",
     "gloss": "frequency_seed_coined from background",
     "source_base": "background",
     "strategy": "frequency_seed_coined",
@@ -9735,7 +9735,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ability": {
-    "rc": "shsuhneeh",
+    "rc": "shsuhneehkha",
     "gloss": "frequency_seed_coined from ability",
     "source_base": "ability",
     "strategy": "frequency_seed_coined",
@@ -9984,7 +9984,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "establish": {
-    "rc": "vrathghu",
+    "rc": "vrathghuulh",
     "gloss": "frequency_seed_coined from establish",
     "source_base": "establish",
     "strategy": "frequency_seed_coined",
@@ -10286,7 +10286,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "jersey": {
-    "rc": "n'ghvraorr",
+    "rc": "n'ghvraorragl",
     "gloss": "frequency_seed_coined from jersey",
     "source_base": "jersey",
     "strategy": "frequency_seed_coined",
@@ -10312,7 +10312,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "fully": {
-    "rc": "zhrcthagl",
+    "rc": "zhrcthagleeh",
     "gloss": "frequency_seed_coined from fully",
     "source_base": "fully",
     "strategy": "frequency_seed_coined",
@@ -10343,7 +10343,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "quotes": {
-    "rc": "khwgfht",
+    "rc": "khwgfhtygn",
     "gloss": "frequency_seed_coined from quotes",
     "source_base": "quotes",
     "strategy": "frequency_seed_coined",
@@ -10388,7 +10388,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "specify": {
-    "rc": "fhtdghnyth",
+    "rc": "fhtdghnythsh",
     "gloss": "frequency_seed_coined from specify",
     "source_base": "specify",
     "strategy": "frequency_seed_coined",
@@ -10518,7 +10518,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "progress": {
-    "rc": "fhtulhghu",
+    "rc": "fhtulhghush",
     "gloss": "frequency_seed_coined from progress",
     "source_base": "progress",
     "strategy": "frequency_seed_coined",
@@ -10595,7 +10595,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "museum": {
-    "rc": "zhrcthagl",
+    "rc": "zhrcthaglll",
     "gloss": "frequency_seed_coined from museum",
     "source_base": "museum",
     "strategy": "frequency_seed_coined",
@@ -10633,7 +10633,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "evaluation": {
-    "rc": "ulhnythkha",
+    "rc": "ulhnythkhafht",
     "gloss": "frequency_seed_coined from evaluation",
     "source_base": "evaluation",
     "strategy": "frequency_seed_coined",
@@ -10846,7 +10846,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "definition": {
-    "rc": "cthsuhnorr",
+    "rc": "cthsuhnorrll",
     "gloss": "frequency_seed_coined from definition",
     "source_base": "definition",
     "strategy": "frequency_seed_coined",
@@ -11056,7 +11056,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "dev": {
-    "rc": "khanilghu",
+    "rc": "khanilghuulh",
     "gloss": "frequency_seed_coined from dev",
     "source_base": "dev",
     "strategy": "frequency_seed_coined",
@@ -11070,7 +11070,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "basket": {
-    "rc": "ulhnilll",
+    "rc": "ulhnilllfht",
     "gloss": "frequency_seed_coined from basket",
     "source_base": "basket",
     "strategy": "frequency_seed_coined",
@@ -11112,7 +11112,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "pp": {
-    "rc": "orrmgldgh",
+    "rc": "orrmgldghdgh",
     "gloss": "frequency_seed_coined from pp",
     "source_base": "pp",
     "strategy": "frequency_seed_coined",
@@ -11220,14 +11220,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "difference": {
-    "rc": "thaglfht",
+    "rc": "thaglfhtfht",
     "gloss": "frequency_seed_coined from difference",
     "source_base": "difference",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "correct": {
-    "rc": "suhnthvra",
+    "rc": "suhnthvrakha",
     "gloss": "frequency_seed_coined from correct",
     "source_base": "correct",
     "strategy": "frequency_seed_coined",
@@ -11269,7 +11269,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "firm": {
-    "rc": "mgldghagl",
+    "rc": "mgldghaglrha",
     "gloss": "frequency_seed_coined from firm",
     "source_base": "firm",
     "strategy": "frequency_seed_coined",
@@ -11297,7 +11297,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "regulation": {
-    "rc": "orrvraagl",
+    "rc": "orrvraagldgh",
     "gloss": "frequency_seed_coined from regulation",
     "source_base": "regulation",
     "strategy": "frequency_seed_coined",
@@ -11318,7 +11318,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "jump": {
-    "rc": "mgldghygn",
+    "rc": "mgldghygncth",
     "gloss": "frequency_seed_coined from jump",
     "source_base": "jump",
     "strategy": "frequency_seed_coined",
@@ -11384,7 +11384,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "direction": {
-    "rc": "cthshorr",
+    "rc": "cthshorrorr",
     "gloss": "frequency_seed_coined from direction",
     "source_base": "direction",
     "strategy": "frequency_seed_coined",
@@ -11468,7 +11468,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ball": {
-    "rc": "khshsh",
+    "rc": "khshshmgl",
     "gloss": "frequency_seed_coined from ball",
     "source_base": "ball",
     "strategy": "frequency_seed_coined",
@@ -11534,7 +11534,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "clinical": {
-    "rc": "cthshygn",
+    "rc": "cthshygnn'gh",
     "gloss": "frequency_seed_coined from clinical",
     "source_base": "clinical",
     "strategy": "frequency_seed_coined",
@@ -11562,7 +11562,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "appear": {
-    "rc": "cthvrafht",
+    "rc": "cthvrafhtn'gh",
     "gloss": "frequency_seed_coined from appear",
     "source_base": "appear",
     "strategy": "frequency_seed_coined",
@@ -11789,7 +11789,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "cultural": {
-    "rc": "shphlagl",
+    "rc": "shphlaglvra",
     "gloss": "frequency_seed_coined from cultural",
     "source_base": "cultural",
     "strategy": "frequency_seed_coined",
@@ -11980,14 +11980,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "canon": {
-    "rc": "thshn'gh",
+    "rc": "thshn'ghsuhn",
     "gloss": "frequency_seed_coined from canon",
     "source_base": "canon",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "league": {
-    "rc": "khghun'gh",
+    "rc": "khghun'ghzhr",
     "gloss": "frequency_seed_coined from league",
     "source_base": "league",
     "strategy": "frequency_seed_coined",
@@ -12029,7 +12029,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "dictionary": {
-    "rc": "mglwgkh",
+    "rc": "mglwgkheeh",
     "gloss": "frequency_seed_coined from dictionary",
     "source_base": "dictionary",
     "strategy": "frequency_seed_coined",
@@ -12043,7 +12043,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "manufacturing": {
-    "rc": "ghuagln'gh",
+    "rc": "ghuagln'ghth",
     "gloss": "frequency_seed_coined from manufacturing",
     "source_base": "manufacturing",
     "strategy": "frequency_seed_coined",
@@ -12064,7 +12064,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "phase": {
-    "rc": "nilghueeh",
+    "rc": "nilghueehghu",
     "gloss": "frequency_seed_coined from phase",
     "source_base": "phase",
     "strategy": "frequency_seed_coined",
@@ -12173,7 +12173,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "crime": {
-    "rc": "nythghumgl",
+    "rc": "nythghumglvra",
     "gloss": "frequency_seed_coined from crime",
     "source_base": "crime",
     "strategy": "frequency_seed_coined",
@@ -12278,7 +12278,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "driving": {
-    "rc": "fhtorrulh",
+    "rc": "fhtorrulhsuhn",
     "gloss": "frequency_seed_coined from driving",
     "source_base": "driving",
     "strategy": "frequency_seed_coined",
@@ -12348,7 +12348,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "chemical": {
-    "rc": "llsuhnth",
+    "rc": "llsuhnthdgh",
     "gloss": "frequency_seed_coined from chemical",
     "source_base": "chemical",
     "strategy": "frequency_seed_coined",
@@ -12369,14 +12369,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "reduce": {
-    "rc": "suhnphlnyth",
+    "rc": "suhnphlnythnil",
     "gloss": "frequency_seed_coined from reduce",
     "source_base": "reduce",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "himself": {
-    "rc": "mglaglkh",
+    "rc": "mglaglkheeh",
     "gloss": "frequency_seed_coined from himself",
     "source_base": "himself",
     "strategy": "frequency_seed_coined",
@@ -12411,7 +12411,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "santa": {
-    "rc": "eehrhaygn",
+    "rc": "eehrhaygnll",
     "gloss": "frequency_seed_coined from santa",
     "source_base": "santa",
     "strategy": "frequency_seed_coined",
@@ -12432,7 +12432,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "leader": {
-    "rc": "cthulhth",
+    "rc": "cthulhthll",
     "gloss": "frequency_seed_coined from leader",
     "source_base": "leader",
     "strategy": "frequency_seed_coined",
@@ -12493,7 +12493,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "arizona": {
-    "rc": "mglkhvra",
+    "rc": "mglkhvrarha",
     "gloss": "frequency_seed_coined from arizona",
     "source_base": "arizona",
     "strategy": "frequency_seed_coined",
@@ -12604,7 +12604,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "argument": {
-    "rc": "vrakhulh",
+    "rc": "vrakhulhulh",
     "gloss": "frequency_seed_coined from argument",
     "source_base": "argument",
     "strategy": "frequency_seed_coined",
@@ -12721,7 +12721,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "eastern": {
-    "rc": "orrghuorr",
+    "rc": "orrghuorrkh",
     "gloss": "frequency_seed_coined from eastern",
     "source_base": "eastern",
     "strategy": "frequency_seed_coined",
@@ -13039,7 +13039,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "solid": {
-    "rc": "vrazhrvra",
+    "rc": "vrazhrvrawg",
     "gloss": "frequency_seed_coined from solid",
     "source_base": "solid",
     "strategy": "frequency_seed_coined",
@@ -13140,7 +13140,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "improvement": {
-    "rc": "mglaglkh",
+    "rc": "mglaglkhcth",
     "gloss": "frequency_seed_coined from improvement",
     "source_base": "improvement",
     "strategy": "frequency_seed_coined",
@@ -13306,7 +13306,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "serve": {
-    "rc": "thllzhr",
+    "rc": "thllzhrsh",
     "gloss": "frequency_seed_coined from serve",
     "source_base": "serve",
     "strategy": "frequency_seed_coined",
@@ -13383,7 +13383,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "manage": {
-    "rc": "nilsuhnwg",
+    "rc": "nilsuhnwgghu",
     "gloss": "frequency_seed_coined from manage",
     "source_base": "manage",
     "strategy": "frequency_seed_coined",
@@ -13460,7 +13460,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "procedure": {
-    "rc": "khghun'gh",
+    "rc": "khghun'ghygn",
     "gloss": "frequency_seed_coined from procedure",
     "source_base": "procedure",
     "strategy": "frequency_seed_coined",
@@ -13596,7 +13596,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "recommendation": {
-    "rc": "fhtnileeh",
+    "rc": "fhtnileehnyth",
     "gloss": "frequency_seed_coined from recommendation",
     "source_base": "recommendation",
     "strategy": "frequency_seed_coined",
@@ -13631,7 +13631,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "mental": {
-    "rc": "rhallulh",
+    "rc": "rhallulhll",
     "gloss": "frequency_seed_coined from mental",
     "source_base": "mental",
     "strategy": "frequency_seed_coined",
@@ -13760,7 +13760,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "counter": {
-    "rc": "ygnn'ghagl",
+    "rc": "ygnn'ghagleeh",
     "gloss": "frequency_seed_coined from counter",
     "source_base": "counter",
     "strategy": "frequency_seed_coined",
@@ -13914,7 +13914,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "jackson": {
-    "rc": "cthkhwg",
+    "rc": "cthkhwgorr",
     "gloss": "frequency_seed_coined from jackson",
     "source_base": "jackson",
     "strategy": "frequency_seed_coined",
@@ -13949,7 +13949,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "assistant": {
-    "rc": "n'ghulhzhr",
+    "rc": "n'ghulhzhrdgh",
     "gloss": "frequency_seed_coined from assistant",
     "source_base": "assistant",
     "strategy": "frequency_seed_coined",
@@ -14144,7 +14144,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "disc": {
-    "rc": "khsuhndgh",
+    "rc": "khsuhndghygn",
     "gloss": "frequency_seed_coined from disc",
     "source_base": "disc",
     "strategy": "frequency_seed_coined",
@@ -14239,7 +14239,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "harry": {
-    "rc": "nythnilfht",
+    "rc": "nythnilfhtvra",
     "gloss": "frequency_seed_coined from harry",
     "source_base": "harry",
     "strategy": "frequency_seed_coined",
@@ -14274,7 +14274,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "mouse": {
-    "rc": "thn'ghagl",
+    "rc": "thn'ghaglsh",
     "gloss": "frequency_seed_coined from mouse",
     "source_base": "mouse",
     "strategy": "frequency_seed_coined",
@@ -14506,7 +14506,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "priority": {
-    "rc": "llorrulh",
+    "rc": "llorrulhagl",
     "gloss": "frequency_seed_coined from priority",
     "source_base": "priority",
     "strategy": "frequency_seed_coined",
@@ -14572,14 +14572,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "eight": {
-    "rc": "phlulhnil",
+    "rc": "phlulhnilnyth",
     "gloss": "frequency_seed_coined from eight",
     "source_base": "eight",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "anonymous": {
-    "rc": "aglsuhndgh",
+    "rc": "aglsuhndghzhr",
     "gloss": "frequency_seed_coined from anonymous",
     "source_base": "anonymous",
     "strategy": "frequency_seed_coined",
@@ -14621,7 +14621,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "prepared": {
-    "rc": "khorrrha",
+    "rc": "khorrrhaygn",
     "gloss": "frequency_seed_coined from prepared",
     "source_base": "prepared",
     "strategy": "frequency_seed_coined",
@@ -14635,7 +14635,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "dining": {
-    "rc": "dghulhygn",
+    "rc": "dghulhygnzhr",
     "gloss": "frequency_seed_coined from dining",
     "source_base": "dining",
     "strategy": "frequency_seed_coined",
@@ -14698,7 +14698,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "installed": {
-    "rc": "wgygnnyth",
+    "rc": "wgygnnythphl",
     "gloss": "frequency_seed_coined from installed",
     "source_base": "installed",
     "strategy": "frequency_seed_coined",
@@ -14761,14 +14761,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "dave": {
-    "rc": "wgzhrvra",
+    "rc": "wgzhrvraphl",
     "gloss": "frequency_seed_coined from dave",
     "source_base": "dave",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "massachusetts": {
-    "rc": "llygnll",
+    "rc": "llygnllkh",
     "gloss": "frequency_seed_coined from massachusetts",
     "source_base": "massachusetts",
     "strategy": "frequency_seed_coined",
@@ -14836,7 +14836,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ray": {
-    "rc": "ygnn'ghnil",
+    "rc": "ygnn'ghnilrha",
     "gloss": "frequency_seed_coined from ray",
     "source_base": "ray",
     "strategy": "frequency_seed_coined",
@@ -14871,7 +14871,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "votes": {
-    "rc": "dghllulh",
+    "rc": "dghllulhzhr",
     "gloss": "frequency_seed_coined from votes",
     "source_base": "votes",
     "strategy": "frequency_seed_coined",
@@ -15000,7 +15000,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "spa": {
-    "rc": "shrhaphl",
+    "rc": "shrhaphlvra",
     "gloss": "frequency_seed_coined from spa",
     "source_base": "spa",
     "strategy": "frequency_seed_coined",
@@ -15056,7 +15056,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "origin": {
-    "rc": "ulhulhygn",
+    "rc": "ulhulhygnfht",
     "gloss": "frequency_seed_coined from origin",
     "source_base": "origin",
     "strategy": "frequency_seed_coined",
@@ -15098,21 +15098,21 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "intelligence": {
-    "rc": "vrathkh",
+    "rc": "vrathkhwg",
     "gloss": "frequency_seed_coined from intelligence",
     "source_base": "intelligence",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "dallas": {
-    "rc": "phln'ghfht",
+    "rc": "phln'ghfhtnyth",
     "gloss": "frequency_seed_coined from dallas",
     "source_base": "dallas",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "con": {
-    "rc": "ygnzhragl",
+    "rc": "ygnzhragleeh",
     "gloss": "frequency_seed_coined from con",
     "source_base": "con",
     "strategy": "frequency_seed_coined",
@@ -15171,14 +15171,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "zoom": {
-    "rc": "thmgldgh",
+    "rc": "thmgldghnyth",
     "gloss": "frequency_seed_coined from zoom",
     "source_base": "zoom",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "blow": {
-    "rc": "ygnrhadgh",
+    "rc": "ygnrhadghcth",
     "gloss": "frequency_seed_coined from blow",
     "source_base": "blow",
     "strategy": "frequency_seed_coined",
@@ -15227,7 +15227,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "partnership": {
-    "rc": "n'ghnythnil",
+    "rc": "n'ghnythnilkh",
     "gloss": "frequency_seed_coined from partnership",
     "source_base": "partnership",
     "strategy": "frequency_seed_coined",
@@ -15307,7 +15307,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "suggestions": {
-    "rc": "khsuhnsh",
+    "rc": "khsuhnshzhr",
     "gloss": "frequency_seed_coined from suggestions",
     "source_base": "suggestions",
     "strategy": "frequency_seed_coined",
@@ -15321,7 +15321,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "shared": {
-    "rc": "khkhaulh",
+    "rc": "khkhaulhmgl",
     "gloss": "frequency_seed_coined from shared",
     "source_base": "shared",
     "strategy": "frequency_seed_coined",
@@ -15366,7 +15366,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "acid": {
-    "rc": "aglulhorr",
+    "rc": "aglulhorrzhr",
     "gloss": "frequency_seed_coined from acid",
     "source_base": "acid",
     "strategy": "frequency_seed_coined",
@@ -15408,14 +15408,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "height": {
-    "rc": "fhtfhtvra",
+    "rc": "fhtfhtvrash",
     "gloss": "frequency_seed_coined from height",
     "source_base": "height",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "null": {
-    "rc": "aglulhwg",
+    "rc": "aglulhwgygn",
     "gloss": "frequency_seed_coined from null",
     "source_base": "null",
     "strategy": "frequency_seed_coined",
@@ -15443,7 +15443,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "gb": {
-    "rc": "khsuhndgh",
+    "rc": "khsuhndghmgl",
     "gloss": "frequency_seed_coined from gb",
     "source_base": "gb",
     "strategy": "frequency_seed_coined",
@@ -15528,7 +15528,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "roll": {
-    "rc": "fhtnilzhr",
+    "rc": "fhtnilzhrsh",
     "gloss": "frequency_seed_coined from roll",
     "source_base": "roll",
     "strategy": "frequency_seed_coined",
@@ -15556,7 +15556,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "secret": {
-    "rc": "zhrwgghu",
+    "rc": "zhrwgghurha",
     "gloss": "frequency_seed_coined from secret",
     "source_base": "secret",
     "strategy": "frequency_seed_coined",
@@ -15570,7 +15570,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "aa": {
-    "rc": "suhnsuhndgh",
+    "rc": "suhnsuhndghvra",
     "gloss": "frequency_seed_coined from aa",
     "source_base": "aa",
     "strategy": "frequency_seed_coined",
@@ -15605,7 +15605,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "toronto": {
-    "rc": "dghmglorr",
+    "rc": "dghmglorrzhr",
     "gloss": "frequency_seed_coined from toronto",
     "source_base": "toronto",
     "strategy": "frequency_seed_coined",
@@ -15682,7 +15682,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "injury": {
-    "rc": "nilshzhr",
+    "rc": "nilshzhrwg",
     "gloss": "frequency_seed_coined from injury",
     "source_base": "injury",
     "strategy": "frequency_seed_coined",
@@ -15710,7 +15710,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "lawyer": {
-    "rc": "llrhanyth",
+    "rc": "llrhanythdgh",
     "gloss": "frequency_seed_coined from lawyer",
     "source_base": "lawyer",
     "strategy": "frequency_seed_coined",
@@ -15731,7 +15731,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "proposal": {
-    "rc": "suhnmgldgh",
+    "rc": "suhnmgldghkha",
     "gloss": "frequency_seed_coined from proposal",
     "source_base": "proposal",
     "strategy": "frequency_seed_coined",
@@ -15787,7 +15787,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "won": {
-    "rc": "n'ghulhth",
+    "rc": "n'ghulhthagl",
     "gloss": "frequency_seed_coined from won",
     "source_base": "won",
     "strategy": "frequency_seed_coined",
@@ -15881,7 +15881,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "comic": {
-    "rc": "khaglnyth",
+    "rc": "khaglnythygn",
     "gloss": "frequency_seed_coined from comic",
     "source_base": "comic",
     "strategy": "frequency_seed_coined",
@@ -15958,7 +15958,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "introduced": {
-    "rc": "thkhall",
+    "rc": "thkhallsuhn",
     "gloss": "frequency_seed_coined from introduced",
     "source_base": "introduced",
     "strategy": "frequency_seed_coined",
@@ -16000,7 +16000,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "physics": {
-    "rc": "rhafhtvra",
+    "rc": "rhafhtvrall",
     "gloss": "frequency_seed_coined from physics",
     "source_base": "physics",
     "strategy": "frequency_seed_coined",
@@ -16070,7 +16070,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "removed": {
-    "rc": "mglwgvra",
+    "rc": "mglwgvracth",
     "gloss": "frequency_seed_coined from removed",
     "source_base": "removed",
     "strategy": "frequency_seed_coined",
@@ -16101,7 +16101,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "accuracy": {
-    "rc": "aglphlorr",
+    "rc": "aglphlorrzhr",
     "gloss": "frequency_seed_coined from accuracy",
     "source_base": "accuracy",
     "strategy": "frequency_seed_coined",
@@ -16171,7 +16171,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "static": {
-    "rc": "suhnlln'gh",
+    "rc": "suhnlln'ghvra",
     "gloss": "frequency_seed_coined from static",
     "source_base": "static",
     "strategy": "frequency_seed_coined",
@@ -16206,7 +16206,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "famous": {
-    "rc": "dghghunyth",
+    "rc": "dghghunythygn",
     "gloss": "frequency_seed_coined from famous",
     "source_base": "famous",
     "strategy": "frequency_seed_coined",
@@ -16230,7 +16230,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "violence": {
-    "rc": "rhawgcth",
+    "rc": "rhawgcthll",
     "gloss": "frequency_seed_coined from violence",
     "source_base": "violence",
     "strategy": "frequency_seed_coined",
@@ -16300,7 +16300,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "dell": {
-    "rc": "fhtcthdgh",
+    "rc": "fhtcthdghsh",
     "gloss": "frequency_seed_coined from dell",
     "source_base": "dell",
     "strategy": "frequency_seed_coined",
@@ -16335,7 +16335,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "collectibles": {
-    "rc": "nilmglrha",
+    "rc": "nilmglrhaulh",
     "gloss": "frequency_seed_coined from collectibles",
     "source_base": "collectibles",
     "strategy": "frequency_seed_coined",
@@ -16349,7 +16349,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "exclusive": {
-    "rc": "orrnilghu",
+    "rc": "orrnilghuagl",
     "gloss": "frequency_seed_coined from exclusive",
     "source_base": "exclusive",
     "strategy": "frequency_seed_coined",
@@ -16363,7 +16363,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "concern": {
-    "rc": "n'gheehrha",
+    "rc": "n'gheehrhakh",
     "gloss": "frequency_seed_coined from concern",
     "source_base": "concern",
     "strategy": "frequency_seed_coined",
@@ -16412,7 +16412,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "reduction": {
-    "rc": "eehshsh",
+    "rc": "eehshshn'gh",
     "gloss": "frequency_seed_coined from reduction",
     "source_base": "reduction",
     "strategy": "frequency_seed_coined",
@@ -16482,7 +16482,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "mine": {
-    "rc": "thn'ghnil",
+    "rc": "thn'ghnilsh",
     "gloss": "frequency_seed_coined from mine",
     "source_base": "mine",
     "strategy": "frequency_seed_coined",
@@ -16496,7 +16496,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "announced": {
-    "rc": "agldghdgh",
+    "rc": "agldghdghygn",
     "gloss": "frequency_seed_coined from announced",
     "source_base": "announced",
     "strategy": "frequency_seed_coined",
@@ -16669,14 +16669,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "participation": {
-    "rc": "rhamglorr",
+    "rc": "rhamglorrn'gh",
     "gloss": "frequency_seed_coined from participation",
     "source_base": "participation",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "scheme": {
-    "rc": "khakhakha",
+    "rc": "khakhakhawg",
     "gloss": "frequency_seed_coined from scheme",
     "source_base": "scheme",
     "strategy": "frequency_seed_coined",
@@ -16690,7 +16690,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "fly": {
-    "rc": "rhaygnrha",
+    "rc": "rhaygnrhaorr",
     "gloss": "frequency_seed_coined from fly",
     "source_base": "fly",
     "strategy": "frequency_seed_coined",
@@ -16725,7 +16725,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "amendment": {
-    "rc": "fhtcthsh",
+    "rc": "fhtcthshnyth",
     "gloss": "frequency_seed_coined from amendment",
     "source_base": "amendment",
     "strategy": "frequency_seed_coined",
@@ -16767,7 +16767,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "distributed": {
-    "rc": "aglfhtcth",
+    "rc": "aglfhtcthygn",
     "gloss": "frequency_seed_coined from distributed",
     "source_base": "distributed",
     "strategy": "frequency_seed_coined",
@@ -16980,7 +16980,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "smoking": {
-    "rc": "wgaglkha",
+    "rc": "wgaglkhaphl",
     "gloss": "frequency_seed_coined from smoking",
     "source_base": "smoking",
     "strategy": "frequency_seed_coined",
@@ -17001,7 +17001,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "drives": {
-    "rc": "eehulhnyth",
+    "rc": "eehulhnythn'gh",
     "gloss": "frequency_seed_coined from drives",
     "source_base": "drives",
     "strategy": "frequency_seed_coined",
@@ -17015,7 +17015,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "alabama": {
-    "rc": "nilsuhnsuhn",
+    "rc": "nilsuhnsuhnulh",
     "gloss": "frequency_seed_coined from alabama",
     "source_base": "alabama",
     "strategy": "frequency_seed_coined",
@@ -17137,7 +17137,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "hide": {
-    "rc": "n'ghnythmgl",
+    "rc": "n'ghnythmglkh",
     "gloss": "frequency_seed_coined from hide",
     "source_base": "hide",
     "strategy": "frequency_seed_coined",
@@ -17238,7 +17238,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "layer": {
-    "rc": "khghucth",
+    "rc": "khghucthmgl",
     "gloss": "frequency_seed_coined from layer",
     "source_base": "layer",
     "strategy": "frequency_seed_coined",
@@ -17371,7 +17371,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "promotion": {
-    "rc": "eehphlkha",
+    "rc": "eehphlkhall",
     "gloss": "frequency_seed_coined from promotion",
     "source_base": "promotion",
     "strategy": "frequency_seed_coined",
@@ -17469,7 +17469,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "revision": {
-    "rc": "aglcthorr",
+    "rc": "aglcthorrzhr",
     "gloss": "frequency_seed_coined from revision",
     "source_base": "revision",
     "strategy": "frequency_seed_coined",
@@ -17646,7 +17646,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ride": {
-    "rc": "ghusuhnkha",
+    "rc": "ghusuhnkhaphl",
     "gloss": "frequency_seed_coined from ride",
     "source_base": "ride",
     "strategy": "frequency_seed_coined",
@@ -17677,7 +17677,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "bureau": {
-    "rc": "nythnilfht",
+    "rc": "nythnilfhtwg",
     "gloss": "frequency_seed_coined from bureau",
     "source_base": "bureau",
     "strategy": "frequency_seed_coined",
@@ -17719,7 +17719,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ideal": {
-    "rc": "aglthdgh",
+    "rc": "aglthdghzhr",
     "gloss": "frequency_seed_coined from ideal",
     "source_base": "ideal",
     "strategy": "frequency_seed_coined",
@@ -17993,7 +17993,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "encyclopedia": {
-    "rc": "orrnilsuhn",
+    "rc": "orrnilsuhndgh",
     "gloss": "frequency_seed_coined from encyclopedia",
     "source_base": "encyclopedia",
     "strategy": "frequency_seed_coined",
@@ -18073,14 +18073,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "transit": {
-    "rc": "khafhtagl",
+    "rc": "khafhtaglwg",
     "gloss": "frequency_seed_coined from transit",
     "source_base": "transit",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "supplier": {
-    "rc": "n'ghmglkh",
+    "rc": "n'ghmglkhagl",
     "gloss": "frequency_seed_coined from supplier",
     "source_base": "supplier",
     "strategy": "frequency_seed_coined",
@@ -18094,7 +18094,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "compact": {
-    "rc": "khshsh",
+    "rc": "khshshagl",
     "gloss": "frequency_seed_coined from compact",
     "source_base": "compact",
     "strategy": "frequency_seed_coined",
@@ -18108,14 +18108,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "bell": {
-    "rc": "rhan'ghmgl",
+    "rc": "rhan'ghmglll",
     "gloss": "frequency_seed_coined from bell",
     "source_base": "bell",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "preparation": {
-    "rc": "eehwgdgh",
+    "rc": "eehwgdghorr",
     "gloss": "frequency_seed_coined from preparation",
     "source_base": "preparation",
     "strategy": "frequency_seed_coined",
@@ -18150,7 +18150,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "noise": {
-    "rc": "ghuaglth",
+    "rc": "ghuaglthphl",
     "gloss": "frequency_seed_coined from noise",
     "source_base": "noise",
     "strategy": "frequency_seed_coined",
@@ -18185,14 +18185,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "accurate": {
-    "rc": "nythnilcth",
+    "rc": "nythnilcthvra",
     "gloss": "frequency_seed_coined from accurate",
     "source_base": "accurate",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "stephen": {
-    "rc": "aglzhrulh",
+    "rc": "aglzhrulhzhr",
     "gloss": "frequency_seed_coined from stephen",
     "source_base": "stephen",
     "strategy": "frequency_seed_coined",
@@ -18290,14 +18290,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "newest": {
-    "rc": "nythvracth",
+    "rc": "nythvracthnil",
     "gloss": "frequency_seed_coined from newest",
     "source_base": "newest",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "gnu": {
-    "rc": "zhrwgygn",
+    "rc": "zhrwgygncth",
     "gloss": "frequency_seed_coined from gnu",
     "source_base": "gnu",
     "strategy": "frequency_seed_coined",
@@ -18339,21 +18339,21 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "lane": {
-    "rc": "ulhzhrdgh",
+    "rc": "ulhzhrdghfht",
     "gloss": "frequency_seed_coined from lane",
     "source_base": "lane",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "paragraph": {
-    "rc": "nythsuhnghu",
+    "rc": "nythsuhnghukha",
     "gloss": "frequency_seed_coined from paragraph",
     "source_base": "paragraph",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "kill": {
-    "rc": "orrllnyth",
+    "rc": "orrllnythdgh",
     "gloss": "frequency_seed_coined from kill",
     "source_base": "kill",
     "strategy": "frequency_seed_coined",
@@ -18374,7 +18374,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "compensation": {
-    "rc": "ghuulhulh",
+    "rc": "ghuulhulhth",
     "gloss": "frequency_seed_coined from compensation",
     "source_base": "compensation",
     "strategy": "frequency_seed_coined",
@@ -18582,7 +18582,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "cook": {
-    "rc": "ygnulhnil",
+    "rc": "ygnulhnilcth",
     "gloss": "frequency_seed_coined from cook",
     "source_base": "cook",
     "strategy": "frequency_seed_coined",
@@ -18610,7 +18610,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "investigation": {
-    "rc": "ghusuhnfht",
+    "rc": "ghusuhnfhtfht",
     "gloss": "frequency_seed_coined from investigation",
     "source_base": "investigation",
     "strategy": "frequency_seed_coined",
@@ -18638,7 +18638,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "lib": {
-    "rc": "khanythkh",
+    "rc": "khanythkhghu",
     "gloss": "frequency_seed_coined from lib",
     "source_base": "lib",
     "strategy": "frequency_seed_coined",
@@ -18659,7 +18659,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "plate": {
-    "rc": "zhrghurha",
+    "rc": "zhrghurharha",
     "gloss": "frequency_seed_coined from plate",
     "source_base": "plate",
     "strategy": "frequency_seed_coined",
@@ -18694,14 +18694,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "proceedings": {
-    "rc": "fhtkhasuhn",
+    "rc": "fhtkhasuhnnyth",
     "gloss": "frequency_seed_coined from proceedings",
     "source_base": "proceedings",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "favourite": {
-    "rc": "fhtllygn",
+    "rc": "fhtllygnfht",
     "gloss": "frequency_seed_coined from favourite",
     "source_base": "favourite",
     "strategy": "frequency_seed_coined",
@@ -18816,7 +18816,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "nevada": {
-    "rc": "vrasuhnsuhn",
+    "rc": "vrasuhnsuhnghu",
     "gloss": "frequency_seed_coined from nevada",
     "source_base": "nevada",
     "strategy": "frequency_seed_coined",
@@ -18858,7 +18858,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "advisory": {
-    "rc": "fhtkhwg",
+    "rc": "fhtkhwgnyth",
     "gloss": "frequency_seed_coined from advisory",
     "source_base": "advisory",
     "strategy": "frequency_seed_coined",
@@ -18872,7 +18872,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "curriculum": {
-    "rc": "phlnythsuhn",
+    "rc": "phlnythsuhnsh",
     "gloss": "frequency_seed_coined from curriculum",
     "source_base": "curriculum",
     "strategy": "frequency_seed_coined",
@@ -18900,14 +18900,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "circle": {
-    "rc": "zhrphlorr",
+    "rc": "zhrphlorrrha",
     "gloss": "frequency_seed_coined from circle",
     "source_base": "circle",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "soil": {
-    "rc": "khacthvra",
+    "rc": "khacthvrawg",
     "gloss": "frequency_seed_coined from soil",
     "source_base": "soil",
     "strategy": "frequency_seed_coined",
@@ -18960,7 +18960,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "edward": {
-    "rc": "nilthagl",
+    "rc": "nilthaglwg",
     "gloss": "frequency_seed_coined from edward",
     "source_base": "edward",
     "strategy": "frequency_seed_coined",
@@ -19037,7 +19037,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "respond": {
-    "rc": "khllvra",
+    "rc": "khllvrazhr",
     "gloss": "frequency_seed_coined from respond",
     "source_base": "respond",
     "strategy": "frequency_seed_coined",
@@ -19079,7 +19079,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "wave": {
-    "rc": "cthghukh",
+    "rc": "cthghukhll",
     "gloss": "frequency_seed_coined from wave",
     "source_base": "wave",
     "strategy": "frequency_seed_coined",
@@ -19121,21 +19121,21 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "mesh": {
-    "rc": "dghwgth",
+    "rc": "dghwgthygn",
     "gloss": "frequency_seed_coined from mesh",
     "source_base": "mesh",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "trail": {
-    "rc": "zhrwgn'gh",
+    "rc": "zhrwgn'gheeh",
     "gloss": "frequency_seed_coined from trail",
     "source_base": "trail",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "enforcement": {
-    "rc": "nythsuhnorr",
+    "rc": "nythsuhnorrnil",
     "gloss": "frequency_seed_coined from enforcement",
     "source_base": "enforcement",
     "strategy": "frequency_seed_coined",
@@ -19180,7 +19180,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "observed": {
-    "rc": "n'ghvraeeh",
+    "rc": "n'ghvraeehdgh",
     "gloss": "frequency_seed_coined from observed",
     "source_base": "observed",
     "strategy": "frequency_seed_coined",
@@ -19215,7 +19215,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "fiscal": {
-    "rc": "ulhn'ghorr",
+    "rc": "ulhn'ghorrth",
     "gloss": "frequency_seed_coined from fiscal",
     "source_base": "fiscal",
     "strategy": "frequency_seed_coined",
@@ -19257,7 +19257,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "bond": {
-    "rc": "rhaphlrha",
+    "rc": "rhaphlrhaorr",
     "gloss": "frequency_seed_coined from bond",
     "source_base": "bond",
     "strategy": "frequency_seed_coined",
@@ -19438,7 +19438,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "leisure": {
-    "rc": "thulhnyth",
+    "rc": "thulhnythnyth",
     "gloss": "frequency_seed_coined from leisure",
     "source_base": "leisure",
     "strategy": "frequency_seed_coined",
@@ -19525,7 +19525,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "upcoming": {
-    "rc": "wgeehsuhn",
+    "rc": "wgeehsuhnth",
     "gloss": "frequency_seed_coined from upcoming",
     "source_base": "upcoming",
     "strategy": "frequency_seed_coined",
@@ -19628,7 +19628,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "specialty": {
-    "rc": "ygnvrasuhn",
+    "rc": "ygnvrasuhncth",
     "gloss": "frequency_seed_coined from specialty",
     "source_base": "specialty",
     "strategy": "frequency_seed_coined",
@@ -19774,7 +19774,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "treat": {
-    "rc": "llphlvra",
+    "rc": "llphlvrakh",
     "gloss": "frequency_seed_coined from treat",
     "source_base": "treat",
     "strategy": "frequency_seed_coined",
@@ -19809,7 +19809,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "assume": {
-    "rc": "ghullfht",
+    "rc": "ghullfhtfht",
     "gloss": "frequency_seed_coined from assume",
     "source_base": "assume",
     "strategy": "frequency_seed_coined",
@@ -19997,7 +19997,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "sam": {
-    "rc": "vraeehcth",
+    "rc": "vraeehcthulh",
     "gloss": "frequency_seed_coined from sam",
     "source_base": "sam",
     "strategy": "frequency_seed_coined",
@@ -20025,7 +20025,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "enabled": {
-    "rc": "cthghukh",
+    "rc": "cthghukheeh",
     "gloss": "frequency_seed_coined from enabled",
     "source_base": "enabled",
     "strategy": "frequency_seed_coined",
@@ -20060,7 +20060,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "rear": {
-    "rc": "nythygneeh",
+    "rc": "nythygneehkha",
     "gloss": "frequency_seed_coined from rear",
     "source_base": "rear",
     "strategy": "frequency_seed_coined",
@@ -20074,7 +20074,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "enhance": {
-    "rc": "ulhthkha",
+    "rc": "ulhthkhafht",
     "gloss": "frequency_seed_coined from enhance",
     "source_base": "enhance",
     "strategy": "frequency_seed_coined",
@@ -20109,7 +20109,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "processor": {
-    "rc": "ygnthnyth",
+    "rc": "ygnthnytheeh",
     "gloss": "frequency_seed_coined from processor",
     "source_base": "processor",
     "strategy": "frequency_seed_coined",
@@ -20203,7 +20203,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "bowl": {
-    "rc": "orrnilsuhn",
+    "rc": "orrnilsuhnkh",
     "gloss": "frequency_seed_coined from bowl",
     "source_base": "bowl",
     "strategy": "frequency_seed_coined",
@@ -20308,7 +20308,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "weapons": {
-    "rc": "khulhvra",
+    "rc": "khulhvrazhr",
     "gloss": "frequency_seed_coined from weapons",
     "source_base": "weapons",
     "strategy": "frequency_seed_coined",
@@ -20322,14 +20322,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "delay": {
-    "rc": "khasuhnth",
+    "rc": "khasuhnthwg",
     "gloss": "frequency_seed_coined from delay",
     "source_base": "delay",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "pilot": {
-    "rc": "suhnfhtsh",
+    "rc": "suhnfhtshkha",
     "gloss": "frequency_seed_coined from pilot",
     "source_base": "pilot",
     "strategy": "frequency_seed_coined",
@@ -20371,14 +20371,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "cambridge": {
-    "rc": "shrharha",
+    "rc": "shrharhavra",
     "gloss": "frequency_seed_coined from cambridge",
     "source_base": "cambridge",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "initiative": {
-    "rc": "ulhcthvra",
+    "rc": "ulhcthvrath",
     "gloss": "frequency_seed_coined from initiative",
     "source_base": "initiative",
     "strategy": "frequency_seed_coined",
@@ -20506,7 +20506,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "pt": {
-    "rc": "zhrghuzhr",
+    "rc": "zhrghuzhrcth",
     "gloss": "frequency_seed_coined from pt",
     "source_base": "pt",
     "strategy": "frequency_seed_coined",
@@ -20555,7 +20555,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "extensive": {
-    "rc": "rhaulhth",
+    "rc": "rhaulhthn'gh",
     "gloss": "frequency_seed_coined from extensive",
     "source_base": "extensive",
     "strategy": "frequency_seed_coined",
@@ -20576,7 +20576,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "candidate": {
-    "rc": "aglghunil",
+    "rc": "aglghunilygn",
     "gloss": "frequency_seed_coined from candidate",
     "source_base": "candidate",
     "strategy": "frequency_seed_coined",
@@ -20663,7 +20663,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "consideration": {
-    "rc": "mglkhcth",
+    "rc": "mglkhcthrha",
     "gloss": "frequency_seed_coined from consideration",
     "source_base": "consideration",
     "strategy": "frequency_seed_coined",
@@ -20731,7 +20731,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "charged": {
-    "rc": "llmglsh",
+    "rc": "llmglshdgh",
     "gloss": "frequency_seed_coined from charged",
     "source_base": "charged",
     "strategy": "frequency_seed_coined",
@@ -20826,7 +20826,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "terminal": {
-    "rc": "n'ghdghzhr",
+    "rc": "n'ghdghzhragl",
     "gloss": "frequency_seed_coined from terminal",
     "source_base": "terminal",
     "strategy": "frequency_seed_coined",
@@ -20882,7 +20882,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "gourmet": {
-    "rc": "aglmglnil",
+    "rc": "aglmglnilmgl",
     "gloss": "frequency_seed_coined from gourmet",
     "source_base": "gourmet",
     "strategy": "frequency_seed_coined",
@@ -20917,7 +20917,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "empire": {
-    "rc": "mglwgzhr",
+    "rc": "mglwgzhrrha",
     "gloss": "frequency_seed_coined from empire",
     "source_base": "empire",
     "strategy": "frequency_seed_coined",
@@ -20945,7 +20945,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "raise": {
-    "rc": "llnilmgl",
+    "rc": "llnilmglkh",
     "gloss": "frequency_seed_coined from raise",
     "source_base": "raise",
     "strategy": "frequency_seed_coined",
@@ -21029,7 +21029,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "premier": {
-    "rc": "zhrkhakh",
+    "rc": "zhrkhakhcth",
     "gloss": "frequency_seed_coined from premier",
     "source_base": "premier",
     "strategy": "frequency_seed_coined",
@@ -21064,7 +21064,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "consent": {
-    "rc": "wgfhtth",
+    "rc": "wgfhtthfht",
     "gloss": "frequency_seed_coined from consent",
     "source_base": "consent",
     "strategy": "frequency_seed_coined",
@@ -21172,7 +21172,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "guinea": {
-    "rc": "khaglvra",
+    "rc": "khaglvraygn",
     "gloss": "frequency_seed_coined from guinea",
     "source_base": "guinea",
     "strategy": "frequency_seed_coined",
@@ -21207,7 +21207,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "implement": {
-    "rc": "eehnildgh",
+    "rc": "eehnildghn'gh",
     "gloss": "frequency_seed_coined from implement",
     "source_base": "implement",
     "strategy": "frequency_seed_coined",
@@ -21256,7 +21256,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "significantly": {
-    "rc": "n'ghnilvra",
+    "rc": "n'ghnilvradgh",
     "gloss": "frequency_seed_coined from significantly",
     "source_base": "significantly",
     "strategy": "frequency_seed_coined",
@@ -21326,7 +21326,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "holdem": {
-    "rc": "nilvrakha",
+    "rc": "nilvrakhaghu",
     "gloss": "frequency_seed_coined from holdem",
     "source_base": "holdem",
     "strategy": "frequency_seed_coined",
@@ -21340,7 +21340,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "province": {
-    "rc": "n'ghdghorr",
+    "rc": "n'ghdghorragl",
     "gloss": "frequency_seed_coined from province",
     "source_base": "province",
     "strategy": "frequency_seed_coined",
@@ -21354,7 +21354,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "oak": {
-    "rc": "khcthkh",
+    "rc": "khcthkhzhr",
     "gloss": "frequency_seed_coined from oak",
     "source_base": "oak",
     "strategy": "frequency_seed_coined",
@@ -21392,7 +21392,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "beer": {
-    "rc": "wgshvra",
+    "rc": "wgshvrath",
     "gloss": "frequency_seed_coined from beer",
     "source_base": "beer",
     "strategy": "frequency_seed_coined",
@@ -21462,7 +21462,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "jane": {
-    "rc": "zhrctheeh",
+    "rc": "zhrctheehcth",
     "gloss": "frequency_seed_coined from jane",
     "source_base": "jane",
     "strategy": "frequency_seed_coined",
@@ -21483,7 +21483,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "reliable": {
-    "rc": "shllsh",
+    "rc": "shllshkha",
     "gloss": "frequency_seed_coined from reliable",
     "source_base": "reliable",
     "strategy": "frequency_seed_coined",
@@ -21692,7 +21692,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "transition": {
-    "rc": "fhtshghu",
+    "rc": "fhtshghush",
     "gloss": "frequency_seed_coined from transition",
     "source_base": "transition",
     "strategy": "frequency_seed_coined",
@@ -21734,7 +21734,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "heaven": {
-    "rc": "nilrhamgl",
+    "rc": "nilrhamglwg",
     "gloss": "frequency_seed_coined from heaven",
     "source_base": "heaven",
     "strategy": "frequency_seed_coined",
@@ -21793,7 +21793,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "bargain": {
-    "rc": "suhnnilwg",
+    "rc": "suhnnilwgvra",
     "gloss": "frequency_seed_coined from bargain",
     "source_base": "bargain",
     "strategy": "frequency_seed_coined",
@@ -21847,7 +21847,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "spiritual": {
-    "rc": "eehygnsuhn",
+    "rc": "eehygnsuhnll",
     "gloss": "frequency_seed_coined from spiritual",
     "source_base": "spiritual",
     "strategy": "frequency_seed_coined",
@@ -21942,14 +21942,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "numerous": {
-    "rc": "mglphlsuhn",
+    "rc": "mglphlsuhneeh",
     "gloss": "frequency_seed_coined from numerous",
     "source_base": "numerous",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "relatively": {
-    "rc": "nilkhaphl",
+    "rc": "nilkhaphlghu",
     "gloss": "frequency_seed_coined from relatively",
     "source_base": "relatively",
     "strategy": "frequency_seed_coined",
@@ -22036,7 +22036,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "magnetic": {
-    "rc": "suhnn'ghygn",
+    "rc": "suhnn'ghygnnil",
     "gloss": "frequency_seed_coined from magnetic",
     "source_base": "magnetic",
     "strategy": "frequency_seed_coined",
@@ -22057,7 +22057,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "registry": {
-    "rc": "nilzhrygn",
+    "rc": "nilzhrygnghu",
     "gloss": "frequency_seed_coined from registry",
     "source_base": "registry",
     "strategy": "frequency_seed_coined",
@@ -22071,7 +22071,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "outlook": {
-    "rc": "khallfht",
+    "rc": "khallfhtulh",
     "gloss": "frequency_seed_coined from outlook",
     "source_base": "outlook",
     "strategy": "frequency_seed_coined",
@@ -22085,7 +22085,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "denmark": {
-    "rc": "ghughuagl",
+    "rc": "ghughuaglphl",
     "gloss": "frequency_seed_coined from denmark",
     "source_base": "denmark",
     "strategy": "frequency_seed_coined",
@@ -22120,7 +22120,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "poverty": {
-    "rc": "rhashsuhn",
+    "rc": "rhashsuhnll",
     "gloss": "frequency_seed_coined from poverty",
     "source_base": "poverty",
     "strategy": "frequency_seed_coined",
@@ -22162,7 +22162,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "experimental": {
-    "rc": "shshnil",
+    "rc": "shshnilkha",
     "gloss": "frequency_seed_coined from experimental",
     "source_base": "experimental",
     "strategy": "frequency_seed_coined",
@@ -22204,7 +22204,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "voip": {
-    "rc": "nythygnnil",
+    "rc": "nythygnnilkha",
     "gloss": "frequency_seed_coined from voip",
     "source_base": "voip",
     "strategy": "frequency_seed_coined",
@@ -22253,7 +22253,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "consultant": {
-    "rc": "cthvrafht",
+    "rc": "cthvrafhtrha",
     "gloss": "frequency_seed_coined from consultant",
     "source_base": "consultant",
     "strategy": "frequency_seed_coined",
@@ -22267,7 +22267,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "applicant": {
-    "rc": "suhnghudgh",
+    "rc": "suhnghudghnil",
     "gloss": "frequency_seed_coined from applicant",
     "source_base": "applicant",
     "strategy": "frequency_seed_coined",
@@ -22281,7 +22281,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "fig": {
-    "rc": "ghueehnyth",
+    "rc": "ghueehnythfht",
     "gloss": "frequency_seed_coined from fig",
     "source_base": "fig",
     "strategy": "frequency_seed_coined",
@@ -22295,7 +22295,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "cooperation": {
-    "rc": "khavradgh",
+    "rc": "khavradghwg",
     "gloss": "frequency_seed_coined from cooperation",
     "source_base": "cooperation",
     "strategy": "frequency_seed_coined",
@@ -22337,7 +22337,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "kg": {
-    "rc": "ulhghuulh",
+    "rc": "ulhghuulhth",
     "gloss": "frequency_seed_coined from kg",
     "source_base": "kg",
     "strategy": "frequency_seed_coined",
@@ -22427,7 +22427,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "latina": {
-    "rc": "ctheehrha",
+    "rc": "ctheehrhan'gh",
     "gloss": "frequency_seed_coined from latina",
     "source_base": "latina",
     "strategy": "frequency_seed_coined",
@@ -22483,7 +22483,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "router": {
-    "rc": "dghkhaorr",
+    "rc": "dghkhaorrygn",
     "gloss": "frequency_seed_coined from router",
     "source_base": "router",
     "strategy": "frequency_seed_coined",
@@ -22516,7 +22516,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "folder": {
-    "rc": "ygnzhrn'gh",
+    "rc": "ygnzhrn'ghcth",
     "gloss": "frequency_seed_coined from folder",
     "source_base": "folder",
     "strategy": "frequency_seed_coined",
@@ -22565,14 +22565,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "voting": {
-    "rc": "niln'ghkh",
+    "rc": "niln'ghkhulh",
     "gloss": "frequency_seed_coined from voting",
     "source_base": "voting",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "calculate": {
-    "rc": "mglwgkh",
+    "rc": "mglwgkhll",
     "gloss": "frequency_seed_coined from calculate",
     "source_base": "calculate",
     "strategy": "frequency_seed_coined",
@@ -22628,7 +22628,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "anniversary": {
-    "rc": "ghunilghu",
+    "rc": "ghunilghufht",
     "gloss": "frequency_seed_coined from anniversary",
     "source_base": "anniversary",
     "strategy": "frequency_seed_coined",
@@ -22642,7 +22642,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "pearl": {
-    "rc": "ygnnilorr",
+    "rc": "ygnnilorrcth",
     "gloss": "frequency_seed_coined from pearl",
     "source_base": "pearl",
     "strategy": "frequency_seed_coined",
@@ -22670,7 +22670,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "plot": {
-    "rc": "nilkhaphl",
+    "rc": "nilkhaphlwg",
     "gloss": "frequency_seed_coined from plot",
     "source_base": "plot",
     "strategy": "frequency_seed_coined",
@@ -22684,7 +22684,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "possibly": {
-    "rc": "thmglwg",
+    "rc": "thmglwgsh",
     "gloss": "frequency_seed_coined from possibly",
     "source_base": "possibly",
     "strategy": "frequency_seed_coined",
@@ -22736,7 +22736,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "uniprotkb": {
-    "rc": "shvradgh",
+    "rc": "shvradghvra",
     "gloss": "frequency_seed_coined from uniprotkb",
     "source_base": "uniprotkb",
     "strategy": "frequency_seed_coined",
@@ -22792,7 +22792,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "controller": {
-    "rc": "orrfhtnyth",
+    "rc": "orrfhtnythkh",
     "gloss": "frequency_seed_coined from controller",
     "source_base": "controller",
     "strategy": "frequency_seed_coined",
@@ -22806,14 +22806,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "committees": {
-    "rc": "ulhaglsh",
+    "rc": "ulhaglshphl",
     "gloss": "frequency_seed_coined from committees",
     "source_base": "committees",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "legislative": {
-    "rc": "rhakhzhr",
+    "rc": "rhakhzhrn'gh",
     "gloss": "frequency_seed_coined from legislative",
     "source_base": "legislative",
     "strategy": "frequency_seed_coined",
@@ -22848,7 +22848,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "castle": {
-    "rc": "mglmglfht",
+    "rc": "mglmglfhteeh",
     "gloss": "frequency_seed_coined from castle",
     "source_base": "castle",
     "strategy": "frequency_seed_coined",
@@ -22890,7 +22890,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "bio": {
-    "rc": "shllll",
+    "rc": "shllllnil",
     "gloss": "frequency_seed_coined from bio",
     "source_base": "bio",
     "strategy": "frequency_seed_coined",
@@ -22918,14 +22918,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "residence": {
-    "rc": "n'ghnythwg",
+    "rc": "n'ghnythwgdgh",
     "gloss": "frequency_seed_coined from residence",
     "source_base": "residence",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "antiques": {
-    "rc": "ulhshsh",
+    "rc": "ulhshshfht",
     "gloss": "frequency_seed_coined from antiques",
     "source_base": "antiques",
     "strategy": "frequency_seed_coined",
@@ -22988,14 +22988,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "grey": {
-    "rc": "thulhmgl",
+    "rc": "thulhmglsh",
     "gloss": "frequency_seed_coined from grey",
     "source_base": "grey",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "parallel": {
-    "rc": "khaygnkha",
+    "rc": "khaygnkhawg",
     "gloss": "frequency_seed_coined from parallel",
     "source_base": "parallel",
     "strategy": "frequency_seed_coined",
@@ -23009,7 +23009,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "amended": {
-    "rc": "nythvran'gh",
+    "rc": "nythvran'ghnil",
     "gloss": "frequency_seed_coined from amended",
     "source_base": "amended",
     "strategy": "frequency_seed_coined",
@@ -23084,7 +23084,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "reaction": {
-    "rc": "thsuhnsuhn",
+    "rc": "thsuhnsuhnsuhn",
     "gloss": "frequency_seed_coined from reaction",
     "source_base": "reaction",
     "strategy": "frequency_seed_coined",
@@ -23119,7 +23119,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "generate": {
-    "rc": "nilrhacth",
+    "rc": "nilrhacthwg",
     "gloss": "frequency_seed_coined from generate",
     "source_base": "generate",
     "strategy": "frequency_seed_coined",
@@ -23221,7 +23221,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "fabric": {
-    "rc": "cthcthvra",
+    "rc": "cthcthvran'gh",
     "gloss": "frequency_seed_coined from fabric",
     "source_base": "fabric",
     "strategy": "frequency_seed_coined",
@@ -23263,7 +23263,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "contrast": {
-    "rc": "wgygndgh",
+    "rc": "wgygndghth",
     "gloss": "frequency_seed_coined from contrast",
     "source_base": "contrast",
     "strategy": "frequency_seed_coined",
@@ -23305,7 +23305,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ba": {
-    "rc": "khwgdgh",
+    "rc": "khwgdghzhr",
     "gloss": "frequency_seed_coined from ba",
     "source_base": "ba",
     "strategy": "frequency_seed_coined",
@@ -23372,7 +23372,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "pound": {
-    "rc": "ghukhaulh",
+    "rc": "ghukhaulhth",
     "gloss": "frequency_seed_coined from pound",
     "source_base": "pound",
     "strategy": "frequency_seed_coined",
@@ -23407,7 +23407,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "programmes": {
-    "rc": "phlnythmgl",
+    "rc": "phlnythmglnyth",
     "gloss": "frequency_seed_coined from programmes",
     "source_base": "programmes",
     "strategy": "frequency_seed_coined",
@@ -23421,7 +23421,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "expertise": {
-    "rc": "khavradgh",
+    "rc": "khavradghghu",
     "gloss": "frequency_seed_coined from expertise",
     "source_base": "expertise",
     "strategy": "frequency_seed_coined",
@@ -23496,7 +23496,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "medline": {
-    "rc": "mglthsh",
+    "rc": "mglthshcth",
     "gloss": "frequency_seed_coined from medline",
     "source_base": "medline",
     "strategy": "frequency_seed_coined",
@@ -23538,7 +23538,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "conclusion": {
-    "rc": "vrakhamgl",
+    "rc": "vrakhamglulh",
     "gloss": "frequency_seed_coined from conclusion",
     "source_base": "conclusion",
     "strategy": "frequency_seed_coined",
@@ -23747,14 +23747,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "moderator": {
-    "rc": "thllorr",
+    "rc": "thllorrsuhn",
     "gloss": "frequency_seed_coined from moderator",
     "source_base": "moderator",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "sw": {
-    "rc": "wgcthghu",
+    "rc": "wgcthghuphl",
     "gloss": "frequency_seed_coined from sw",
     "source_base": "sw",
     "strategy": "frequency_seed_coined",
@@ -23873,7 +23873,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "wing": {
-    "rc": "thshn'gh",
+    "rc": "thshn'ghsh",
     "gloss": "frequency_seed_coined from wing",
     "source_base": "wing",
     "strategy": "frequency_seed_coined",
@@ -23936,7 +23936,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "airlines": {
-    "rc": "khaghudgh",
+    "rc": "khaghudghulh",
     "gloss": "frequency_seed_coined from airlines",
     "source_base": "airlines",
     "strategy": "frequency_seed_coined",
@@ -24006,7 +24006,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "jacket": {
-    "rc": "ulhsuhnnyth",
+    "rc": "ulhsuhnnythphl",
     "gloss": "frequency_seed_coined from jacket",
     "source_base": "jacket",
     "strategy": "frequency_seed_coined",
@@ -24053,7 +24053,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "lease": {
-    "rc": "suhnvrarha",
+    "rc": "suhnvrarhavra",
     "gloss": "frequency_seed_coined from lease",
     "source_base": "lease",
     "strategy": "frequency_seed_coined",
@@ -24123,7 +24123,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "instructor": {
-    "rc": "phlygnll",
+    "rc": "phlygnllsh",
     "gloss": "frequency_seed_coined from instructor",
     "source_base": "instructor",
     "strategy": "frequency_seed_coined",
@@ -24179,7 +24179,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "usual": {
-    "rc": "shrhaphl",
+    "rc": "shrhaphlkha",
     "gloss": "frequency_seed_coined from usual",
     "source_base": "usual",
     "strategy": "frequency_seed_coined",
@@ -24214,7 +24214,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "vinyl": {
-    "rc": "n'ghorrnyth",
+    "rc": "n'ghorrnythzhr",
     "gloss": "frequency_seed_coined from vinyl",
     "source_base": "vinyl",
     "strategy": "frequency_seed_coined",
@@ -24280,7 +24280,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "wyoming": {
-    "rc": "zhrnilulh",
+    "rc": "zhrnilulhcth",
     "gloss": "frequency_seed_coined from wyoming",
     "source_base": "wyoming",
     "strategy": "frequency_seed_coined",
@@ -24392,7 +24392,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ringtone": {
-    "rc": "ulhn'ghygn",
+    "rc": "ulhn'ghygnphl",
     "gloss": "frequency_seed_coined from ringtone",
     "source_base": "ringtone",
     "strategy": "frequency_seed_coined",
@@ -24406,7 +24406,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "morgan": {
-    "rc": "llrhanyth",
+    "rc": "llrhanythagl",
     "gloss": "frequency_seed_coined from morgan",
     "source_base": "morgan",
     "strategy": "frequency_seed_coined",
@@ -24420,7 +24420,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "pleasure": {
-    "rc": "thnilsh",
+    "rc": "thnilshsh",
     "gloss": "frequency_seed_coined from pleasure",
     "source_base": "pleasure",
     "strategy": "frequency_seed_coined",
@@ -24448,14 +24448,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "eagle": {
-    "rc": "zhrn'ghsh",
+    "rc": "zhrn'ghshrha",
     "gloss": "frequency_seed_coined from eagle",
     "source_base": "eagle",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "pants": {
-    "rc": "shfhtnyth",
+    "rc": "shfhtnythnil",
     "gloss": "frequency_seed_coined from pants",
     "source_base": "pants",
     "strategy": "frequency_seed_coined",
@@ -24497,7 +24497,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "quiet": {
-    "rc": "n'ghfhtzhr",
+    "rc": "n'ghfhtzhragl",
     "gloss": "frequency_seed_coined from quiet",
     "source_base": "quiet",
     "strategy": "frequency_seed_coined",
@@ -24616,7 +24616,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "gang": {
-    "rc": "fhtllsh",
+    "rc": "fhtllshsh",
     "gloss": "frequency_seed_coined from gang",
     "source_base": "gang",
     "strategy": "frequency_seed_coined",
@@ -24651,7 +24651,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "smoke": {
-    "rc": "rhashnyth",
+    "rc": "rhashnythll",
     "gloss": "frequency_seed_coined from smoke",
     "source_base": "smoke",
     "strategy": "frequency_seed_coined",
@@ -24665,7 +24665,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "incorporated": {
-    "rc": "nythn'ghrha",
+    "rc": "nythn'ghrhakha",
     "gloss": "frequency_seed_coined from incorporated",
     "source_base": "incorporated",
     "strategy": "frequency_seed_coined",
@@ -24721,7 +24721,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "algorithm": {
-    "rc": "dgheehkh",
+    "rc": "dgheehkhmgl",
     "gloss": "frequency_seed_coined from algorithm",
     "source_base": "algorithm",
     "strategy": "frequency_seed_coined",
@@ -24824,7 +24824,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "capable": {
-    "rc": "llphlghu",
+    "rc": "llphlghuagl",
     "gloss": "frequency_seed_coined from capable",
     "source_base": "capable",
     "strategy": "frequency_seed_coined",
@@ -24901,7 +24901,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "elected": {
-    "rc": "wgzhrvra",
+    "rc": "wgzhrvrath",
     "gloss": "frequency_seed_coined from elected",
     "source_base": "elected",
     "strategy": "frequency_seed_coined",
@@ -24936,7 +24936,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "joy": {
-    "rc": "suhnkhakh",
+    "rc": "suhnkhakhvra",
     "gloss": "frequency_seed_coined from joy",
     "source_base": "joy",
     "strategy": "frequency_seed_coined",
@@ -25030,7 +25030,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "municipal": {
-    "rc": "zhrphlnyth",
+    "rc": "zhrphlnythcth",
     "gloss": "frequency_seed_coined from municipal",
     "source_base": "municipal",
     "strategy": "frequency_seed_coined",
@@ -25135,7 +25135,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "lecture": {
-    "rc": "ulhctheeh",
+    "rc": "ulhctheehfht",
     "gloss": "frequency_seed_coined from lecture",
     "source_base": "lecture",
     "strategy": "frequency_seed_coined",
@@ -25219,7 +25219,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "deck": {
-    "rc": "eehfhtsuhn",
+    "rc": "eehfhtsuhnorr",
     "gloss": "frequency_seed_coined from deck",
     "source_base": "deck",
     "strategy": "frequency_seed_coined",
@@ -25233,7 +25233,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "donate": {
-    "rc": "khanilzhr",
+    "rc": "khanilzhrghu",
     "gloss": "frequency_seed_coined from donate",
     "source_base": "donate",
     "strategy": "frequency_seed_coined",
@@ -25261,7 +25261,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "optimization": {
-    "rc": "aglygnnyth",
+    "rc": "aglygnnythygn",
     "gloss": "frequency_seed_coined from optimization",
     "source_base": "optimization",
     "strategy": "frequency_seed_coined",
@@ -25415,7 +25415,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "nationwide": {
-    "rc": "zhrphlcth",
+    "rc": "zhrphlcthrha",
     "gloss": "frequency_seed_coined from nationwide",
     "source_base": "nationwide",
     "strategy": "frequency_seed_coined",
@@ -25436,14 +25436,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "shaved": {
-    "rc": "eehygnzhr",
+    "rc": "eehygnzhrll",
     "gloss": "frequency_seed_coined from shaved",
     "source_base": "shaved",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "buffer": {
-    "rc": "ulhfhtghu",
+    "rc": "ulhfhtghufht",
     "gloss": "frequency_seed_coined from buffer",
     "source_base": "buffer",
     "strategy": "frequency_seed_coined",
@@ -25457,14 +25457,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "existence": {
-    "rc": "llvrarha",
+    "rc": "llvrarhaagl",
     "gloss": "frequency_seed_coined from existence",
     "source_base": "existence",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "commentary": {
-    "rc": "cthvrafht",
+    "rc": "cthvrafhtsuhn",
     "gloss": "frequency_seed_coined from commentary",
     "source_base": "commentary",
     "strategy": "frequency_seed_coined",
@@ -25553,7 +25553,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "nl": {
-    "rc": "ghudghth",
+    "rc": "ghudghthphl",
     "gloss": "frequency_seed_coined from nl",
     "source_base": "nl",
     "strategy": "frequency_seed_coined",
@@ -25588,7 +25588,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "popularity": {
-    "rc": "theehvra",
+    "rc": "theehvrash",
     "gloss": "frequency_seed_coined from popularity",
     "source_base": "popularity",
     "strategy": "frequency_seed_coined",
@@ -25609,7 +25609,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "exhibit": {
-    "rc": "aglphlorr",
+    "rc": "aglphlorrygn",
     "gloss": "frequency_seed_coined from exhibit",
     "source_base": "exhibit",
     "strategy": "frequency_seed_coined",
@@ -25630,14 +25630,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "visible": {
-    "rc": "ulhwgygn",
+    "rc": "ulhwgygnth",
     "gloss": "frequency_seed_coined from visible",
     "source_base": "visible",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "desert": {
-    "rc": "rhakheeh",
+    "rc": "rhakheehorr",
     "gloss": "frequency_seed_coined from desert",
     "source_base": "desert",
     "strategy": "frequency_seed_coined",
@@ -25686,7 +25686,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "obviously": {
-    "rc": "wgghumgl",
+    "rc": "wgghumglth",
     "gloss": "frequency_seed_coined from obviously",
     "source_base": "obviously",
     "strategy": "frequency_seed_coined",
@@ -25700,7 +25700,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "steven": {
-    "rc": "thkhnil",
+    "rc": "thkhnilsh",
     "gloss": "frequency_seed_coined from steven",
     "source_base": "steven",
     "strategy": "frequency_seed_coined",
@@ -25717,7 +25717,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "greg": {
-    "rc": "khzhrvra",
+    "rc": "khzhrvramgl",
     "gloss": "frequency_seed_coined from greg",
     "source_base": "greg",
     "strategy": "frequency_seed_coined",
@@ -25752,7 +25752,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "epa": {
-    "rc": "mgln'ghagl",
+    "rc": "mgln'ghaglcth",
     "gloss": "frequency_seed_coined from epa",
     "source_base": "epa",
     "strategy": "frequency_seed_coined",
@@ -25766,7 +25766,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "burn": {
-    "rc": "aglygndgh",
+    "rc": "aglygndghygn",
     "gloss": "frequency_seed_coined from burn",
     "source_base": "burn",
     "strategy": "frequency_seed_coined",
@@ -25801,7 +25801,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "substantial": {
-    "rc": "n'ghcthkha",
+    "rc": "n'ghcthkhakh",
     "gloss": "frequency_seed_coined from substantial",
     "source_base": "substantial",
     "strategy": "frequency_seed_coined",
@@ -25820,7 +25820,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "progressive": {
-    "rc": "khafhtvra",
+    "rc": "khafhtvraulh",
     "gloss": "frequency_seed_coined from progressive",
     "source_base": "progressive",
     "strategy": "frequency_seed_coined",
@@ -25834,7 +25834,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "bb": {
-    "rc": "ygnvrasuhn",
+    "rc": "ygnvrasuhneeh",
     "gloss": "frequency_seed_coined from bb",
     "source_base": "bb",
     "strategy": "frequency_seed_coined",
@@ -25890,7 +25890,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ron": {
-    "rc": "nilniln'gh",
+    "rc": "nilniln'ghghu",
     "gloss": "frequency_seed_coined from ron",
     "source_base": "ron",
     "strategy": "frequency_seed_coined",
@@ -25904,14 +25904,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "obvious": {
-    "rc": "cthkhcth",
+    "rc": "cthkhcthn'gh",
     "gloss": "frequency_seed_coined from obvious",
     "source_base": "obvious",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "fiber": {
-    "rc": "ulhzhrmgl",
+    "rc": "ulhzhrmglphl",
     "gloss": "frequency_seed_coined from fiber",
     "source_base": "fiber",
     "strategy": "frequency_seed_coined",
@@ -25932,14 +25932,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "platinum": {
-    "rc": "n'gheehfht",
+    "rc": "n'gheehfhtdgh",
     "gloss": "frequency_seed_coined from platinum",
     "source_base": "platinum",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "judgment": {
-    "rc": "ygnkhavra",
+    "rc": "ygnkhavraeeh",
     "gloss": "frequency_seed_coined from judgment",
     "source_base": "judgment",
     "strategy": "frequency_seed_coined",
@@ -25981,14 +25981,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "nz": {
-    "rc": "llcthn'gh",
+    "rc": "llcthn'ghdgh",
     "gloss": "frequency_seed_coined from nz",
     "source_base": "nz",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "memorabilia": {
-    "rc": "mglnilmgl",
+    "rc": "mglnilmgleeh",
     "gloss": "frequency_seed_coined from memorabilia",
     "source_base": "memorabilia",
     "strategy": "frequency_seed_coined",
@@ -26002,7 +26002,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "cartridge": {
-    "rc": "dghvraulh",
+    "rc": "dghvraulhygn",
     "gloss": "frequency_seed_coined from cartridge",
     "source_base": "cartridge",
     "strategy": "frequency_seed_coined",
@@ -26016,7 +26016,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "explanation": {
-    "rc": "thvrawg",
+    "rc": "thvrawgsh",
     "gloss": "frequency_seed_coined from explanation",
     "source_base": "explanation",
     "strategy": "frequency_seed_coined",
@@ -26044,7 +26044,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "subsection": {
-    "rc": "khkhaorr",
+    "rc": "khkhaorrygn",
     "gloss": "frequency_seed_coined from subsection",
     "source_base": "subsection",
     "strategy": "frequency_seed_coined",
@@ -26145,7 +26145,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "crash": {
-    "rc": "fhtwgmgl",
+    "rc": "fhtwgmglsh",
     "gloss": "frequency_seed_coined from crash",
     "source_base": "crash",
     "strategy": "frequency_seed_coined",
@@ -26183,7 +26183,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "assumes": {
-    "rc": "fhtdghzhr",
+    "rc": "fhtdghzhrsh",
     "gloss": "frequency_seed_coined from assumes",
     "source_base": "assumes",
     "strategy": "frequency_seed_coined",
@@ -26197,7 +26197,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "riding": {
-    "rc": "khaglvra",
+    "rc": "khaglvrakh",
     "gloss": "frequency_seed_coined from riding",
     "source_base": "riding",
     "strategy": "frequency_seed_coined",
@@ -26246,7 +26246,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "venture": {
-    "rc": "thdghrha",
+    "rc": "thdghrhash",
     "gloss": "frequency_seed_coined from venture",
     "source_base": "venture",
     "strategy": "frequency_seed_coined",
@@ -26260,7 +26260,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "korean": {
-    "rc": "ygnsuhnghu",
+    "rc": "ygnsuhnghueeh",
     "gloss": "frequency_seed_coined from korean",
     "source_base": "korean",
     "strategy": "frequency_seed_coined",
@@ -26347,7 +26347,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "subsequent": {
-    "rc": "cthkhvra",
+    "rc": "cthkhvran'gh",
     "gloss": "frequency_seed_coined from subsequent",
     "source_base": "subsequent",
     "strategy": "frequency_seed_coined",
@@ -26361,7 +26361,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "dublin": {
-    "rc": "nythghukha",
+    "rc": "nythghukhakha",
     "gloss": "frequency_seed_coined from dublin",
     "source_base": "dublin",
     "strategy": "frequency_seed_coined",
@@ -26475,7 +26475,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "sean": {
-    "rc": "fhtulhth",
+    "rc": "fhtulhthfht",
     "gloss": "frequency_seed_coined from sean",
     "source_base": "sean",
     "strategy": "frequency_seed_coined",
@@ -26531,7 +26531,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "lodging": {
-    "rc": "orrghuvra",
+    "rc": "orrghuvradgh",
     "gloss": "frequency_seed_coined from lodging",
     "source_base": "lodging",
     "strategy": "frequency_seed_coined",
@@ -26550,14 +26550,14 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "dust": {
-    "rc": "ygnlleeh",
+    "rc": "ygnlleeheeh",
     "gloss": "frequency_seed_coined from dust",
     "source_base": "dust",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "hence": {
-    "rc": "nilygnghu",
+    "rc": "nilygnghuulh",
     "gloss": "frequency_seed_coined from hence",
     "source_base": "hence",
     "strategy": "frequency_seed_coined",
@@ -26571,7 +26571,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "entirely": {
-    "rc": "suhnygncth",
+    "rc": "suhnygncthvra",
     "gloss": "frequency_seed_coined from entirely",
     "source_base": "entirely",
     "strategy": "frequency_seed_coined",
@@ -26630,7 +26630,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "occupation": {
-    "rc": "khaygnphl",
+    "rc": "khaygnphlghu",
     "gloss": "frequency_seed_coined from occupation",
     "source_base": "occupation",
     "strategy": "frequency_seed_coined",
@@ -26651,21 +26651,21 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "citysearch": {
-    "rc": "vranilkh",
+    "rc": "vranilkhulh",
     "gloss": "frequency_seed_coined from citysearch",
     "source_base": "citysearch",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "closely": {
-    "rc": "thdghghu",
+    "rc": "thdghghunyth",
     "gloss": "frequency_seed_coined from closely",
     "source_base": "closely",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "radiation": {
-    "rc": "khasuhnsuhn",
+    "rc": "khasuhnsuhnwg",
     "gloss": "frequency_seed_coined from radiation",
     "source_base": "radiation",
     "strategy": "frequency_seed_coined",
@@ -26686,14 +26686,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "shooting": {
-    "rc": "cthkhrha",
+    "rc": "cthkhrhaorr",
     "gloss": "frequency_seed_coined from shooting",
     "source_base": "shooting",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "kent": {
-    "rc": "suhnygnn'gh",
+    "rc": "suhnygnn'ghkha",
     "gloss": "frequency_seed_coined from kent",
     "source_base": "kent",
     "strategy": "frequency_seed_coined",
@@ -26739,7 +26739,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "pollution": {
-    "rc": "wgn'ghmgl",
+    "rc": "wgn'ghmglphl",
     "gloss": "frequency_seed_coined from pollution",
     "source_base": "pollution",
     "strategy": "frequency_seed_coined",
@@ -26763,7 +26763,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "shock": {
-    "rc": "ulhkhacth",
+    "rc": "ulhkhacthth",
     "gloss": "frequency_seed_coined from shock",
     "source_base": "shock",
     "strategy": "frequency_seed_coined",
@@ -26819,7 +26819,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ian": {
-    "rc": "orrghuagl",
+    "rc": "orrghuagldgh",
     "gloss": "frequency_seed_coined from ian",
     "source_base": "ian",
     "strategy": "frequency_seed_coined",
@@ -26847,14 +26847,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "atmosphere": {
-    "rc": "n'ghaglll",
+    "rc": "n'ghaglllagl",
     "gloss": "frequency_seed_coined from atmosphere",
     "source_base": "atmosphere",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "kiss": {
-    "rc": "suhnsuhnnyth",
+    "rc": "suhnsuhnnythnil",
     "gloss": "frequency_seed_coined from kiss",
     "source_base": "kiss",
     "strategy": "frequency_seed_coined",
@@ -26887,14 +26887,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "experiment": {
-    "rc": "thzhrmgl",
+    "rc": "thzhrmglsh",
     "gloss": "frequency_seed_coined from experiment",
     "source_base": "experiment",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "overseas": {
-    "rc": "nythctheeh",
+    "rc": "nythctheehkha",
     "gloss": "frequency_seed_coined from overseas",
     "source_base": "overseas",
     "strategy": "frequency_seed_coined",
@@ -26929,7 +26929,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "pizza": {
-    "rc": "suhneehcth",
+    "rc": "suhneehcthvra",
     "gloss": "frequency_seed_coined from pizza",
     "source_base": "pizza",
     "strategy": "frequency_seed_coined",
@@ -26964,7 +26964,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "farmers": {
-    "rc": "llfhtsh",
+    "rc": "llfhtshdgh",
     "gloss": "frequency_seed_coined from farmers",
     "source_base": "farmers",
     "strategy": "frequency_seed_coined",
@@ -26995,7 +26995,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ukraine": {
-    "rc": "khsuhnnil",
+    "rc": "khsuhnnilygn",
     "gloss": "frequency_seed_coined from ukraine",
     "source_base": "ukraine",
     "strategy": "frequency_seed_coined",
@@ -27023,7 +27023,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "mpeg": {
-    "rc": "dghllulh",
+    "rc": "dghllulhmgl",
     "gloss": "frequency_seed_coined from mpeg",
     "source_base": "mpeg",
     "strategy": "frequency_seed_coined",
@@ -27037,7 +27037,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "yoga": {
-    "rc": "orrn'ghnyth",
+    "rc": "orrn'ghnythkh",
     "gloss": "frequency_seed_coined from yoga",
     "source_base": "yoga",
     "strategy": "frequency_seed_coined",
@@ -27100,7 +27100,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "couples": {
-    "rc": "khllvra",
+    "rc": "khllvradgh",
     "gloss": "frequency_seed_coined from couples",
     "source_base": "couples",
     "strategy": "frequency_seed_coined",
@@ -27135,7 +27135,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ceo": {
-    "rc": "cthwgghu",
+    "rc": "cthwgghull",
     "gloss": "frequency_seed_coined from ceo",
     "source_base": "ceo",
     "strategy": "frequency_seed_coined",
@@ -27156,7 +27156,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "sublime": {
-    "rc": "phleehnil",
+    "rc": "phleehnilsh",
     "gloss": "frequency_seed_coined from sublime",
     "source_base": "sublime",
     "strategy": "frequency_seed_coined",
@@ -27170,7 +27170,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "acceptable": {
-    "rc": "orrshsh",
+    "rc": "orrshshagl",
     "gloss": "frequency_seed_coined from acceptable",
     "source_base": "acceptable",
     "strategy": "frequency_seed_coined",
@@ -27262,7 +27262,7 @@ const GENERATED_COMMON_TERMS = {
     ]
   },
   "rep": {
-    "rc": "phlkhnyth",
+    "rc": "phlkhnythnyth",
     "gloss": "frequency_seed_coined from rep",
     "source_base": "rep",
     "strategy": "frequency_seed_coined",
@@ -27297,7 +27297,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ordinary": {
-    "rc": "nythkhaeeh",
+    "rc": "nythkhaeehkha",
     "gloss": "frequency_seed_coined from ordinary",
     "source_base": "ordinary",
     "strategy": "frequency_seed_coined",
@@ -27311,7 +27311,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ghost": {
-    "rc": "nilnilmgl",
+    "rc": "nilnilmglulh",
     "gloss": "frequency_seed_coined from ghost",
     "source_base": "ghost",
     "strategy": "frequency_seed_coined",
@@ -27426,7 +27426,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "linda": {
-    "rc": "ygnmglvra",
+    "rc": "ygnmglvraeeh",
     "gloss": "frequency_seed_coined from linda",
     "source_base": "linda",
     "strategy": "frequency_seed_coined",
@@ -27457,7 +27457,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "anna": {
-    "rc": "shfhtcth",
+    "rc": "shfhtcthnil",
     "gloss": "frequency_seed_coined from anna",
     "source_base": "anna",
     "strategy": "frequency_seed_coined",
@@ -27520,7 +27520,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "wealth": {
-    "rc": "eehcthrha",
+    "rc": "eehcthrhan'gh",
     "gloss": "frequency_seed_coined from wealth",
     "source_base": "wealth",
     "strategy": "frequency_seed_coined",
@@ -27565,7 +27565,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "attributes": {
-    "rc": "rhanythsh",
+    "rc": "rhanythshn'gh",
     "gloss": "frequency_seed_coined from attributes",
     "source_base": "attributes",
     "strategy": "frequency_seed_coined",
@@ -27579,7 +27579,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "brass": {
-    "rc": "khfhtll",
+    "rc": "khfhtllygn",
     "gloss": "frequency_seed_coined from brass",
     "source_base": "brass",
     "strategy": "frequency_seed_coined",
@@ -27593,7 +27593,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "plaza": {
-    "rc": "ulhagldgh",
+    "rc": "ulhagldghfht",
     "gloss": "frequency_seed_coined from plaza",
     "source_base": "plaza",
     "strategy": "frequency_seed_coined",
@@ -27614,7 +27614,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "quest": {
-    "rc": "ulhghukh",
+    "rc": "ulhghukhfht",
     "gloss": "frequency_seed_coined from quest",
     "source_base": "quest",
     "strategy": "frequency_seed_coined",
@@ -27642,7 +27642,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "trans": {
-    "rc": "ghuorrvra",
+    "rc": "ghuorrvrath",
     "gloss": "frequency_seed_coined from trans",
     "source_base": "trans",
     "strategy": "frequency_seed_coined",
@@ -27684,7 +27684,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "pioneer": {
-    "rc": "wgzhrsuhn",
+    "rc": "wgzhrsuhnphl",
     "gloss": "frequency_seed_coined from pioneer",
     "source_base": "pioneer",
     "strategy": "frequency_seed_coined",
@@ -27698,7 +27698,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "forgotten": {
-    "rc": "wgphlphl",
+    "rc": "wgphlphlth",
     "gloss": "frequency_seed_coined from forgotten",
     "source_base": "forgotten",
     "strategy": "frequency_seed_coined",
@@ -27719,7 +27719,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "acres": {
-    "rc": "nythzhrghu",
+    "rc": "nythzhrghunil",
     "gloss": "frequency_seed_coined from acres",
     "source_base": "acres",
     "strategy": "frequency_seed_coined",
@@ -27747,7 +27747,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "essays": {
-    "rc": "mglnythn'gh",
+    "rc": "mglnythn'ghrha",
     "gloss": "frequency_seed_coined from essays",
     "source_base": "essays",
     "strategy": "frequency_seed_coined",
@@ -27782,14 +27782,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "config": {
-    "rc": "nythghuwg",
+    "rc": "nythghuwgnil",
     "gloss": "frequency_seed_coined from config",
     "source_base": "config",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "cf": {
-    "rc": "aglulheeh",
+    "rc": "aglulheehygn",
     "gloss": "frequency_seed_coined from cf",
     "source_base": "cf",
     "strategy": "frequency_seed_coined",
@@ -27817,7 +27817,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "vt": {
-    "rc": "wgn'ghth",
+    "rc": "wgn'ghthphl",
     "gloss": "frequency_seed_coined from vt",
     "source_base": "vt",
     "strategy": "frequency_seed_coined",
@@ -27831,7 +27831,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "obligation": {
-    "rc": "orrmglwg",
+    "rc": "orrmglwgkh",
     "gloss": "frequency_seed_coined from obligation",
     "source_base": "obligation",
     "strategy": "frequency_seed_coined",
@@ -27866,14 +27866,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "hungary": {
-    "rc": "ghuzhrzhr",
+    "rc": "ghuzhrzhrth",
     "gloss": "frequency_seed_coined from hungary",
     "source_base": "hungary",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "traveler": {
-    "rc": "phlsuhnnil",
+    "rc": "phlsuhnnilnyth",
     "gloss": "frequency_seed_coined from traveler",
     "source_base": "traveler",
     "strategy": "frequency_seed_coined",
@@ -27926,7 +27926,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "puzzle": {
-    "rc": "ygnzhrn'gh",
+    "rc": "ygnzhrn'ghorr",
     "gloss": "frequency_seed_coined from puzzle",
     "source_base": "puzzle",
     "strategy": "frequency_seed_coined",
@@ -27961,7 +27961,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "sms": {
-    "rc": "khaglsh",
+    "rc": "khaglshzhr",
     "gloss": "frequency_seed_coined from sms",
     "source_base": "sms",
     "strategy": "frequency_seed_coined",
@@ -27975,7 +27975,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "republican": {
-    "rc": "thfhtulh",
+    "rc": "thfhtulhsh",
     "gloss": "frequency_seed_coined from republican",
     "source_base": "republican",
     "strategy": "frequency_seed_coined",
@@ -28003,7 +28003,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "repeat": {
-    "rc": "khaghumgl",
+    "rc": "khaghumglghu",
     "gloss": "frequency_seed_coined from repeat",
     "source_base": "repeat",
     "strategy": "frequency_seed_coined",
@@ -28031,7 +28031,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "penalty": {
-    "rc": "aglaglth",
+    "rc": "aglaglthzhr",
     "gloss": "frequency_seed_coined from penalty",
     "source_base": "penalty",
     "strategy": "frequency_seed_coined",
@@ -28087,14 +28087,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "terry": {
-    "rc": "nythvraphl",
+    "rc": "nythvraphlvra",
     "gloss": "frequency_seed_coined from terry",
     "source_base": "terry",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "flood": {
-    "rc": "mglrhazhr",
+    "rc": "mglrhazhrcth",
     "gloss": "frequency_seed_coined from flood",
     "source_base": "flood",
     "strategy": "frequency_seed_coined",
@@ -28171,7 +28171,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "grown": {
-    "rc": "vraeehygn",
+    "rc": "vraeehygnulh",
     "gloss": "frequency_seed_coined from grown",
     "source_base": "grown",
     "strategy": "frequency_seed_coined",
@@ -28199,7 +28199,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "centres": {
-    "rc": "orrulhagl",
+    "rc": "orrulhagldgh",
     "gloss": "frequency_seed_coined from centres",
     "source_base": "centres",
     "strategy": "frequency_seed_coined",
@@ -28295,7 +28295,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "tend": {
-    "rc": "rhaeehcth",
+    "rc": "rhaeehcthll",
     "gloss": "frequency_seed_coined from tend",
     "source_base": "tend",
     "strategy": "frequency_seed_coined",
@@ -28349,7 +28349,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "tokyo": {
-    "rc": "nythfhtsuhn",
+    "rc": "nythfhtsuhnnil",
     "gloss": "frequency_seed_coined from tokyo",
     "source_base": "tokyo",
     "strategy": "frequency_seed_coined",
@@ -28370,14 +28370,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "customize": {
-    "rc": "thcthfht",
+    "rc": "thcthfhtsuhn",
     "gloss": "frequency_seed_coined from customize",
     "source_base": "customize",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "tradition": {
-    "rc": "zhrsuhnorr",
+    "rc": "zhrsuhnorrrha",
     "gloss": "frequency_seed_coined from tradition",
     "source_base": "tradition",
     "strategy": "frequency_seed_coined",
@@ -28398,7 +28398,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "tiger": {
-    "rc": "nilthphl",
+    "rc": "nilthphlghu",
     "gloss": "frequency_seed_coined from tiger",
     "source_base": "tiger",
     "strategy": "frequency_seed_coined",
@@ -28412,7 +28412,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "sensor": {
-    "rc": "shcthkh",
+    "rc": "shcthkhnil",
     "gloss": "frequency_seed_coined from sensor",
     "source_base": "sensor",
     "strategy": "frequency_seed_coined",
@@ -28443,7 +28443,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "indicators": {
-    "rc": "nythcthagl",
+    "rc": "nythcthaglnil",
     "gloss": "frequency_seed_coined from indicators",
     "source_base": "indicators",
     "strategy": "frequency_seed_coined",
@@ -28541,7 +28541,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "supplements": {
-    "rc": "llorrsuhn",
+    "rc": "llorrsuhndgh",
     "gloss": "frequency_seed_coined from supplements",
     "source_base": "supplements",
     "strategy": "frequency_seed_coined",
@@ -28600,7 +28600,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "camcorder": {
-    "rc": "mglaglsuhn",
+    "rc": "mglaglsuhnrha",
     "gloss": "frequency_seed_coined from camcorder",
     "source_base": "camcorder",
     "strategy": "frequency_seed_coined",
@@ -28626,7 +28626,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "ourselves": {
-    "rc": "zhrghuphl",
+    "rc": "zhrghuphlcth",
     "gloss": "frequency_seed_coined from ourselves",
     "source_base": "ourselves",
     "strategy": "frequency_seed_coined",
@@ -28724,7 +28724,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "revenues": {
-    "rc": "eehdghygn",
+    "rc": "eehdghygnn'gh",
     "gloss": "frequency_seed_coined from revenues",
     "source_base": "revenues",
     "strategy": "frequency_seed_coined",
@@ -28769,7 +28769,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "herself": {
-    "rc": "eehzhragl",
+    "rc": "eehzhraglorr",
     "gloss": "frequency_seed_coined from herself",
     "source_base": "herself",
     "strategy": "frequency_seed_coined",
@@ -28797,14 +28797,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "reserves": {
-    "rc": "cthnytheeh",
+    "rc": "cthnytheehorr",
     "gloss": "frequency_seed_coined from reserves",
     "source_base": "reserves",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "contributed": {
-    "rc": "aglvradgh",
+    "rc": "aglvradghygn",
     "gloss": "frequency_seed_coined from contributed",
     "source_base": "contributed",
     "strategy": "frequency_seed_coined",
@@ -28860,14 +28860,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "sb": {
-    "rc": "eehnythnil",
+    "rc": "eehnythniln'gh",
     "gloss": "frequency_seed_coined from sb",
     "source_base": "sb",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "ah": {
-    "rc": "cthshygn",
+    "rc": "cthshygnll",
     "gloss": "frequency_seed_coined from ah",
     "source_base": "ah",
     "strategy": "frequency_seed_coined",
@@ -28888,7 +28888,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "franchise": {
-    "rc": "fhtllorr",
+    "rc": "fhtllorrsuhn",
     "gloss": "frequency_seed_coined from franchise",
     "source_base": "franchise",
     "strategy": "frequency_seed_coined",
@@ -28969,7 +28969,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "defence": {
-    "rc": "ygnkhphl",
+    "rc": "ygnkhphlcth",
     "gloss": "frequency_seed_coined from defence",
     "source_base": "defence",
     "strategy": "frequency_seed_coined",
@@ -28990,35 +28990,35 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "usc": {
-    "rc": "aglkhagl",
+    "rc": "aglkhaglzhr",
     "gloss": "frequency_seed_coined from usc",
     "source_base": "usc",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "trembl": {
-    "rc": "suhnvrakha",
+    "rc": "suhnvrakhanil",
     "gloss": "frequency_seed_coined from trembl",
     "source_base": "trembl",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "divided": {
-    "rc": "khathmgl",
+    "rc": "khathmglulh",
     "gloss": "frequency_seed_coined from divided",
     "source_base": "divided",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "blvd": {
-    "rc": "mgln'ghzhr",
+    "rc": "mgln'ghzhrcth",
     "gloss": "frequency_seed_coined from blvd",
     "source_base": "blvd",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "reception": {
-    "rc": "aglmglrha",
+    "rc": "aglmglrhamgl",
     "gloss": "frequency_seed_coined from reception",
     "source_base": "reception",
     "strategy": "frequency_seed_coined",
@@ -29032,14 +29032,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "wise": {
-    "rc": "n'ghwgrha",
+    "rc": "n'ghwgrhaagl",
     "gloss": "frequency_seed_coined from wise",
     "source_base": "wise",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "cyprus": {
-    "rc": "shrhavra",
+    "rc": "shrhavranil",
     "gloss": "frequency_seed_coined from cyprus",
     "source_base": "cyprus",
     "strategy": "frequency_seed_coined",
@@ -29098,7 +29098,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "worry": {
-    "rc": "cthlldgh",
+    "rc": "cthlldghorr",
     "gloss": "frequency_seed_coined from worry",
     "source_base": "worry",
     "strategy": "frequency_seed_coined",
@@ -29164,7 +29164,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "vitamin": {
-    "rc": "shrharha",
+    "rc": "shrharhanil",
     "gloss": "frequency_seed_coined from vitamin",
     "source_base": "vitamin",
     "strategy": "frequency_seed_coined",
@@ -29199,7 +29199,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "raising": {
-    "rc": "thorrvra",
+    "rc": "thorrvrash",
     "gloss": "frequency_seed_coined from raising",
     "source_base": "raising",
     "strategy": "frequency_seed_coined",
@@ -29255,21 +29255,21 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "leaf": {
-    "rc": "orrshn'gh",
+    "rc": "orrshn'ghkh",
     "gloss": "frequency_seed_coined from leaf",
     "source_base": "leaf",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "pad": {
-    "rc": "aglthcth",
+    "rc": "aglthcthmgl",
     "gloss": "frequency_seed_coined from pad",
     "source_base": "pad",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "glory": {
-    "rc": "cthfhtvra",
+    "rc": "cthfhtvraorr",
     "gloss": "frequency_seed_coined from glory",
     "source_base": "glory",
     "strategy": "frequency_seed_coined",
@@ -29304,7 +29304,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "versus": {
-    "rc": "ulhulhulh",
+    "rc": "ulhulhulhth",
     "gloss": "frequency_seed_coined from versus",
     "source_base": "versus",
     "strategy": "frequency_seed_coined",
@@ -29318,7 +29318,7 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "overnight": {
-    "rc": "ygnaglsh",
+    "rc": "ygnaglshcth",
     "gloss": "frequency_seed_coined from overnight",
     "source_base": "overnight",
     "strategy": "frequency_seed_coined",
@@ -29356,21 +29356,21 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "saudi": {
-    "rc": "orrmgldgh",
+    "rc": "orrmgldghagl",
     "gloss": "frequency_seed_coined from saudi",
     "source_base": "saudi",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "fault": {
-    "rc": "mglmglll",
+    "rc": "mglmglllcth",
     "gloss": "frequency_seed_coined from fault",
     "source_base": "fault",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "cuba": {
-    "rc": "cthaglcth",
+    "rc": "cthaglcthll",
     "gloss": "frequency_seed_coined from cuba",
     "source_base": "cuba",
     "strategy": "frequency_seed_coined",
@@ -29398,14 +29398,14 @@ const GENERATED_COMMON_TERMS = {
     "roots": []
   },
   "silk": {
-    "rc": "khfhtll",
+    "rc": "khfhtllkh",
     "gloss": "frequency_seed_coined from silk",
     "source_base": "silk",
     "strategy": "frequency_seed_coined",
     "roots": []
   },
   "promotional": {
-    "rc": "zhrorrnil",
+    "rc": "zhrorrnileeh",
     "gloss": "frequency_seed_coined from promotional",
     "source_base": "promotional",
     "strategy": "frequency_seed_coined",

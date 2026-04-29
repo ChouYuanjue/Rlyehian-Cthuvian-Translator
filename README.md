@@ -141,6 +141,12 @@ This keeps sealed `zha'...'zhro` output as a last resort instead of the default 
 
 See [docs/OFFLINE_LEXICON.md](docs/OFFLINE_LEXICON.md) for the generation pipeline.
 
+Lexicon quality can be checked with:
+
+```bash
+npm run check:lexicon
+```
+
 ## Sources Used For RC-1 Constraints
 
 The RC-1 specification was shaped from the two references:

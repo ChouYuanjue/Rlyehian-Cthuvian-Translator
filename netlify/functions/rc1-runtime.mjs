@@ -1,6 +1,7 @@
 import crypto from "node:crypto";
 import { COMMON_TERMS } from "./common-terms.mjs";
-import { commonGeneratedTermFor, normalizeCommonBase } from "./common-generated.mjs";
+import { GENERATED_COMMON_TERMS, commonGeneratedTermFor, normalizeCommonBase } from "./common-generated.mjs";
+import { lightweightDecomposeTerm } from "./lightweight-decomposer.mjs";
 
 export const ROOTS = {
   KNOW: { surface: "kadishtu", verbs: ["know", "knows", "knew", "known", "understand", "understands", "understood", "study", "studies", "studied", "learn", "learns", "learned"] },
@@ -160,6 +161,10 @@ export function normalizeTermBase(term) {
   return normalizeCommonBase(term) || normalizeEnglish(term);
 }
 
+export function onlineLightweightTermFor(term) {
+  return lightweightDecomposeTerm(term);
+}
+
 export function parseEnglish(text, learnedTerms = {}) {
   const source = String(text || "");
   const tokens = tokenize(source).filter((token) => /^[A-Za-z0-9'’-]+$/.test(token));
@@ -199,7 +204,7 @@ export function parseEnglish(text, learnedTerms = {}) {
   return { predicate, tam, polarity, arguments: args, source };
 }
 
-export function glossRc1(text) {
+export function glossRc1(text, learnedTerms = {}) {
   const unsealed = unsealText(text);
   if (unsealed !== null) {
     return {
@@ -208,6 +213,18 @@ export function glossRc1(text) {
       analysis: { direction: "rc-to-en", sealed: true, decoded: unsealed }
     };
   }
+  const glosses = buildReverseGlossIndex(learnedTerms);
+  const tokens = String(text || "").trim().split(/\s+/).filter(Boolean);
+  const analyses = tokens.map((token) => {
+    const { base, role } = stripRole(token);
+    const key = normalizeEnglish(base);
+    return { token, base, role, gloss: glosses[key] || decomposeCompoundGloss(base, glosses) || "unknown or proper name" };
+  });
+  const best = analyses.map((item) => item.gloss).join(" / ");
+  return { low: best, high: best, analysis: { direction: "rc-to-en", analyses } };
+}
+
+export function buildReverseGlossIndex(learnedTerms = {}) {
   const glosses = {
     "ph'nglui": "dead; beyond the threshold",
     "mglw'nafh": "still living or active",
@@ -226,14 +243,13 @@ export function glossRc1(text) {
   for (const term of Object.values(TERMS)) {
     glosses[normalizeEnglish(term.rc)] ??= term.gloss;
   }
-  const tokens = String(text || "").trim().split(/\s+/).filter(Boolean);
-  const analyses = tokens.map((token) => {
-    const { base, role } = stripRole(token);
-    const key = normalizeEnglish(base);
-    return { token, base, role, gloss: glosses[key] || "unknown or proper name" };
-  });
-  const best = analyses.map((item) => item.gloss).join(" / ");
-  return { low: best, high: best, analysis: { direction: "rc-to-en", analyses } };
+  for (const [source, term] of Object.entries(GENERATED_COMMON_TERMS)) {
+    glosses[normalizeEnglish(term.rc)] ??= `${source}; ${term.gloss}`;
+  }
+  for (const [source, term] of Object.entries(learnedTerms)) {
+    if (term?.rc) glosses[normalizeEnglish(term.rc)] = term.literal_gloss || term.gloss || source;
+  }
+  return glosses;
 }
 
 export function buildTermFromRoots(selectedRoots) {
@@ -319,6 +335,8 @@ function lookupTerm(phrase, learnedTerms) {
   if (learnedTerms[lower]) return learnedTerms[lower].rc;
   const generated = commonGeneratedTermFor(lower);
   if (generated) return generated.rc;
+  const lightweight = lightweightDecomposeTerm(lower);
+  if (lightweight) return lightweight.rc;
   if (lower.includes(" ")) {
     const parts = lower.split(/\s+/).map((part) => lookupSingleTerm(part, learnedTerms));
     if (parts.every(Boolean)) return parts.join(" ");
@@ -333,7 +351,17 @@ function lookupSingleTerm(term, learnedTerms) {
   if (learnedTerms[term]) return learnedTerms[term].rc;
   const generated = commonGeneratedTermFor(term);
   if (generated) return generated.rc;
+  const lightweight = lightweightDecomposeTerm(term);
+  if (lightweight) return lightweight.rc;
   return null;
+}
+
+function decomposeCompoundGloss(base, glosses) {
+  const parts = normalizeEnglish(base).split("-");
+  if (parts.length < 2) return null;
+  const glossed = parts.map((part) => glosses[part]).filter(Boolean);
+  if (!glossed.length) return null;
+  return glossed.join(" + ");
 }
 
 function tokenize(text) {

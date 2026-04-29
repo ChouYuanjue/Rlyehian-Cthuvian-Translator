@@ -8,6 +8,7 @@ import {
   glossRc1,
   normalizeEnglish,
   normalizeTermBase,
+  onlineLightweightTermFor,
   sha256,
   translateDeterministic,
   validateTermProposal
@@ -43,7 +44,7 @@ export default async function handler(request) {
   const learnedTerms = await readLearnedTermsForText(text);
 
   if (direction === "rc-to-en") {
-    const result = glossRc1(text);
+    const result = glossRc1(text, learnedTerms);
     return json({ ...result, llm: { requested: wantsLlm, used: false, reason: "reverse_gloss_is_deterministic" } });
   }
 
@@ -100,6 +101,20 @@ async function maybeAssistUnknownTerms(text, learnedTerms) {
       strategy: generated.strategy,
       components: [],
       literal_gloss: generated.gloss,
+      language_version: "RC-1.0",
+      accepted_at: new Date().toISOString()
+    };
+    return { used: true, learnedTerms: { [normalizeEnglish(unknown)]: entry, [normalizeTermBase(unknown)]: entry }, acceptedTerms: [entry] };
+  }
+  const lightweight = onlineLightweightTermFor(unknown);
+  if (lightweight) {
+    const entry = {
+      source: unknown,
+      source_base: lightweight.source_base,
+      rc: lightweight.rc,
+      strategy: lightweight.strategy,
+      components: lightweight.roots,
+      literal_gloss: lightweight.gloss,
       language_version: "RC-1.0",
       accepted_at: new Date().toISOString()
     };

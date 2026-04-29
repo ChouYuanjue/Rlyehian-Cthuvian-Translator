@@ -81,3 +81,48 @@ netlify/functions/common-terms.mjs
 ```
 
 Manual terms override generated terms at runtime.
+
+## Runtime Priority
+
+Forward translation resolves terms in this order:
+
+```text
+proper names
+  -> manual core/common terms
+  -> learned registry terms
+  -> offline generated terms
+  -> online lightweight decomposition
+  -> per-word phrase decomposition
+  -> number encoding
+  -> sealed reversible encoding
+```
+
+Reverse glossing builds an index in a compatible order:
+
+```text
+fixed mythos phrases and roots
+  -> manual core/common terms
+  -> offline generated terms
+  -> learned registry terms for the request
+  -> compound decomposition
+  -> unknown/proper-name gloss
+```
+
+Manual terms are intentionally before generated terms in both directions. If a generated entry is awkward, add a correction to `netlify/functions/common-terms.mjs`; it will override the generated result.
+
+## Quality Check
+
+```powershell
+npm run check:lexicon
+```
+
+The check reports:
+
+- generated entry count
+- semantic-compound count
+- coined-term count
+- reverse-known rate
+- forward/reverse sample translations
+- sealed fallback samples from the first 500 source words
+
+Current expected property: every generated entry should be present in the reverse gloss index. That does not mean every gloss is semantically perfect; it means generated surfaces are traceable back to their source base or manual override.

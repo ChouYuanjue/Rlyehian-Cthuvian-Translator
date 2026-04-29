@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { generatedCommonTermFor, glossRc1, translateDeterministic, validateTermProposal } from "../netlify/functions/rc1-runtime.mjs";
+import { buildReverseGlossIndex, generatedCommonTermFor, glossRc1, translateDeterministic, validateTermProposal } from "../netlify/functions/rc1-runtime.mjs";
 
 test("translates low and high register deterministically", () => {
   const result = translateDeterministic("I do not know everything.");
@@ -62,4 +62,11 @@ test("offline semantic generator builds compounds for analyzable words", () => {
 test("study forms map to KNOW predicate", () => {
   const result = translateDeterministic("I studied biology.");
   assert.equal(result.low, "Ya-yr nafl'kadishtu bthnk-kadishtu-na-ef");
+});
+
+test("reverse gloss index includes generated terms", () => {
+  const reverse = buildReverseGlossIndex();
+  const service = generatedCommonTermFor("service");
+  assert.match(reverse[service.rc], /service/);
+  assert.match(glossRc1(service.rc).low, /service/);
 });
