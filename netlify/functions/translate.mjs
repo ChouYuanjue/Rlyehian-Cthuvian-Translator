@@ -224,11 +224,14 @@ async function proposeTerm(term, context) {
   if (!process.env.LLM_API_KEY || !process.env.LLM_MODEL) {
     return fallbackProposal(term);
   }
+  if (process.env.LLM_TERM_DECOMPOSITION_ENABLED === "false") {
+    return fallbackProposal(term);
+  }
 
   const baseUrl = (process.env.LLM_API_BASE_URL || "https://api.openai.com/v1").replace(/\/$/, "");
   let response;
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), Number.parseInt(process.env.LLM_TERM_TIMEOUT_MS || process.env.LLM_TIMEOUT_MS || "6000", 10));
+  const timeout = setTimeout(() => controller.abort(), Number.parseInt(process.env.LLM_TERM_TIMEOUT_MS || "3000", 10));
   try {
     response = await fetch(`${baseUrl}/chat/completions`, {
     method: "POST",
