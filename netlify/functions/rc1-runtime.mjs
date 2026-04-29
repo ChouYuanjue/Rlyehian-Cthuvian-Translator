@@ -220,7 +220,7 @@ export function parseEnglish(text, learnedTerms = {}) {
   }
   if (predicateIndex < 0) return null;
   const predicate = verbIndex[cleaned[predicateIndex]];
-  const subjectTokens = rawTokens.slice(0, predicateIndex).filter((token) => !NEGATORS.has(token.toLowerCase()) && !AUXILIARIES.has(token.toLowerCase()));
+  const subjectTokens = cleanArgumentTokens(rawTokens.slice(0, predicateIndex), "subject").filter((token) => !NEGATORS.has(token.toLowerCase()) && !AUXILIARIES.has(token.toLowerCase()));
   const rest = rawTokens.slice(predicateIndex + 1);
   const polarity = cleaned.some((token) => NEGATORS.has(token) || token.endsWith("n't")) ? "negative" : "positive";
   const tam = PAST_FORMS.has(cleaned[predicateIndex]) || cleaned[predicateIndex] === "was" || cleaned[predicateIndex] === "were" || cleaned[predicateIndex] === "had" || cleaned[predicateIndex] === "took" || cleaned[predicateIndex] === "led" ? "past" : "present";
@@ -232,10 +232,10 @@ export function parseEnglish(text, learnedTerms = {}) {
   } else if (predicateIndex === 0 && !cleaned[predicateIndex].endsWith("ing")) {
     args.push({ role: "subject", concept: "you", rc: PRONOUNS.you.rc, suffix: "yr" });
   }
-  const object = phraseToArgument(objectTokens.filter((token) => !NEGATORS.has(token.toLowerCase())), "object", "ef", learnedTerms);
+  const object = phraseToArgument(cleanArgumentTokens(objectTokens, "object").filter((token) => !NEGATORS.has(token.toLowerCase())), "object", "ef", learnedTerms);
   if (object) {
     if (predicate === "BE" && normalizeEnglish(subjectTokens.join(" ")) === "name") {
-      args.push({ ...object, rc: objectTokens.map((token) => cleanProperToken(token)).filter(Boolean).join(" ") });
+      args.push({ ...object, rc: objectTokens.map((token) => transcribeProperName(token)).filter(Boolean).join(" ") });
     } else {
       args.push(object);
     }
@@ -369,7 +369,7 @@ function realizeArg(arg) {
 }
 
 function phraseToArgument(tokens, role, suffix, learnedTerms) {
-  const kept = stripDeterminers(tokens).filter(Boolean);
+  const kept = stripDeterminers(cleanArgumentTokens(tokens, role)).filter(Boolean);
   if (!kept.length) return null;
   const phrase = kept.join(" ");
   const lower = normalizeEnglish(phrase);
@@ -417,10 +417,10 @@ function lookupPhraseTokens(tokens, learnedTerms) {
     const partLower = part.toLowerCase();
     if (!part || STOP_FRAGMENT_WORDS.has(partLower)) continue;
     if (isNamedValue(parts, index)) {
-      pieces.push(cleanProperToken(part));
+      pieces.push(transcribeProperName(part));
       continue;
     }
-    pieces.push(lookupToken(part, learnedTerms) || sealText(part));
+    pieces.push(lookupToken(part, learnedTerms) || fallbackLexicalToken(part));
   }
   return pieces.length ? pieces.join(" ") : sealText(phrase);
 }
@@ -465,9 +465,10 @@ function lexicalizeFragment(text, learnedTerms) {
       pieces.push(rcNumber);
       continue;
     }
-    const sealed = sealText(raw);
-    tokens.push({ source: raw, rc: sealed, strategy: "sealed_token" });
-    pieces.push(sealed);
+    const fallback = fallbackLexicalToken(raw);
+    const strategy = fallback.startsWith("zha'") && fallback.endsWith("'zhro") ? "sealed_token" : "transcribed";
+    tokens.push({ source: raw, rc: fallback, strategy });
+    pieces.push(fallback);
   }
   if (!pieces.length) {
     const visible = rawTokens.map((token) => cleanProperToken(token)).filter(Boolean);
@@ -504,7 +505,21 @@ function lexicalizedFallbackIr(text, lexicalized) {
 function lookupToken(raw, learnedTerms) {
   const normalized = normalizeEnglish(raw).replace(/'s$/, "");
   if (PRONOUNS[normalized]) return PRONOUNS[normalized].rc;
-  return lookupSingleTerm(normalized, learnedTerms) || (isLikelyProperToken(raw) ? cleanProperToken(raw) : null);
+  if (isAcronym(raw)) return sealText(cleanProperToken(raw));
+  return lookupSingleTerm(normalized, learnedTerms) || (isLikelyProperToken(raw) ? transcribeProperName(raw) : null);
+}
+
+function fallbackLexicalToken(raw) {
+  if (isAcronym(raw)) return sealText(cleanProperToken(raw));
+  if (isLikelyProperToken(raw)) return transcribeProperName(raw);
+  return sealText(raw);
+}
+
+function cleanArgumentTokens(tokens, role) {
+  const roleStop = role === "subject"
+    ? new Set(["where", "though", "although", "while", "when", "currently", "also"])
+    : new Set(["also"]);
+  return tokens.filter((token) => !roleStop.has(String(token).toLowerCase()));
 }
 
 function isNamedValue(parts, index) {
@@ -524,15 +539,45 @@ function splitLexicalToken(token) {
 
 function isLikelyProperToken(token) {
   const clean = cleanProperToken(token);
-  return /^[A-Z][A-Za-z0-9'’]*$/.test(clean) || /^[A-Z0-9]{2,}$/.test(clean);
+  return /^[A-Z][A-Za-z0-9'’]*$/.test(clean) || isAcronym(clean);
+}
+
+function isAcronym(token) {
+  const clean = cleanProperToken(token);
+  return /^[A-Z0-9]{2,}$/.test(clean);
 }
 
 function cleanProperToken(token) {
   return String(token || "").replace(/[’‘`]/g, "'").replace(/^[^A-Za-z0-9']+|[^A-Za-z0-9']+$/g, "");
 }
 
+function transcribeProperName(token) {
+  const clean = cleanProperToken(token);
+  if (!clean) return "";
+  const lower = clean.toLowerCase();
+  if (PROPER_NAMES[lower]) return PROPER_NAMES[lower];
+  let value = lower
+    .replace(/qu/g, "k'w")
+    .replace(/x/g, "khs")
+    .replace(/z(?!h)/g, "zh")
+    .replace(/c(?=[eiy])/g, "sh")
+    .replace(/c/g, "k")
+    .replace(/j/g, "zh")
+    .replace(/v/g, "v")
+    .replace(/o/g, "u")
+    .replace(/e/g, "ee");
+  value = value.replace(/([bcdfgklmnprstvwxyz]{3,})/g, (cluster) => `${cluster.slice(0, 2)}'${cluster.slice(2)}`);
+  if (!/[']/u.test(value) && value.length > 4) {
+    const cut = Math.max(2, Math.floor(value.length / 2));
+    value = `${value.slice(0, cut)}'${value.slice(cut)}`;
+  }
+  return value;
+}
+
 function segmentText(text) {
-  const normalized = String(text || "").replace(/[。！？]/g, ".");
+  const normalized = String(text || "")
+    .replace(/[。！？]/g, ".")
+    .replace(/\b(Mr|Mrs|Ms|Dr|Prof)\./g, "$1");
   return normalized
     .split(/(?<=[.!?])\s+|[;]\s+|\s+[—–]\s+/u)
     .flatMap((chunk) => {

@@ -25,10 +25,15 @@ const ROOT_SURFACES = {
   FTAGHU: "ftaghu",
   NYTH: "nyth",
   AGL: "agl",
-  NA: "na"
+  NA: "na",
+  WGAGL: "wgah'nagl"
 };
 
 const MORPHEMES = [
+  ["start", ["BUG"]],
+  ["up", ["GHRATH"]],
+  ["inter", ["NGLUI"]],
+  ["section", ["ZHRN"]],
   ["micro", ["VREN"]],
   ["mini", ["VREN"]],
   ["macro", ["GHRATH"]],
@@ -56,7 +61,10 @@ const MORPHEMES = [
   ["net", ["PHLEGETH"]],
   ["book", ["ATHG", "FTAGHU"]],
   ["air", ["HRAL"]],
-  ["water", ["ULH"]]
+  ["water", ["ULH"]],
+  ["space", ["WGAGL"]],
+  ["work", ["ATHG"]],
+  ["stack", ["ZHRN"]]
 ];
 
 const SUFFIXES = [

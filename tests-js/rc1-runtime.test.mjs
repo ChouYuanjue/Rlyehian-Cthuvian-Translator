@@ -74,7 +74,8 @@ test("reverse gloss index includes generated terms", () => {
 test("paragraph translation splits on appositive commas", () => {
   const result = translateDeterministic("I am Runnel Zhang, an undergraduate at Nanjing University.");
   assert.ok(result.analysis.segments.length >= 2);
-  assert.match(result.low, /rhun'el|Runnel/);
+  assert.match(result.low, /run'neel/);
+  assert.doesNotMatch(result.low, /Runnel/);
 });
 
 test("reverse gloss preserves unknown and proper names", () => {
@@ -90,7 +91,7 @@ test("dependent prompt keeps imperative IR instead of sealing the sentence", () 
   assert.equal(result.analysis.segments[0].ir.predicate, "USE");
   assert.equal(result.analysis.segments[0].ir.arguments[0].concept, "you");
   assert.equal(result.analysis.segments[1].ir.predicate, "BE");
-  assert.match(result.low, /nyllsom/);
+  assert.match(result.low, /ny'llsum/);
   assert.doesNotMatch(result.low, /^zha'/);
 });
 
@@ -98,4 +99,22 @@ test("unparsed lexical fragments still expose a weak IR", () => {
   const result = translateDeterministic("bright nameless glyph");
   assert.equal(result.analysis.ir.predicate, "LEXICAL_FRAGMENT");
   assert.notEqual(result.analysis.fallback, "sealed");
+});
+
+test("english proper names are transcribed while acronyms are sealed", () => {
+  const result = translateDeterministic("Runnel Zhang CS");
+  assert.match(result.low, /run'neel/);
+  assert.match(result.low, /zh'ang/);
+  assert.match(result.low, /zha'.*'zhro/);
+  assert.doesNotMatch(result.low, /Runnel/);
+});
+
+test("lightweight decomposition handles startup and keeps abbreviations safe", () => {
+  const startup = translateDeterministic("a startup led by Mr. Chen");
+  assert.match(startup.low, /bug-ghrath-yr/);
+  assert.match(startup.low, /kh'een/);
+
+  const terms = translateDeterministic("CS AI NOVA AIA");
+  assert.match(terms.low, /^zha'/);
+  assert.doesNotMatch(terms.low, /\bCS\b|\bAI\b|\bNOVA\b|\bAIA\b/);
 });
