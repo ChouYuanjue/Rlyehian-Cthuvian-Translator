@@ -64,6 +64,26 @@ test("study forms map to KNOW predicate", () => {
   assert.equal(result.low, "Ya-yr nafl'kadishtu bthnk-kadishtu-na-ef");
 });
 
+test("reverse gloss resolves core root surfaces to English semantics", () => {
+  const result = glossRc1("Ya-yr na kadishtu nilgh'ri-ef");
+  assert.match(result.low, /I, me/);
+  assert.match(result.low, /not, no, non-/);
+  assert.match(result.low, /know/);
+  assert.doesNotMatch(result.low, /\bkadishtu\b/);
+});
+
+test("reverse gloss resolves non-present root form semantically", () => {
+  const result = glossRc1("nafl'athg");
+  assert.match(result.low, /non-present write/);
+  assert.doesNotMatch(result.low, /\bathg\b/);
+});
+
+test("reverse gloss resolves leading l' elision token", () => {
+  const result = glossRc1("l'r'luh wgah'nagl-ri");
+  assert.match(result.low, /hidden, secret/);
+  assert.doesNotMatch(result.low, /l'r'luh/);
+});
+
 test("reverse gloss index includes generated terms", () => {
   const reverse = buildReverseGlossIndex();
   const service = generatedCommonTermFor("service");

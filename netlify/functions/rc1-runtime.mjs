@@ -324,8 +324,9 @@ export function buildReverseGlossIndex(learnedTerms = {}) {
     fya: "they, them"
   };
   for (const root of Object.values(ROOTS)) {
-    glosses[root.surface] ??= root.surface;
-    glosses[`nafl'${root.surface}`] ??= `non-present ${root.surface}`;
+    const rootGloss = rootReverseGloss(root);
+    glosses[root.surface] ??= rootGloss;
+    glosses[`nafl'${root.surface}`] ??= `non-present ${rootGloss}`;
   }
   for (const term of Object.values(TERMS)) {
     glosses[normalizeEnglish(term.rc)] ??= term.gloss;
@@ -345,6 +346,12 @@ export function buildReverseGlossIndex(learnedTerms = {}) {
     if (term?.rc) glosses[normalizeEnglish(term.rc)] = term.literal_gloss || term.gloss || source;
   }
   return glosses;
+}
+
+function rootReverseGloss(root) {
+  const verbs = Array.isArray(root?.verbs) ? root.verbs : [];
+  if (!verbs.length) return root?.surface || "unknown root";
+  return String(verbs[0]);
 }
 
 function deterministicCoinedSeedSurface(source) {
