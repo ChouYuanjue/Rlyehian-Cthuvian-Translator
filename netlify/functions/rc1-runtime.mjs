@@ -1,4 +1,5 @@
 import crypto from "node:crypto";
+import { COMMON_TERMS } from "./common-terms.mjs";
 
 export const ROOTS = {
   KNOW: { surface: "kadishtu", verbs: ["know", "knows", "knew", "known", "understand", "understands", "understood"] },
@@ -20,7 +21,31 @@ export const ROOT_SURFACES = {
   BTHNK: "bthnk",
   MNAHN: "mnahn",
   RLUH: "r'luh",
-  WGAGL: "wgah'nagl"
+  WGAGL: "wgah'nagl",
+  ATHG: "athg",
+  FHAYAK: "fhayak",
+  FHTAGN: "fhtagn",
+  FTAGHU: "ftaghu",
+  GHRATH: "ghrath",
+  GHAL: "ghal",
+  GOR: "ghor",
+  GOFNN: "gof'nn",
+  KTHAR: "kthar",
+  KYARNAK: "k'yarnak",
+  LLOIG: "lloig",
+  NILGHRI: "nilgh'ri",
+  NGLUI: "nglui",
+  NGHFT: "n'ghft",
+  PHLEGETH: "phlegeth",
+  RHAN: "rhan",
+  RHYGG: "rhygg",
+  SHUGG: "shugg",
+  SHUGGOTH: "shuggoth",
+  S_UHN: "s'uhn",
+  ULH: "ulh",
+  WGahn: "wgah'n",
+  WK_HMR: "wk'hmr",
+  YGNAIIH: "ygnaiih"
 };
 
 export const TERMS = {
@@ -45,6 +70,8 @@ export const TERMS = {
   soul: { rc: "orr'e", gloss: "soul" },
   microscope: { rc: "vren-yll-fmagl", gloss: "small-seeing tool" }
 };
+
+Object.assign(TERMS, COMMON_TERMS);
 
 export const PROPER_NAMES = {
   cthulhu: "Cthulhu",
@@ -212,15 +239,38 @@ export function buildTermFromRoots(selectedRoots) {
 
 export function validateTermProposal(proposal) {
   if (!proposal || typeof proposal !== "object") return { ok: false, reason: "proposal_not_object" };
-  if (proposal.needs_new_root) return { ok: false, reason: "new_roots_not_allowed" };
-  const selected = proposal.selected_roots;
-  if (!Array.isArray(selected) || selected.length === 0 || selected.length > 6) return { ok: false, reason: "bad_selected_roots" };
-  for (const root of selected) {
-    if (!ROOT_SURFACES[root]) return { ok: false, reason: `unknown_root:${root}` };
+  const selected = Array.isArray(proposal.selected_roots) ? proposal.selected_roots : [];
+  if (selected.length > 0) {
+    if (selected.length > 6) return { ok: false, reason: "too_many_selected_roots" };
+    for (const root of selected) {
+      if (!ROOT_SURFACES[root]) return { ok: false, reason: `unknown_root:${root}` };
+    }
+    const term = buildTermFromRoots(selected);
+    if (!term || /[A-Za-z]{12,}/.test(term.replace(/kadishtu|phlegeth|shuggoth/g, ""))) return { ok: false, reason: "phonotactic_or_leakage_failure" };
+    return { ok: true, term, strategy: "semantic_compound" };
   }
-  const term = buildTermFromRoots(selected);
-  if (!term || /[A-Za-z]{8,}/.test(term.replace(/kadishtu/g, ""))) return { ok: false, reason: "phonotactic_or_leakage_failure" };
-  return { ok: true, term };
+  const coined = String(proposal.coined_surface || "").trim().toLowerCase();
+  const source = String(proposal.source_term || "");
+  if (proposal.needs_new_root && coined) {
+    const coinedValidation = validateCoinedSurface(coined, source);
+    if (!coinedValidation.ok) return coinedValidation;
+    return { ok: true, term: coined, strategy: "llm_coined_surface" };
+  }
+  return { ok: false, reason: proposal.needs_new_root ? "new_root_without_valid_surface" : "bad_selected_roots" };
+}
+
+function validateCoinedSurface(surface, source) {
+  if (surface.length < 3 || surface.length > 40) return { ok: false, reason: "coined_length_invalid" };
+  if (!/^[a-z][a-z' -]*[a-z]$/.test(surface)) return { ok: false, reason: "coined_characters_invalid" };
+  if (!/[']/u.test(surface) && !/(cth|fht|mgl|ngl|th|gh|kh|sh|ll|rr)/u.test(surface)) return { ok: false, reason: "coined_not_cthuvian_enough" };
+  const cleanSurface = surface.replace(/[^a-z]/g, "");
+  const cleanSource = String(source).toLowerCase().replace(/[^a-z]/g, "");
+  for (let size = 5; size <= Math.min(cleanSource.length, cleanSurface.length); size += 1) {
+    for (let index = 0; index + size <= cleanSource.length; index += 1) {
+      if (cleanSurface.includes(cleanSource.slice(index, index + size))) return { ok: false, reason: "coined_english_leakage" };
+    }
+  }
+  return { ok: true };
 }
 
 function realizeLow(ir) {

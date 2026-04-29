@@ -126,6 +126,14 @@ LLM use is gated server-side:
 
 The public toggle only asks the server to use LLM assistance. It does not grant permission by itself.
 
+The Web UI also includes a seeded common-term layer for everyday words such as `pencil`, `phone`, `computer`, `car`, `school`, and `money`. Unknown terms now follow this order:
+
+```text
+core lexicon -> common terms -> learned registry -> gated LLM compound/coined term -> sealed fallback
+```
+
+This keeps sealed `zha'...'zhro` output as a last resort instead of the default look for normal vocabulary.
+
 ## Sources Used For RC-1 Constraints
 
 The RC-1 specification was shaped from the two user-provided references:

@@ -85,6 +85,23 @@ terms/<sha256 canonical key>.json
 
 Netlify Blobs are used with strong consistency for registry reads and writes. This is fine for a compact deployable Web UI. For heavy multi-user production, move learned registry state to Postgres using the schema in `docs/NETLIFY_REGISTRY.md`.
 
+## Common-Term Seed Layer
+
+The function imports `netlify/functions/common-terms.mjs`, a curated first pass at everyday vocabulary inspired by controlled/basic English lists. This layer is intentionally hand-converted into RC-1 compounds instead of copied directly from English.
+
+The current fallback order is:
+
+```text
+core terms
+  -> common-term seed
+  -> learned Blobs registry
+  -> gated LLM semantic compound
+  -> gated LLM coined surface
+  -> sealed reversible encoding
+```
+
+`zha'...'zhro` is therefore kept as the final completeness mechanism for text that cannot yet be lexicalized safely.
+
 ## Abuse Controls
 
 The function includes:
@@ -107,4 +124,3 @@ npm run build
 ```
 
 The build script keeps the static `public/` directory ready. Netlify bundles functions separately.
-

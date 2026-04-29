@@ -81,7 +81,7 @@ async function readLearnedTermsForText(text) {
   await Promise.all([...candidates].map(async (phrase) => {
     const key = `terms/${canonicalTermKey(phrase)}.json`;
     const item = await store.get(key, { type: "json" }).catch(() => null);
-    if (item?.rc) learned[phrase] = item;
+    if (item?.rc && !isOverGenericLearnedTerm(item)) learned[phrase] = item;
   }));
   return learned;
 }
@@ -96,7 +96,7 @@ async function maybeAssistUnknownTerms(text, learnedTerms) {
   const entry = {
     source: unknown,
     rc: validated.term,
-    strategy: "llm_assisted_semantic_compound",
+    strategy: validated.strategy === "llm_coined_surface" ? "llm_coined_surface" : "llm_assisted_semantic_compound",
     components: proposal.selected_roots,
     literal_gloss: proposal.literal_gloss || proposal.selected_roots.join("-"),
     language_version: "RC-1.0",
@@ -161,12 +161,19 @@ async function proposeTerm(term, context) {
             source_term: term,
             context,
             known_rc1_roots: ROOT_SURFACES,
+            policy: {
+              prefer_known_roots: true,
+              if_roots_are_insufficient: process.env.LLM_ALLOW_COINED_TERMS === "true"
+                ? "Return no selected_roots, set needs_new_root true, and provide a coined_surface that looks like RC-1, contains apostrophes or clusters such as cth/fht/mgl/ngl/th/gh/kh/sh, and does not preserve English spelling."
+                : "Use the nearest existing root paraphrase. Do not set needs_new_root true."
+            },
             required_shape: {
               source_term: "string",
               concept_type: "object|person|place|instrument|abstract|event",
               selected_roots: ["ROOT_ID"],
               literal_gloss: "string",
-              needs_new_root: false
+              needs_new_root: false,
+              coined_surface: "optional string, only when selected_roots is empty and needs_new_root is true"
             }
           })
         }
@@ -188,13 +195,19 @@ async function proposeTerm(term, context) {
 function normalizeProposal(term, proposal) {
   const lower = normalizeEnglish(term);
   if (!proposal || typeof proposal !== "object") return fallbackProposal(term);
+  if (proposal.needs_new_root && process.env.LLM_ALLOW_COINED_TERMS !== "true") return fallbackProposal(term);
+  let roots = Array.isArray(proposal.selected_roots) ? proposal.selected_roots : [];
   if (lower.includes("camera")) {
-    const roots = Array.isArray(proposal.selected_roots) ? proposal.selected_roots : [];
     if (!roots.includes("MNAHN") || !roots.includes("FMAGL")) return fallbackProposal(term);
   }
   if (proposal.concept_type === "instrument") {
-    const roots = Array.isArray(proposal.selected_roots) ? proposal.selected_roots : [];
-    if (!roots.includes("FMAGL")) proposal = { ...proposal, selected_roots: [...roots, "FMAGL"] };
+    if (!roots.includes("FMAGL")) {
+      roots = [...roots, "FMAGL"];
+      proposal = { ...proposal, selected_roots: roots };
+    }
+  }
+  if (roots.length === 1 && roots[0] === "FMAGL" && !/(tool|machine|device|instrument)/.test(lower)) {
+    return fallbackProposal(term);
   }
   return proposal;
 }
@@ -207,7 +220,21 @@ function fallbackProposal(term) {
   if (lower.includes("camera")) {
     return { source_term: term, concept_type: "instrument", selected_roots: ["SEE", "MNAHN", "FMAGL"], literal_gloss: "seeing-memory-tool", needs_new_root: false };
   }
+  if (process.env.LLM_ALLOW_COINED_TERMS === "true") {
+    return { source_term: term, concept_type: "object", selected_roots: [], literal_gloss: "coined RC-1 surface", needs_new_root: true, coined_surface: deterministicCoinedSurface(term) };
+  }
   return { source_term: term, concept_type: "object", selected_roots: ["FMAGL"], literal_gloss: "tool/object", needs_new_root: false };
+}
+
+function isOverGenericLearnedTerm(item) {
+  return item?.rc === "fmagl" && item?.strategy === "llm_assisted_semantic_compound";
+}
+
+function deterministicCoinedSurface(term) {
+  const syllables = ["n'gh", "cth", "ulh", "fht", "mgl", "kh", "sh", "vra", "ll", "rha", "ghu", "th", "zhr", "agl", "nyth", "kha"];
+  const digest = sha256(`RC-1.0:${normalizeEnglish(term)}`);
+  const indexes = [0, 2, 4].map((offset) => Number.parseInt(digest.slice(offset, offset + 2), 16) % syllables.length);
+  return indexes.map((index) => syllables[index]).join("");
 }
 
 async function llmAllowed(request) {

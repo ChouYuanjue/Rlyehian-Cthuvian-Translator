@@ -26,3 +26,22 @@ test("validates constrained term proposals", () => {
   assert.equal(result.ok, true);
   assert.equal(result.term, "vren-yll-fmagl");
 });
+
+test("common seed vocabulary avoids sealed fallback for pencil", () => {
+  const result = translateDeterministic("I used a pencil.");
+  assert.equal(result.low, "Ya-yr nafl'ah athg-fmagl-ef");
+  assert.equal(result.high, "Ya nafl'ah athg-fmagl");
+});
+
+test("validates safe coined LLM surfaces", () => {
+  const result = validateTermProposal({
+    source_term: "umbrella",
+    concept_type: "object",
+    selected_roots: [],
+    literal_gloss: "rain-covering carried tool",
+    needs_new_root: true,
+    coined_surface: "ulh'khafh"
+  });
+  assert.equal(result.ok, true);
+  assert.equal(result.term, "ulh'khafh");
+});

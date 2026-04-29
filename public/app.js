@@ -73,7 +73,7 @@ async function translate() {
     }
     lowOutput.value = payload.low || "";
     highOutput.value = payload.high || "";
-    analysis.textContent = JSON.stringify(payload.analysis || {}, null, 2);
+    analysis.textContent = JSON.stringify({ ...(payload.analysis || {}), llm: payload.llm || null }, null, 2);
     setStatus(payload.llm?.used ? "LLM assisted" : "Deterministic");
   } catch (error) {
     setStatus("Error");
