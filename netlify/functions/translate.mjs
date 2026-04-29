@@ -114,12 +114,16 @@ async function maybeAssistUnknownTerms(text, learnedTerms) {
 
 function findLikelyUnknownTerm(text, learnedTerms) {
   const stop = new Set(["i", "you", "he", "she", "it", "we", "they", "do", "does", "did", "not", "the", "a", "an", "to", "in", "with", "into", "about", "of", "for", "and"]);
-  const words = normalizeEnglish(text).split(/\s+/).filter((word) => /^[a-z][a-z'-]*$/.test(word));
+  const verbish = new Set(["know", "knows", "knew", "understand", "write", "writes", "wrote", "sign", "signed", "wait", "waits", "dream", "dreams", "sleep", "sleeps", "offer", "offers", "offered", "give", "gives", "gave", "transform", "transforms", "change", "changes", "see", "sees", "saw", "remember", "remembers", "use", "uses", "used"]);
+  const words = normalizeEnglish(text)
+    .split(/\s+/)
+    .map((word) => word.replace(/^[^a-z]+|[^a-z'-]+$/g, ""))
+    .filter((word) => /^[a-z][a-z'-]*$/.test(word));
   for (let length = 3; length >= 1; length -= 1) {
     for (let index = 0; index + length <= words.length; index += 1) {
       const phrase = words.slice(index, index + length).join(" ");
+      if (words.slice(index, index + length).some((word) => stop.has(word) || verbish.has(word))) continue;
       if (phrase in TERMS || phrase in learnedTerms) continue;
-      if (phrase.split(" ").every((word) => stop.has(word))) continue;
       if (Object.values(ROOT_SURFACES).includes(phrase)) continue;
       return phrase;
     }
@@ -175,10 +179,24 @@ async function proposeTerm(term, context) {
   const content = payload.choices?.[0]?.message?.content;
   if (!content) return fallbackProposal(term);
   try {
-    return JSON.parse(content);
+    return normalizeProposal(term, JSON.parse(content));
   } catch {
     return fallbackProposal(term);
   }
+}
+
+function normalizeProposal(term, proposal) {
+  const lower = normalizeEnglish(term);
+  if (!proposal || typeof proposal !== "object") return fallbackProposal(term);
+  if (lower.includes("camera")) {
+    const roots = Array.isArray(proposal.selected_roots) ? proposal.selected_roots : [];
+    if (!roots.includes("MNAHN") || !roots.includes("FMAGL")) return fallbackProposal(term);
+  }
+  if (proposal.concept_type === "instrument") {
+    const roots = Array.isArray(proposal.selected_roots) ? proposal.selected_roots : [];
+    if (!roots.includes("FMAGL")) proposal = { ...proposal, selected_roots: [...roots, "FMAGL"] };
+  }
+  return proposal;
 }
 
 function fallbackProposal(term) {
