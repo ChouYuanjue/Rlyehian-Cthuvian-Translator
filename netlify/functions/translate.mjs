@@ -60,6 +60,8 @@ async function handleTranslate(request) {
       const allowed = await safeLlmAllowed(request);
       if (!allowed.ok) {
         llm = { requested: true, used: false, reason: allowed.reason };
+      } else if (shouldSkipReverseLlm(text, result.analysis)) {
+        llm = { requested: true, used: false, reason: "reverse_llm_skipped_long_input" };
       } else {
         const translation = await smoothReverseGloss({ source: text, gloss: result.low, analysis: result.analysis });
         llm = translation
@@ -358,6 +360,12 @@ function truncateForLlm(value, maxChars) {
   const text = String(value || "");
   if (text.length <= maxChars) return text;
   return `${text.slice(0, Math.max(0, maxChars - 24))} ... [gloss truncated]`;
+}
+
+function shouldSkipReverseLlm(text, analysis) {
+  const maxChars = Number.parseInt(process.env.LLM_REVERSE_DIRECT_MAX_SOURCE_CHARS || "600", 10);
+  const maxTokens = Number.parseInt(process.env.LLM_REVERSE_DIRECT_MAX_TOKENS || "40", 10);
+  return String(text || "").length > maxChars || (analysis?.analyses || []).length > maxTokens;
 }
 
 function normalizeProposal(term, proposal) {
