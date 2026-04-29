@@ -54,7 +54,8 @@ async function handleTranslate(request) {
   const wantsLlm = Boolean(body.useLlm);
 
   if (direction === "rc-to-en") {
-    const result = glossRc1(text, {});
+    const learnedReverse = await readLearnedReverseForText(text);
+    const result = glossRc1(text, learnedReverse);
     let llm = { requested: wantsLlm, used: false, reason: "not_requested" };
     if (wantsLlm) {
       const allowed = await safeLlmAllowed(request);
@@ -110,6 +111,30 @@ async function readLearnedTermsForText(text) {
     const key = `terms/${canonicalTermKey(normalizeTermBase(phrase))}.json`;
     const item = await store.get(key, { type: "json" }).catch(() => null);
     if (item?.rc && !isOverGenericLearnedTerm(item)) learned[phrase] = item;
+  }));
+  return learned;
+}
+
+async function readLearnedReverseForText(text) {
+  const store = registryStore();
+  if (!store) return {};
+  const tokens = String(text || "").trim().split(/\s+/).filter(Boolean);
+  const candidates = new Set();
+  for (const token of tokens) {
+    const normalized = normalizeEnglish(token);
+    if (!normalized) continue;
+    candidates.add(normalized);
+    const roleStripped = normalized.replace(/-(yr|ef|ug|agl|hup|vra|li|ep)$/i, "");
+    if (roleStripped) candidates.add(roleStripped);
+  }
+  const learned = {};
+  await Promise.all([...candidates].map(async (candidate) => {
+    const key = `reverse/${canonicalTermKey(normalizeTermBase(candidate))}.json`;
+    const item = await store.get(key, { type: "json" }).catch(() => null);
+    if (!item?.rc) return;
+    const source = normalizeEnglish(item.source || item.literal_gloss || candidate);
+    if (!source) return;
+    learned[source] = item;
   }));
   return learned;
 }
@@ -175,8 +200,10 @@ async function assistOneUnknownTerm(unknown, context) {
 
   const store = registryStore();
   if (store) {
-    const key = `terms/${canonicalTermKey(normalizeTermBase(unknown))}.json`;
-    await store.setJSON(key, entry, { onlyIfNew: true }).catch(() => {});
+    const termKey = `terms/${canonicalTermKey(normalizeTermBase(unknown))}.json`;
+    await store.setJSON(termKey, entry, { onlyIfNew: true }).catch(() => {});
+    const reverseKey = `reverse/${canonicalTermKey(normalizeTermBase(entry.rc))}.json`;
+    await store.setJSON(reverseKey, entry, { onlyIfNew: true }).catch(() => {});
   }
 
   return entry;

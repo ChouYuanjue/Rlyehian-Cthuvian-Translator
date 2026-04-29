@@ -94,6 +94,9 @@ export const PROPER_NAMES = {
   "shub-niggurath": "Shub-Niggurath"
 };
 
+const COINED_REVERSE_SOURCES = ["unsupervised", "structuring", "implicit", "frontier", "segmentation"];
+const COINED_SEED_SYLLABLES = ["n'gh", "cth", "ulh", "fht", "mgl", "kh", "sh", "vra", "ll", "rha", "ghu", "th", "zhr", "agl", "nyth", "kha"];
+
 const PRONOUNS = {
   i: { rc: "Ya", suffix: "yr" },
   me: { rc: "Ya", suffix: "ef" },
@@ -264,11 +267,33 @@ export function glossRc1(text, learnedTerms = {}) {
   const glosses = buildReverseGlossIndex(learnedTerms);
   const tokens = String(text || "").trim().split(/\s+/).filter(Boolean);
   const analyses = tokens.map((token) => {
+    const tokenUnsealed = unsealText(token);
+    if (tokenUnsealed !== null) {
+      return {
+        token,
+        base: token,
+        role: null,
+        gloss: tokenUnsealed,
+        preserved: false,
+        note: `${token} → ${tokenUnsealed} (sealed token)`
+      };
+    }
     const fullKey = normalizeEnglish(token);
     if (glosses[fullKey]) {
       return { token, base: token, role: null, gloss: glosses[fullKey], preserved: false, note: `${token} → ${glosses[fullKey]}` };
     }
     const { base, role } = stripRole(token);
+    const baseUnsealed = unsealText(base);
+    if (baseUnsealed !== null) {
+      return {
+        token,
+        base,
+        role,
+        gloss: baseUnsealed,
+        preserved: false,
+        note: `${base} → ${baseUnsealed} (sealed token)`
+      };
+    }
     const key = normalizeEnglish(base);
     const gloss = glosses[key] || decomposeCompoundGloss(base, glosses);
     if (gloss) return { token, base, role, gloss, preserved: false, note: `${base} → ${gloss}` };
@@ -302,10 +327,27 @@ export function buildReverseGlossIndex(learnedTerms = {}) {
   for (const [source, term] of Object.entries(GENERATED_COMMON_TERMS)) {
     glosses[normalizeEnglish(term.rc)] ??= reverseGeneratedGloss(source, term);
   }
+  for (const source of COINED_REVERSE_SOURCES) {
+    const seeded = generatedCommonTermFor(source);
+    if (seeded?.rc) {
+      glosses[normalizeEnglish(seeded.rc)] ??= source;
+      continue;
+    }
+    glosses[normalizeEnglish(deterministicCoinedSeedSurface(source))] ??= source;
+  }
   for (const [source, term] of Object.entries(learnedTerms)) {
     if (term?.rc) glosses[normalizeEnglish(term.rc)] = term.literal_gloss || term.gloss || source;
   }
   return glosses;
+}
+
+function deterministicCoinedSeedSurface(source) {
+  const digest = sha256(`RC-1.0:${normalizeEnglish(source)}`);
+  const indexes = [0, 2, 4].map((offset) => Number.parseInt(digest.slice(offset, offset + 2), 16) % COINED_SEED_SYLLABLES.length);
+  const pieces = indexes.map((index) => COINED_SEED_SYLLABLES[index]);
+  const surface = pieces.join("");
+  if (/[']/u.test(surface) || /(cth|fht|mgl|ngl|th|gh|kh|sh|ll|rr)/u.test(surface)) return surface;
+  return `${pieces[0]}'${pieces.slice(1).join("")}`;
 }
 
 function reverseGeneratedGloss(source, term) {

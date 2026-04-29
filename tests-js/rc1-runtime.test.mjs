@@ -71,6 +71,18 @@ test("reverse gloss index includes generated terms", () => {
   assert.match(glossRc1(service.rc).low, /service/);
 });
 
+test("reverse gloss keeps sealed token decoding before compound splitting", () => {
+  const encoded = translateDeterministic("QXZ").low;
+  const result = glossRc1(encoded);
+  assert.equal(result.low, "QXZ");
+});
+
+test("reverse gloss has coined source seed entries", () => {
+  const reverse = buildReverseGlossIndex();
+  assert.ok(Object.values(reverse).includes("unsupervised"));
+  assert.ok(Object.values(reverse).includes("structuring"));
+});
+
 test("reverse gloss hides generated provenance and prefers full tokens", () => {
   const result = glossRc1("fhtghudgh kadishtu-agl");
   assert.match(result.low, /undergraduate/);
