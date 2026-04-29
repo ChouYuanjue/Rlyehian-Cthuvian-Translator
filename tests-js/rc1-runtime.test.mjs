@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { glossRc1, translateDeterministic, validateTermProposal } from "../netlify/functions/rc1-runtime.mjs";
+import { generatedCommonTermFor, glossRc1, translateDeterministic, validateTermProposal } from "../netlify/functions/rc1-runtime.mjs";
 
 test("translates low and high register deterministically", () => {
   const result = translateDeterministic("I do not know everything.");
@@ -44,4 +44,11 @@ test("validates safe coined LLM surfaces", () => {
   });
   assert.equal(result.ok, true);
   assert.equal(result.term, "ulh'khafh");
+});
+
+test("frequency seed gives variants the same RC-1 form", () => {
+  const singular = generatedCommonTermFor("service");
+  const plural = generatedCommonTermFor("services");
+  assert.ok(singular);
+  assert.equal(plural.rc, singular.rc);
 });

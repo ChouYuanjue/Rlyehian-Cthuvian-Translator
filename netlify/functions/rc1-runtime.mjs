@@ -1,5 +1,6 @@
 import crypto from "node:crypto";
 import { COMMON_TERMS } from "./common-terms.mjs";
+import { commonGeneratedTermFor, normalizeCommonBase } from "./common-generated.mjs";
 
 export const ROOTS = {
   KNOW: { surface: "kadishtu", verbs: ["know", "knows", "knew", "known", "understand", "understands", "understood"] },
@@ -149,6 +150,14 @@ export function translateDeterministic(text, learnedTerms = {}) {
   const low = applyPhonology(realizeLow(ir));
   const high = compressHigh(low);
   return { low, high, analysis: { ir, registry: { learned_terms_seen: Object.keys(learnedTerms).length } } };
+}
+
+export function generatedCommonTermFor(term) {
+  return commonGeneratedTermFor(term);
+}
+
+export function normalizeTermBase(term) {
+  return normalizeCommonBase(term) || normalizeEnglish(term);
 }
 
 export function parseEnglish(text, learnedTerms = {}) {
@@ -308,8 +317,23 @@ function lookupTerm(phrase, learnedTerms) {
   if (PROPER_NAMES[lower]) return PROPER_NAMES[lower];
   if (TERMS[lower]) return TERMS[lower].rc;
   if (learnedTerms[lower]) return learnedTerms[lower].rc;
+  const generated = commonGeneratedTermFor(lower);
+  if (generated) return generated.rc;
+  if (lower.includes(" ")) {
+    const parts = lower.split(/\s+/).map((part) => lookupSingleTerm(part, learnedTerms));
+    if (parts.every(Boolean)) return parts.join(" ");
+  }
   if (/^\d+$/.test(lower)) return numberToRc(lower);
   return sealText(phrase);
+}
+
+function lookupSingleTerm(term, learnedTerms) {
+  if (PROPER_NAMES[term]) return PROPER_NAMES[term];
+  if (TERMS[term]) return TERMS[term].rc;
+  if (learnedTerms[term]) return learnedTerms[term].rc;
+  const generated = commonGeneratedTermFor(term);
+  if (generated) return generated.rc;
+  return null;
 }
 
 function tokenize(text) {

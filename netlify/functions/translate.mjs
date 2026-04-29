@@ -4,8 +4,10 @@ import {
   ROOT_SURFACES,
   buildTermFromRoots,
   canonicalTermKey,
+  generatedCommonTermFor,
   glossRc1,
   normalizeEnglish,
+  normalizeTermBase,
   sha256,
   translateDeterministic,
   validateTermProposal
@@ -79,7 +81,7 @@ async function readLearnedTermsForText(text) {
   const store = registryStore();
   if (!store) return learned;
   await Promise.all([...candidates].map(async (phrase) => {
-    const key = `terms/${canonicalTermKey(phrase)}.json`;
+    const key = `terms/${canonicalTermKey(normalizeTermBase(phrase))}.json`;
     const item = await store.get(key, { type: "json" }).catch(() => null);
     if (item?.rc && !isOverGenericLearnedTerm(item)) learned[phrase] = item;
   }));
@@ -89,6 +91,20 @@ async function readLearnedTermsForText(text) {
 async function maybeAssistUnknownTerms(text, learnedTerms) {
   const unknown = findLikelyUnknownTerm(text, learnedTerms);
   if (!unknown) return { used: false, reason: "no_unknown_term" };
+  const generated = generatedCommonTermFor(unknown);
+  if (generated) {
+    const entry = {
+      source: unknown,
+      source_base: generated.source_base,
+      rc: generated.rc,
+      strategy: generated.strategy,
+      components: [],
+      literal_gloss: generated.gloss,
+      language_version: "RC-1.0",
+      accepted_at: new Date().toISOString()
+    };
+    return { used: true, learnedTerms: { [normalizeEnglish(unknown)]: entry, [normalizeTermBase(unknown)]: entry }, acceptedTerms: [entry] };
+  }
   const proposal = await proposeTerm(unknown, text);
   const validated = validateTermProposal(proposal);
   if (!validated.ok) return { used: false, reason: validated.reason };
@@ -105,7 +121,7 @@ async function maybeAssistUnknownTerms(text, learnedTerms) {
 
   const store = registryStore();
   if (store) {
-    const key = `terms/${canonicalTermKey(unknown)}.json`;
+    const key = `terms/${canonicalTermKey(normalizeTermBase(unknown))}.json`;
     await store.setJSON(key, entry, { onlyIfNew: true }).catch(() => {});
   }
 

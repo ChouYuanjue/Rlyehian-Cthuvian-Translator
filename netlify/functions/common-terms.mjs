@@ -40,6 +40,7 @@ export const COMMON_TERMS = {
   keyboard: { rc: "athg-zhrn-fmagl", gloss: "ordered writing tool, keyboard" },
   mouse: { rc: "yll-bug-fmagl", gloss: "light-moving tool, mouse" },
   camera: { rc: "yll-mnahn-fmagl", gloss: "light-memory tool, camera" },
+  umbrella: { rc: "ulh-ftaghu-fmagl", gloss: "water-cover tool, umbrella" },
   car: { rc: "bug-fmagl", gloss: "travel tool, car" },
   bus: { rc: "ghrath-bug-fmagl", gloss: "large travel tool, bus" },
   train: { rc: "zhrn-bug-fmagl", gloss: "ordered travel tool, train" },

@@ -126,17 +126,22 @@ LLM use is gated server-side:
 
 The public toggle only asks the server to use LLM assistance. It does not grant permission by itself.
 
-The Web UI also includes a seeded common-term layer for everyday words such as `pencil`, `phone`, `computer`, `car`, `school`, and `money`. Unknown terms now follow this order:
+The Web UI also includes two common-vocabulary layers:
+
+- a hand-built RC-1 compound layer for everyday words such as `pencil`, `phone`, `computer`, `car`, `school`, and `money`
+- a generated 5000-word frequency seed from `google-10000-english-no-swears`, with simple word-family normalization so variants like `service/services` share one RC-1 form
+
+Unknown terms now follow this order:
 
 ```text
-core lexicon -> common terms -> learned registry -> gated LLM compound/coined term -> sealed fallback
+core lexicon -> hand common terms -> generated frequency seed -> learned registry -> gated LLM compound/coined term -> sealed fallback
 ```
 
 This keeps sealed `zha'...'zhro` output as a last resort instead of the default look for normal vocabulary.
 
 ## Sources Used For RC-1 Constraints
 
-The RC-1 specification was shaped from the two user-provided references:
+The RC-1 specification was shaped from the two references:
 
 - <https://conlang.fandom.com/wiki/Cthuvian>
 - <https://www.cthulhuclub.com/articles/learn-cthuvian/>

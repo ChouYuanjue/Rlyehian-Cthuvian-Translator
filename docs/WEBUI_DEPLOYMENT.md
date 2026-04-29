@@ -87,13 +87,19 @@ Netlify Blobs are used with strong consistency for registry reads and writes. Th
 
 ## Common-Term Seed Layer
 
-The function imports `netlify/functions/common-terms.mjs`, a curated first pass at everyday vocabulary inspired by controlled/basic English lists. This layer is intentionally hand-converted into RC-1 compounds instead of copied directly from English.
+The function imports two common-term layers:
+
+- `netlify/functions/common-terms.mjs`: curated everyday vocabulary hand-converted into RC-1 compounds.
+- `netlify/functions/common-generated.mjs`: a generated 5000-word frequency seed from `google-10000-english-no-swears`. The English list is never emitted directly; it only decides when to produce a short deterministic RC-1 coined form instead of sealed fallback.
+
+The generated layer includes simple word-family normalization, so common variants such as `service/services`, `picture/pictures`, and common irregulars share one base form.
 
 The current fallback order is:
 
 ```text
 core terms
   -> common-term seed
+  -> generated frequency seed
   -> learned Blobs registry
   -> gated LLM semantic compound
   -> gated LLM coined surface
