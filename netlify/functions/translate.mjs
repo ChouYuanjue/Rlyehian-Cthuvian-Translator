@@ -47,7 +47,7 @@ export default async function handler(request) {
     const result = glossRc1(text, learnedTerms);
     let llm = { requested: wantsLlm, used: false, reason: "not_requested" };
     if (wantsLlm) {
-      const allowed = await llmAllowed(request);
+      const allowed = await safeLlmAllowed(request);
       if (!allowed.ok) {
         llm = { requested: true, used: false, reason: allowed.reason };
       } else {
@@ -64,7 +64,7 @@ export default async function handler(request) {
   let llm = { requested: wantsLlm, used: false, reason: "not_requested" };
 
   if (wantsLlm) {
-    const allowed = await llmAllowed(request);
+    const allowed = await safeLlmAllowed(request);
     if (!allowed.ok) {
       llm = { requested: true, used: false, reason: allowed.reason };
     } else {
@@ -238,36 +238,46 @@ async function proposeTerm(term, context) {
 async function smoothReverseGloss({ source, gloss, analysis }) {
   if (!process.env.LLM_API_KEY || !process.env.LLM_MODEL) return null;
   const baseUrl = (process.env.LLM_API_BASE_URL || "https://api.openai.com/v1").replace(/\/$/, "");
-  const response = await fetch(`${baseUrl}/chat/completions`, {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), Number.parseInt(process.env.LLM_TIMEOUT_MS || "15000", 10));
+  let response;
+  try {
+    response = await fetch(`${baseUrl}/chat/completions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${process.env.LLM_API_KEY}`
     },
-    body: JSON.stringify({
-      model: process.env.LLM_MODEL,
-      temperature: 0,
-      top_p: 1,
-      max_tokens: 384,
-      response_format: { type: "json_object" },
-      messages: [
-        {
-          role: "system",
-          content: "You turn RC-1/R'lyehian literal glosses into natural English. Return only JSON. Do not invent facts. Preserve unknown/proper names exactly as shown in the gloss."
-        },
-        {
-          role: "user",
-          content: JSON.stringify({
-            task: "RC1_REVERSE_NATURAL_TRANSLATION",
-            source_rc1: source,
-            literal_gloss: gloss,
-            token_analyses: analysis?.analyses || [],
-            output_schema: { translation: "string" }
-          })
-        }
-      ]
-    })
-  });
+      signal: controller.signal,
+      body: JSON.stringify({
+        model: process.env.LLM_MODEL,
+        temperature: 0,
+        top_p: 1,
+        max_tokens: 384,
+        response_format: { type: "json_object" },
+        messages: [
+          {
+            role: "system",
+            content: "You turn RC-1/R'lyehian literal glosses into natural English. Return only JSON. Do not invent facts. Preserve unknown/proper names exactly as shown in the gloss."
+          },
+          {
+            role: "user",
+            content: JSON.stringify({
+              task: "RC1_REVERSE_NATURAL_TRANSLATION",
+              source_rc1: source,
+              literal_gloss: gloss,
+              token_analyses: analysis?.analyses || [],
+              output_schema: { translation: "string" }
+            })
+          }
+        ]
+      })
+    });
+  } catch {
+    clearTimeout(timeout);
+    return null;
+  }
+  clearTimeout(timeout);
   if (!response.ok) return null;
   const payload = await response.json().catch(() => null);
   const content = payload?.choices?.[0]?.message?.content;
@@ -337,6 +347,14 @@ async function llmAllowed(request) {
   const rate = await checkLlmRateLimit(request);
   if (!rate.ok) return rate;
   return { ok: true };
+}
+
+async function safeLlmAllowed(request) {
+  try {
+    return await llmAllowed(request);
+  } catch {
+    return { ok: false, reason: "llm_guard_failed" };
+  }
 }
 
 async function checkLlmRateLimit(request) {
