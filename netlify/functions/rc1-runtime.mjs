@@ -264,6 +264,10 @@ export function glossRc1(text, learnedTerms = {}) {
   const glosses = buildReverseGlossIndex(learnedTerms);
   const tokens = String(text || "").trim().split(/\s+/).filter(Boolean);
   const analyses = tokens.map((token) => {
+    const fullKey = normalizeEnglish(token);
+    if (glosses[fullKey]) {
+      return { token, base: token, role: null, gloss: glosses[fullKey], preserved: false, note: `${token} → ${glosses[fullKey]}` };
+    }
     const { base, role } = stripRole(token);
     const key = normalizeEnglish(base);
     const gloss = glosses[key] || decomposeCompoundGloss(base, glosses);
@@ -281,6 +285,7 @@ export function buildReverseGlossIndex(learnedTerms = {}) {
     "mglw'nafh": "still living or active",
     "wgah'nagl": "dwelling-place",
     fhtagn: "waits, dreams, lies dormant",
+    ai: "is; equals",
     na: "not, no, non-",
     ya: "I, me",
     tha: "you",
@@ -295,12 +300,20 @@ export function buildReverseGlossIndex(learnedTerms = {}) {
     glosses[normalizeEnglish(term.rc)] ??= term.gloss;
   }
   for (const [source, term] of Object.entries(GENERATED_COMMON_TERMS)) {
-    glosses[normalizeEnglish(term.rc)] ??= `${source}; ${term.gloss}`;
+    glosses[normalizeEnglish(term.rc)] ??= reverseGeneratedGloss(source, term);
   }
   for (const [source, term] of Object.entries(learnedTerms)) {
     if (term?.rc) glosses[normalizeEnglish(term.rc)] = term.literal_gloss || term.gloss || source;
   }
   return glosses;
+}
+
+function reverseGeneratedGloss(source, term) {
+  const gloss = String(term?.gloss || "");
+  if (/frequency_seed_coined from/i.test(gloss)) return source;
+  if (/offline_semantic_compound from/i.test(gloss)) return source;
+  if (/online lightweight decomposition from/i.test(gloss)) return source;
+  return `${source}; ${gloss}`;
 }
 
 export function buildTermFromRoots(selectedRoots) {

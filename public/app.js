@@ -13,7 +13,6 @@ const highTitle = document.querySelector("#highTitle");
 const analysisTitle = document.querySelector("#analysisTitle");
 const notesPane = document.querySelector(".notes-pane");
 const llmToggle = document.querySelector("#llmToggle");
-const gateToken = document.querySelector("#gateToken");
 
 const samples = {
   "en-to-rc": "The scholar wrote a book about the hidden city.",
@@ -59,9 +58,6 @@ async function translate() {
   setStatus("Working");
   try {
     const headers = { "Content-Type": "application/json" };
-    if (gateToken.value) {
-      headers["X-RC1-LLM-GATE"] = gateToken.value;
-    }
     const response = await fetch("/api/translate", {
       method: "POST",
       headers,
@@ -77,7 +73,7 @@ async function translate() {
     }
     if (state.direction === "rc-to-en") {
       lowOutput.value = payload.low || "";
-      highOutput.value = payload.high || formatReverseNotes(payload.analysis);
+      highOutput.value = payload.llm?.translation || (llmToggle.checked ? "LLM translation unavailable." : "Enable Request LLM assist for a natural English rendering.");
     } else {
       lowOutput.value = payload.low || "";
       highOutput.value = payload.high || "";
@@ -94,17 +90,9 @@ function syncWorkspaceMode() {
   const reverse = state.direction === "rc-to-en";
   sourceTitle.textContent = reverse ? "RC-1" : "English";
   lowTitle.textContent = reverse ? "Literal Gloss" : "Low Register";
-  highTitle.textContent = reverse ? "Token Notes" : "High Register";
-  analysisTitle.textContent = reverse ? "Diagnostics" : "Analysis";
-  notesPane.hidden = reverse;
-}
-
-function formatReverseNotes(analysisPayload) {
-  const analyses = analysisPayload?.analyses || [];
-  if (!analyses.length) return analysisPayload?.summary || "";
-  return analyses
-    .map((item) => (item.preserved ? `${item.base} (preserved)` : `${item.base} → ${item.gloss}`))
-    .join("\n");
+  highTitle.textContent = reverse ? "LLM Translation" : "High Register";
+  analysisTitle.textContent = "Analysis";
+  notesPane.hidden = false;
 }
 
 function setStatus(text) {

@@ -45,7 +45,19 @@ export default async function handler(request) {
 
   if (direction === "rc-to-en") {
     const result = glossRc1(text, learnedTerms);
-    return json({ ...result, llm: { requested: wantsLlm, used: false, reason: "reverse_gloss_is_deterministic" } });
+    let llm = { requested: wantsLlm, used: false, reason: "not_requested" };
+    if (wantsLlm) {
+      const allowed = await llmAllowed(request);
+      if (!allowed.ok) {
+        llm = { requested: true, used: false, reason: allowed.reason };
+      } else {
+        const translation = await smoothReverseGloss({ source: text, gloss: result.low, analysis: result.analysis });
+        llm = translation
+          ? { requested: true, used: true, translation }
+          : { requested: true, used: false, reason: "reverse_llm_failed" };
+      }
+    }
+    return json({ ...result, llm });
   }
 
   let result = translateDeterministic(text, learnedTerms);
@@ -223,6 +235,52 @@ async function proposeTerm(term, context) {
   }
 }
 
+async function smoothReverseGloss({ source, gloss, analysis }) {
+  if (!process.env.LLM_API_KEY || !process.env.LLM_MODEL) return null;
+  const baseUrl = (process.env.LLM_API_BASE_URL || "https://api.openai.com/v1").replace(/\/$/, "");
+  const response = await fetch(`${baseUrl}/chat/completions`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.LLM_API_KEY}`
+    },
+    body: JSON.stringify({
+      model: process.env.LLM_MODEL,
+      temperature: 0,
+      top_p: 1,
+      max_tokens: 384,
+      response_format: { type: "json_object" },
+      messages: [
+        {
+          role: "system",
+          content: "You turn RC-1/R'lyehian literal glosses into natural English. Return only JSON. Do not invent facts. Preserve unknown/proper names exactly as shown in the gloss."
+        },
+        {
+          role: "user",
+          content: JSON.stringify({
+            task: "RC1_REVERSE_NATURAL_TRANSLATION",
+            source_rc1: source,
+            literal_gloss: gloss,
+            token_analyses: analysis?.analyses || [],
+            output_schema: { translation: "string" }
+          })
+        }
+      ]
+    })
+  });
+  if (!response.ok) return null;
+  const payload = await response.json().catch(() => null);
+  const content = payload?.choices?.[0]?.message?.content;
+  if (!content) return null;
+  try {
+    const parsed = JSON.parse(content);
+    const translation = String(parsed.translation || "").trim();
+    return translation || null;
+  } catch {
+    return null;
+  }
+}
+
 function normalizeProposal(term, proposal) {
   const lower = normalizeEnglish(term);
   if (!proposal || typeof proposal !== "object") return fallbackProposal(term);
@@ -271,7 +329,7 @@ function deterministicCoinedSurface(term) {
 async function llmAllowed(request) {
   if (process.env.LLM_ENABLED !== "true") return { ok: false, reason: "llm_disabled" };
   const gate = process.env.LLM_GATE_TOKEN || "";
-  const publicAllowed = process.env.PUBLIC_LLM_ENABLED === "true";
+  const publicAllowed = process.env.PUBLIC_LLM_ENABLED === "true" || process.env.LLM_REQUIRE_GATE !== "true";
   const providedGate = request.headers.get("x-rc1-llm-gate") || "";
   if (!publicAllowed && (!gate || providedGate !== gate)) {
     return { ok: false, reason: "llm_gate_required" };

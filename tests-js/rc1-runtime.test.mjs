@@ -71,6 +71,13 @@ test("reverse gloss index includes generated terms", () => {
   assert.match(glossRc1(service.rc).low, /service/);
 });
 
+test("reverse gloss hides generated provenance and prefers full tokens", () => {
+  const result = glossRc1("fhtghudgh kadishtu-agl");
+  assert.match(result.low, /undergraduate/);
+  assert.match(result.low, /school/);
+  assert.doesNotMatch(result.low, /frequency_seed_coined|offline_semantic_compound/);
+});
+
 test("paragraph translation splits on appositive commas", () => {
   const result = translateDeterministic("I am Runnel Zhang, an undergraduate at Nanjing University.");
   assert.ok(result.analysis.segments.length >= 2);
