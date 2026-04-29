@@ -11,7 +11,17 @@ export const ROOTS = {
   TRANSFORM: { surface: "wk'hmr", verbs: ["transform", "transforms", "transformed", "change", "changes", "changed"] },
   SEE: { surface: "yll", verbs: ["see", "sees", "saw", "seen", "reveal", "reveals", "revealed"] },
   REMEMBER: { surface: "mnahn", verbs: ["remember", "remembers", "remembered", "record", "records", "recorded"] },
-  USE: { surface: "ah", verbs: ["use", "uses", "used", "do", "does", "did"] }
+  USE: { surface: "ah", verbs: ["use", "uses", "used", "do", "does", "did"] },
+  BE: { surface: "ai", verbs: ["be", "am", "is", "are", "was", "were", "been", "being"] },
+  TAKE: { surface: "bug", verbs: ["take", "takes", "took", "taken"] },
+  SERVE: { surface: "vra", verbs: ["serve", "serves", "served"] },
+  CONTRIBUTE: { surface: "fhayak", verbs: ["contribute", "contributes", "contributed"] },
+  HAVE: { surface: "vra", verbs: ["have", "has", "had"] },
+  EMPLOY: { surface: "s'uhn", verbs: ["employ", "employs", "employed"] },
+  LEAD: { surface: "uln", verbs: ["lead", "leads", "led"] },
+  EXPLORE: { surface: "ch", verbs: ["explore", "explores", "explored", "exploring"] },
+  SHARE: { surface: "k'yarnak", verbs: ["share", "shares", "shared", "sharing"] },
+  ENJOY: { surface: "lw'nafh", verbs: ["enjoy", "enjoys", "enjoyed"] }
 };
 
 export const ROOT_SURFACES = {
@@ -98,6 +108,7 @@ const PRONOUNS = {
 };
 
 const PAST_FORMS = new Set(["wrote", "signed", "knew", "saw", "waited", "dreamed", "slept", "offered", "used", "transformed", "changed", "remembered", "studied", "learned"]);
+const STOP_FRAGMENT_WORDS = new Set(["a", "an", "the", "and", "or", "but", "also", "e", "g", "eg", "i", "my", "this", "through", "though", "where", "that", "which", "who", "whom", "at", "in", "on", "to", "from", "by", "of", "for", "as"]);
 const NEGATORS = new Set(["not", "n't", "never", "no"]);
 const AUXILIARIES = new Set(["do", "does", "did"]);
 const PREPOSITIONS = {
@@ -143,10 +154,34 @@ export function canonicalTermKey(term, domain = "general") {
 }
 
 export function translateDeterministic(text, learnedTerms = {}) {
+  const segments = segmentText(text);
+  if (segments.length > 1) {
+    const translated = segments.map((segment) => translateOneSegment(segment, learnedTerms));
+    return {
+      low: translated.map((item) => item.low).filter(Boolean).join(" "),
+      high: translated.map((item) => item.high).filter(Boolean).join(" "),
+      analysis: {
+        segments: translated.map((item) => item.analysis),
+        registry: { learned_terms_seen: Object.keys(learnedTerms).length }
+      }
+    };
+  }
+  return translateOneSegment(text, learnedTerms);
+}
+
+function translateOneSegment(text, learnedTerms = {}) {
   const ir = parseEnglish(text, learnedTerms);
   if (!ir) {
-    const sealed = sealText(text);
-    return { low: sealed, high: sealed, analysis: { fallback: "sealed" } };
+    const lexicalized = lexicalizeFragment(text, learnedTerms);
+    return {
+      low: lexicalized.low,
+      high: lexicalized.low,
+      analysis: {
+        source: text,
+        fallback: lexicalized.fallback,
+        tokens: lexicalized.tokens
+      }
+    };
   }
   const low = applyPhonology(realizeLow(ir));
   const high = compressHigh(low);
@@ -166,7 +201,7 @@ export function onlineLightweightTermFor(term) {
 }
 
 export function parseEnglish(text, learnedTerms = {}) {
-  const source = String(text || "");
+  const source = expandContractions(String(text || ""));
   const tokens = tokenize(source).filter((token) => /^[A-Za-z0-9'’-]+$/.test(token));
   const cleaned = stripDeterminers(tokens).map((token) => token.toLowerCase());
   if (!cleaned.length) return null;
@@ -185,7 +220,7 @@ export function parseEnglish(text, learnedTerms = {}) {
   const subjectTokens = cleaned.slice(0, predicateIndex).filter((token) => !NEGATORS.has(token) && !AUXILIARIES.has(token));
   const rest = cleaned.slice(predicateIndex + 1);
   const polarity = cleaned.some((token) => NEGATORS.has(token) || token.endsWith("n't")) ? "negative" : "positive";
-  const tam = PAST_FORMS.has(cleaned[predicateIndex]) ? "past" : "present";
+  const tam = PAST_FORMS.has(cleaned[predicateIndex]) || cleaned[predicateIndex] === "was" || cleaned[predicateIndex] === "were" || cleaned[predicateIndex] === "had" || cleaned[predicateIndex] === "took" || cleaned[predicateIndex] === "led" ? "past" : "present";
   const { objectTokens, phrases } = splitPrepositions(rest);
   const args = [];
   const subject = phraseToArgument(subjectTokens, "subject", "yr", learnedTerms);
@@ -218,10 +253,13 @@ export function glossRc1(text, learnedTerms = {}) {
   const analyses = tokens.map((token) => {
     const { base, role } = stripRole(token);
     const key = normalizeEnglish(base);
-    return { token, base, role, gloss: glosses[key] || decomposeCompoundGloss(base, glosses) || "unknown or proper name" };
+    const gloss = glosses[key] || decomposeCompoundGloss(base, glosses);
+    if (gloss) return { token, base, role, gloss, preserved: false, note: `${base} → ${gloss}` };
+    return { token, base, role, gloss: base, preserved: true, note: `${base} → ${base} (preserved)` };
   });
   const best = analyses.map((item) => item.gloss).join(" / ");
-  return { low: best, high: best, analysis: { direction: "rc-to-en", analyses } };
+  const notes = analyses.map((item) => item.note).join(" / ");
+  return { low: best, high: notes, analysis: { direction: "rc-to-en", analyses, summary: notes } };
 }
 
 export function buildReverseGlossIndex(learnedTerms = {}) {
@@ -338,14 +376,19 @@ function lookupTerm(phrase, learnedTerms) {
   const lightweight = lightweightDecomposeTerm(lower);
   if (lightweight) return lightweight.rc;
   if (lower.includes(" ")) {
-    const parts = lower.split(/\s+/).map((part) => lookupSingleTerm(part, learnedTerms));
-    if (parts.every(Boolean)) return parts.join(" ");
+    const parts = lower
+      .split(/\s+/)
+      .map((part) => part.replace(/'s$/, ""))
+      .filter((part) => part && !STOP_FRAGMENT_WORDS.has(part))
+      .map((part) => lookupSingleTerm(part, learnedTerms) || sealText(part));
+    if (parts.length) return parts.join(" ");
   }
   if (/^\d+$/.test(lower)) return numberToRc(lower);
   return sealText(phrase);
 }
 
 function lookupSingleTerm(term, learnedTerms) {
+  term = normalizeEnglish(term).replace(/'s$/, "");
   if (PROPER_NAMES[term]) return PROPER_NAMES[term];
   if (TERMS[term]) return TERMS[term].rc;
   if (learnedTerms[term]) return learnedTerms[term].rc;
@@ -354,6 +397,62 @@ function lookupSingleTerm(term, learnedTerms) {
   const lightweight = lightweightDecomposeTerm(term);
   if (lightweight) return lightweight.rc;
   return null;
+}
+
+function lexicalizeFragment(text, learnedTerms) {
+  const rawTokens = tokenize(expandContractions(text)).filter((token) => /^[A-Za-z0-9'’-]+$/.test(token));
+  const tokens = [];
+  const pieces = [];
+  for (const raw of rawTokens) {
+    const normalized = normalizeEnglish(raw).replace(/'s$/, "");
+    if (!normalized || STOP_FRAGMENT_WORDS.has(normalized)) continue;
+    if (PRONOUNS[normalized]) {
+      tokens.push({ source: raw, rc: PRONOUNS[normalized].rc, strategy: "pronoun" });
+      pieces.push(PRONOUNS[normalized].rc);
+      continue;
+    }
+    const rc = lookupSingleTerm(normalized, learnedTerms) || (PROPER_NAMES[normalized] ?? null);
+    if (rc) {
+      tokens.push({ source: raw, rc, strategy: "lexicalized" });
+      pieces.push(rc);
+      continue;
+    }
+    if (/^\d+$/.test(normalized)) {
+      const rcNumber = numberToRc(normalized);
+      tokens.push({ source: raw, rc: rcNumber, strategy: "number" });
+      pieces.push(rcNumber);
+      continue;
+    }
+    const sealed = sealText(raw);
+    tokens.push({ source: raw, rc: sealed, strategy: "sealed_token" });
+    pieces.push(sealed);
+  }
+  if (!pieces.length) {
+    return { low: sealText(text), fallback: "sealed", tokens: [] };
+  }
+  return { low: pieces.join(" "), fallback: "lexicalized_fragment", tokens };
+}
+
+function segmentText(text) {
+  const normalized = String(text || "").replace(/[。！？]/g, ".");
+  return normalized
+    .split(/(?<=[.!?])\s+|,\s+|[;]\s+|\s+[—–]\s+/u)
+    .map((segment) => segment.trim())
+    .filter(Boolean);
+}
+
+function expandContractions(text) {
+  return String(text || "")
+    .replace(/[’‘`]/g, "'")
+    .replace(/\bI'm\b/gi, "I am")
+    .replace(/\bI’m\b/gi, "I am")
+    .replace(/\b([A-Za-z]+)'m\b/g, "$1 am")
+    .replace(/\b([A-Za-z]+)'re\b/g, "$1 are")
+    .replace(/\b(it|that|there|here|who|what|where|how)'s\b/gi, "$1 is")
+    .replace(/\b([A-Za-z]+)'ve\b/g, "$1 have")
+    .replace(/\b([A-Za-z]+)'ll\b/g, "$1 will")
+    .replace(/\b([A-Za-z]+)'d\b/g, "$1 had")
+    .replace(/\b([A-Za-z]+)n't\b/g, "$1 not");
 }
 
 function decomposeCompoundGloss(base, glosses) {

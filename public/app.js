@@ -8,6 +8,10 @@ const highOutput = document.querySelector("#highOutput");
 const analysis = document.querySelector("#analysis");
 const status = document.querySelector("#status");
 const sourceTitle = document.querySelector("#sourceTitle");
+const lowTitle = document.querySelector("#lowTitle");
+const highTitle = document.querySelector("#highTitle");
+const analysisTitle = document.querySelector("#analysisTitle");
+const notesPane = document.querySelector(".notes-pane");
 const llmToggle = document.querySelector("#llmToggle");
 const gateToken = document.querySelector("#gateToken");
 
@@ -20,8 +24,8 @@ document.querySelectorAll(".segment").forEach((button) => {
   button.addEventListener("click", () => {
     state.direction = button.dataset.direction;
     document.querySelectorAll(".segment").forEach((item) => item.classList.toggle("is-active", item === button));
-    sourceTitle.textContent = state.direction === "en-to-rc" ? "English" : "RC-1";
     sourceText.value = samples[state.direction];
+    syncWorkspaceMode();
     translate();
   });
 });
@@ -71,14 +75,36 @@ async function translate() {
     if (!response.ok) {
       throw new Error(payload.error || "Translation failed");
     }
-    lowOutput.value = payload.low || "";
-    highOutput.value = payload.high || "";
+    if (state.direction === "rc-to-en") {
+      lowOutput.value = payload.low || "";
+      highOutput.value = payload.high || formatReverseNotes(payload.analysis);
+    } else {
+      lowOutput.value = payload.low || "";
+      highOutput.value = payload.high || "";
+    }
     analysis.textContent = JSON.stringify({ ...(payload.analysis || {}), llm: payload.llm || null }, null, 2);
-    setStatus(payload.llm?.used ? "LLM assisted" : "Deterministic");
+    setStatus(payload.llm?.used ? "LLM assisted" : state.direction === "rc-to-en" ? "Glossed" : "Deterministic");
   } catch (error) {
     setStatus("Error");
     analysis.textContent = JSON.stringify({ error: error.message }, null, 2);
   }
+}
+
+function syncWorkspaceMode() {
+  const reverse = state.direction === "rc-to-en";
+  sourceTitle.textContent = reverse ? "RC-1" : "English";
+  lowTitle.textContent = reverse ? "Literal Gloss" : "Low Register";
+  highTitle.textContent = reverse ? "Token Notes" : "High Register";
+  analysisTitle.textContent = reverse ? "Diagnostics" : "Analysis";
+  notesPane.hidden = reverse;
+}
+
+function formatReverseNotes(analysisPayload) {
+  const analyses = analysisPayload?.analyses || [];
+  if (!analyses.length) return analysisPayload?.summary || "";
+  return analyses
+    .map((item) => (item.preserved ? `${item.base} (preserved)` : `${item.base} → ${item.gloss}`))
+    .join("\n");
 }
 
 function setStatus(text) {
@@ -93,4 +119,5 @@ function debounce(fn, delay) {
   };
 }
 
+syncWorkspaceMode();
 translate();

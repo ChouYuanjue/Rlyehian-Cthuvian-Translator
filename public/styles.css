@@ -150,6 +150,10 @@ h2 {
   gap: 14px;
 }
 
+.source-pane {
+  grid-column: span 2;
+}
+
 .pane {
   min-height: 300px;
   border: 1px solid var(--line);

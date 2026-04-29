@@ -70,3 +70,17 @@ test("reverse gloss index includes generated terms", () => {
   assert.match(reverse[service.rc], /service/);
   assert.match(glossRc1(service.rc).low, /service/);
 });
+
+test("paragraph translation splits on appositive commas", () => {
+  const result = translateDeterministic("I am Runnel Zhang, an undergraduate at Nanjing University.");
+  assert.ok(result.analysis.segments.length >= 2);
+  assert.match(result.low, /rhun'el|Runnel/);
+});
+
+test("reverse gloss preserves unknown and proper names", () => {
+  const result = glossRc1("ph'nglui Cthulhu Xyzz");
+  assert.match(result.low, /Cthulhu/);
+  assert.match(result.low, /Xyzz/);
+  assert.match(result.high, /Cthulhu \(preserved\)/);
+  assert.match(result.high, /Xyzz \(preserved\)/);
+});

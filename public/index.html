@@ -34,7 +34,7 @@
       </section>
 
       <section class="workspace" aria-label="Translator workspace">
-        <article class="pane">
+        <article class="pane source-pane">
           <div class="pane-head">
             <h2 id="sourceTitle">English</h2>
             <button id="sampleBtn" type="button">Sample</button>
@@ -44,7 +44,7 @@
 
         <article class="pane">
           <div class="pane-head">
-            <h2>Low Register</h2>
+            <h2 id="lowTitle">Low Register</h2>
             <button class="copy" type="button" data-copy="lowOutput">Copy</button>
           </div>
           <textarea id="lowOutput" readonly></textarea>
@@ -52,7 +52,7 @@
 
         <article class="pane">
           <div class="pane-head">
-            <h2>High Register</h2>
+            <h2 id="highTitle">High Register</h2>
             <button class="copy" type="button" data-copy="highOutput">Copy</button>
           </div>
           <textarea id="highOutput" readonly></textarea>
@@ -60,7 +60,7 @@
 
         <article class="pane notes-pane">
           <div class="pane-head">
-            <h2>Analysis</h2>
+            <h2 id="analysisTitle">Analysis</h2>
             <button id="translateBtn" type="button">Translate</button>
           </div>
           <pre id="analysis">{}</pre>
