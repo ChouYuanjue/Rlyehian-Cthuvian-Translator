@@ -118,11 +118,11 @@ async function maybeAssistUnknownTerms(text, learnedTerms, deterministicResult =
   const acceptedTerms = [];
   const learned = {};
 
-  for (const unknown of unknownTerms) {
-    const entry = await assistOneUnknownTerm(unknown, text);
-    if (!entry) continue;
-    learned[normalizeEnglish(unknown)] = entry;
-    learned[normalizeTermBase(unknown)] = entry;
+  const entries = await Promise.all(unknownTerms.map((unknown) => assistOneUnknownTerm(unknown, text)));
+  for (const entry of entries) {
+    if (!entry?.source) continue;
+    learned[normalizeEnglish(entry.source)] = entry;
+    learned[normalizeTermBase(entry.source)] = entry;
     acceptedTerms.push(entry);
   }
 
@@ -227,6 +227,8 @@ async function proposeTerm(term, context) {
 
   const baseUrl = (process.env.LLM_API_BASE_URL || "https://api.openai.com/v1").replace(/\/$/, "");
   let response;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), Number.parseInt(process.env.LLM_TERM_TIMEOUT_MS || process.env.LLM_TIMEOUT_MS || "6000", 10));
   try {
     response = await fetch(`${baseUrl}/chat/completions`, {
     method: "POST",
@@ -234,6 +236,7 @@ async function proposeTerm(term, context) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${process.env.LLM_API_KEY}`
     },
+      signal: controller.signal,
       body: JSON.stringify({
         model: process.env.LLM_MODEL,
         temperature: 0,
@@ -272,8 +275,10 @@ async function proposeTerm(term, context) {
       })
     });
   } catch {
+    clearTimeout(timeout);
     return fallbackProposal(term);
   }
+  clearTimeout(timeout);
 
   if (!response.ok) return fallbackProposal(term);
   const payload = await response.json().catch(() => null);
