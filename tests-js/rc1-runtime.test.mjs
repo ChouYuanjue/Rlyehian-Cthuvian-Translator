@@ -84,3 +84,18 @@ test("reverse gloss preserves unknown and proper names", () => {
   assert.match(result.high, /Cthulhu \(preserved\)/);
   assert.match(result.high, /Xyzz \(preserved\)/);
 });
+
+test("dependent prompt keeps imperative IR instead of sealing the sentence", () => {
+  const result = translateDeterministic("Based on everything you know about me, make a character sheet of shonen-style anime character of me, name is nyllsom");
+  assert.equal(result.analysis.segments[0].ir.predicate, "USE");
+  assert.equal(result.analysis.segments[0].ir.arguments[0].concept, "you");
+  assert.equal(result.analysis.segments[1].ir.predicate, "BE");
+  assert.match(result.low, /nyllsom/);
+  assert.doesNotMatch(result.low, /^zha'/);
+});
+
+test("unparsed lexical fragments still expose a weak IR", () => {
+  const result = translateDeterministic("bright nameless glyph");
+  assert.equal(result.analysis.ir.predicate, "LEXICAL_FRAGMENT");
+  assert.notEqual(result.analysis.fallback, "sealed");
+});

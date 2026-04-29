@@ -11,7 +11,7 @@ export const ROOTS = {
   TRANSFORM: { surface: "wk'hmr", verbs: ["transform", "transforms", "transformed", "change", "changes", "changed"] },
   SEE: { surface: "yll", verbs: ["see", "sees", "saw", "seen", "reveal", "reveals", "revealed"] },
   REMEMBER: { surface: "mnahn", verbs: ["remember", "remembers", "remembered", "record", "records", "recorded"] },
-  USE: { surface: "ah", verbs: ["use", "uses", "used", "do", "does", "did"] },
+  USE: { surface: "ah", verbs: ["use", "uses", "used", "do", "does", "did", "make", "makes", "made", "making"] },
   BE: { surface: "ai", verbs: ["be", "am", "is", "are", "was", "were", "been", "being"] },
   TAKE: { surface: "bug", verbs: ["take", "takes", "took", "taken"] },
   SERVE: { surface: "vra", verbs: ["serve", "serves", "served"] },
@@ -107,8 +107,8 @@ const PRONOUNS = {
   them: { rc: "Fya", suffix: "ef" }
 };
 
-const PAST_FORMS = new Set(["wrote", "signed", "knew", "saw", "waited", "dreamed", "slept", "offered", "used", "transformed", "changed", "remembered", "studied", "learned"]);
-const STOP_FRAGMENT_WORDS = new Set(["a", "an", "the", "and", "or", "but", "also", "e", "g", "eg", "i", "my", "this", "through", "though", "where", "that", "which", "who", "whom", "at", "in", "on", "to", "from", "by", "of", "for", "as"]);
+const PAST_FORMS = new Set(["wrote", "signed", "knew", "saw", "waited", "dreamed", "slept", "offered", "used", "transformed", "changed", "remembered", "studied", "learned", "made"]);
+const STOP_FRAGMENT_WORDS = new Set(["a", "an", "the", "and", "or", "but", "also", "e", "g", "eg", "i", "my", "this", "through", "though", "where", "that", "which", "who", "whom", "at", "in", "on", "to", "from", "by", "of", "for", "as", "am", "is", "are", "was", "were", "be", "been", "being"]);
 const NEGATORS = new Set(["not", "n't", "never", "no"]);
 const AUXILIARIES = new Set(["do", "does", "did"]);
 const PREPOSITIONS = {
@@ -173,10 +173,12 @@ function translateOneSegment(text, learnedTerms = {}) {
   const ir = parseEnglish(text, learnedTerms);
   if (!ir) {
     const lexicalized = lexicalizeFragment(text, learnedTerms);
+    const fallbackIr = lexicalizedFallbackIr(text, lexicalized);
     return {
       low: lexicalized.low,
       high: lexicalized.low,
       analysis: {
+        ir: fallbackIr,
         source: text,
         fallback: lexicalized.fallback,
         tokens: lexicalized.tokens
@@ -201,9 +203,10 @@ export function onlineLightweightTermFor(term) {
 }
 
 export function parseEnglish(text, learnedTerms = {}) {
-  const source = expandContractions(String(text || ""));
+  const source = chooseMainClause(expandContractions(String(text || "")));
   const tokens = tokenize(source).filter((token) => /^[A-Za-z0-9'’-]+$/.test(token));
-  const cleaned = stripDeterminers(tokens).map((token) => token.toLowerCase());
+  const rawTokens = stripDeterminers(tokens);
+  const cleaned = rawTokens.map((token) => token.toLowerCase());
   if (!cleaned.length) return null;
   const verbIndex = buildVerbIndex();
   let predicateIndex = -1;
@@ -217,16 +220,26 @@ export function parseEnglish(text, learnedTerms = {}) {
   }
   if (predicateIndex < 0) return null;
   const predicate = verbIndex[cleaned[predicateIndex]];
-  const subjectTokens = cleaned.slice(0, predicateIndex).filter((token) => !NEGATORS.has(token) && !AUXILIARIES.has(token));
-  const rest = cleaned.slice(predicateIndex + 1);
+  const subjectTokens = rawTokens.slice(0, predicateIndex).filter((token) => !NEGATORS.has(token.toLowerCase()) && !AUXILIARIES.has(token.toLowerCase()));
+  const rest = rawTokens.slice(predicateIndex + 1);
   const polarity = cleaned.some((token) => NEGATORS.has(token) || token.endsWith("n't")) ? "negative" : "positive";
   const tam = PAST_FORMS.has(cleaned[predicateIndex]) || cleaned[predicateIndex] === "was" || cleaned[predicateIndex] === "were" || cleaned[predicateIndex] === "had" || cleaned[predicateIndex] === "took" || cleaned[predicateIndex] === "led" ? "past" : "present";
   const { objectTokens, phrases } = splitPrepositions(rest);
   const args = [];
   const subject = phraseToArgument(subjectTokens, "subject", "yr", learnedTerms);
-  if (subject) args.push(subject);
-  const object = phraseToArgument(objectTokens.filter((token) => !NEGATORS.has(token)), "object", "ef", learnedTerms);
-  if (object) args.push(object);
+  if (subject) {
+    args.push(subject);
+  } else if (predicateIndex === 0 && !cleaned[predicateIndex].endsWith("ing")) {
+    args.push({ role: "subject", concept: "you", rc: PRONOUNS.you.rc, suffix: "yr" });
+  }
+  const object = phraseToArgument(objectTokens.filter((token) => !NEGATORS.has(token.toLowerCase())), "object", "ef", learnedTerms);
+  if (object) {
+    if (predicate === "BE" && normalizeEnglish(subjectTokens.join(" ")) === "name") {
+      args.push({ ...object, rc: objectTokens.map((token) => cleanProperToken(token)).filter(Boolean).join(" ") });
+    } else {
+      args.push(object);
+    }
+  }
   for (const phrase of phrases) {
     if (phrase.preposition === "about" || phrase.preposition === "concerning") {
       const about = phraseToArgument(phrase.tokens, phrase.preposition, null, learnedTerms);
@@ -363,7 +376,7 @@ function phraseToArgument(tokens, role, suffix, learnedTerms) {
   if (PRONOUNS[lower]) {
     return { role, concept: lower, rc: PRONOUNS[lower].rc, suffix: suffix || PRONOUNS[lower].suffix };
   }
-  return { role, concept: phrase, rc: lookupTerm(phrase, learnedTerms), suffix };
+  return { role, concept: lower, rc: lookupPhraseTokens(kept, learnedTerms), suffix };
 }
 
 function lookupTerm(phrase, learnedTerms) {
@@ -387,6 +400,31 @@ function lookupTerm(phrase, learnedTerms) {
   return sealText(phrase);
 }
 
+function lookupPhraseTokens(tokens, learnedTerms) {
+  const phrase = tokens.join(" ");
+  const lower = normalizeEnglish(phrase);
+  if (PROPER_NAMES[lower]) return PROPER_NAMES[lower];
+  if (TERMS[lower]) return TERMS[lower].rc;
+  if (learnedTerms[lower]) return learnedTerms[lower].rc;
+  const generated = commonGeneratedTermFor(lower);
+  if (generated) return generated.rc;
+  const lightweight = lightweightDecomposeTerm(lower);
+  if (lightweight) return lightweight.rc;
+  const parts = tokens.flatMap((token) => splitLexicalToken(token)).map((part) => part.replace(/'s$/i, ""));
+  const pieces = [];
+  for (let index = 0; index < parts.length; index += 1) {
+    const part = parts[index];
+    const partLower = part.toLowerCase();
+    if (!part || STOP_FRAGMENT_WORDS.has(partLower)) continue;
+    if (isNamedValue(parts, index)) {
+      pieces.push(cleanProperToken(part));
+      continue;
+    }
+    pieces.push(lookupToken(part, learnedTerms) || sealText(part));
+  }
+  return pieces.length ? pieces.join(" ") : sealText(phrase);
+}
+
 function lookupSingleTerm(term, learnedTerms) {
   term = normalizeEnglish(term).replace(/'s$/, "");
   if (PROPER_NAMES[term]) return PROPER_NAMES[term];
@@ -396,6 +434,10 @@ function lookupSingleTerm(term, learnedTerms) {
   if (generated) return generated.rc;
   const lightweight = lightweightDecomposeTerm(term);
   if (lightweight) return lightweight.rc;
+  if (term.includes("-")) {
+    const parts = term.split("-").map((part) => lookupSingleTerm(part, learnedTerms)).filter(Boolean);
+    if (parts.length) return parts.join("-");
+  }
   return null;
 }
 
@@ -411,7 +453,7 @@ function lexicalizeFragment(text, learnedTerms) {
       pieces.push(PRONOUNS[normalized].rc);
       continue;
     }
-    const rc = lookupSingleTerm(normalized, learnedTerms) || (PROPER_NAMES[normalized] ?? null);
+    const rc = lookupToken(raw, learnedTerms);
     if (rc) {
       tokens.push({ source: raw, rc, strategy: "lexicalized" });
       pieces.push(rc);
@@ -428,17 +470,92 @@ function lexicalizeFragment(text, learnedTerms) {
     pieces.push(sealed);
   }
   if (!pieces.length) {
-    return { low: sealText(text), fallback: "sealed", tokens: [] };
+    const visible = rawTokens.map((token) => cleanProperToken(token)).filter(Boolean);
+    if (visible.length) {
+      return {
+        low: visible.join(" "),
+        fallback: "preserved_fragment",
+        tokens: visible.map((token) => ({ source: token, rc: token, strategy: "preserved" }))
+      };
+    }
+    return { low: sealText(text), fallback: "sealed_nonlexical", tokens: [] };
   }
   return { low: pieces.join(" "), fallback: "lexicalized_fragment", tokens };
+}
+
+function lexicalizedFallbackIr(text, lexicalized) {
+  return {
+    predicate: "LEXICAL_FRAGMENT",
+    tam: "present",
+    polarity: "positive",
+    arguments: [
+      {
+        role: "fragment",
+        concept: normalizeEnglish(text),
+        rc: lexicalized.low,
+        suffix: null,
+        tokens: lexicalized.tokens
+      }
+    ],
+    source: text
+  };
+}
+
+function lookupToken(raw, learnedTerms) {
+  const normalized = normalizeEnglish(raw).replace(/'s$/, "");
+  if (PRONOUNS[normalized]) return PRONOUNS[normalized].rc;
+  return lookupSingleTerm(normalized, learnedTerms) || (isLikelyProperToken(raw) ? cleanProperToken(raw) : null);
+}
+
+function isNamedValue(parts, index) {
+  const current = String(parts[index] || "");
+  if (!/^[A-Za-z][A-Za-z0-9'’-]*$/.test(current)) return false;
+  const prev = String(parts[index - 1] || "").toLowerCase();
+  const prev2 = String(parts[index - 2] || "").toLowerCase();
+  return prev === "named" || prev === "called" || prev === "name" || (prev2 === "name" && prev === "is");
+}
+
+function splitLexicalToken(token) {
+  return String(token || "")
+    .split(/[-/]+/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+}
+
+function isLikelyProperToken(token) {
+  const clean = cleanProperToken(token);
+  return /^[A-Z][A-Za-z0-9'’]*$/.test(clean) || /^[A-Z0-9]{2,}$/.test(clean);
+}
+
+function cleanProperToken(token) {
+  return String(token || "").replace(/[’‘`]/g, "'").replace(/^[^A-Za-z0-9']+|[^A-Za-z0-9']+$/g, "");
 }
 
 function segmentText(text) {
   const normalized = String(text || "").replace(/[。！？]/g, ".");
   return normalized
-    .split(/(?<=[.!?])\s+|,\s+|[;]\s+|\s+[—–]\s+/u)
+    .split(/(?<=[.!?])\s+|[;]\s+|\s+[—–]\s+/u)
+    .flatMap((chunk) => {
+      const selected = chooseMainClause(chunk);
+      if (selected !== chunk) return selected.split(/,\s+/);
+      return chunk.split(/,\s+/);
+    })
     .map((segment) => segment.trim())
     .filter(Boolean);
+}
+
+function chooseMainClause(text) {
+  const clauses = String(text || "").split(/,\s+/);
+  if (clauses.length < 2) return text;
+  const lead = clauses[0].trim().toLowerCase();
+  if (!/^(based on|given|considering|according to)\b/.test(lead)) return text;
+  const verbIndex = buildVerbIndex();
+  for (let index = 1; index < clauses.length; index += 1) {
+    const tokens = tokenize(clauses[index]).filter((token) => /^[A-Za-z0-9'’-]+$/.test(token));
+    const stripped = stripDeterminers(tokens).map((token) => token.toLowerCase());
+    if (stripped[0] && verbIndex[stripped[0]]) return clauses.slice(index).join(", ");
+  }
+  return text;
 }
 
 function expandContractions(text) {
@@ -477,10 +594,11 @@ function splitPrepositions(tokens) {
   let currentPrep = null;
   let current = [];
   for (const token of tokens) {
-    if (Object.hasOwn(PREPOSITIONS, token)) {
+    const lower = String(token).toLowerCase();
+    if (Object.hasOwn(PREPOSITIONS, lower)) {
       if (currentPrep === null) objectTokens = current;
       else phrases.push({ preposition: currentPrep, tokens: current });
-      currentPrep = token;
+      currentPrep = lower;
       current = [];
     } else {
       current.push(token);
